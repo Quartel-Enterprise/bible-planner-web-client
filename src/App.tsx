@@ -81,8 +81,8 @@ function AppContent() {
       <Header theme={theme} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="/" element={<><Hero /><Features /></>} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route path="" element={<><Hero /><Features /></>} />
+          <Route path="privacy" element={<PrivacyPolicy />} />
         </Routes>
       </main>
       <Footer onNavigate={handleNavigate} />
