@@ -1,0 +1,171 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* Light Theme Variables */
+  --color-bg: #FAF8FF;
+  /* backgroundLight */
+  --color-text: #1A1B21;
+  /* onBackgroundLight */
+  --color-text-secondary: #45464F;
+  /* onSurfaceVariantLight */
+  --color-primary: #4C5C92;
+  /* primaryLight */
+  --color-primary-hover: #344479;
+  /* onPrimaryContainerLight (darker shade) */
+  --color-surface: #EEEDF4;
+  /* surfaceContainerLight */
+  --color-surface-hover: #E9E7EF;
+  /* surfaceContainerHighLight */
+  --color-border: #C6C6D0;
+  /* outlineVariantLight */
+  --color-shadow: rgba(0, 0, 0, 0.1);
+  --color-button-text: #FFFFFF;
+  /* onPrimaryLight */
+  --color-button-disabled: #1A1B21;
+  /* onSurfaceLight (opacity handled in component) */
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  /* Dark Theme Variables */
+  --color-bg: #121318;
+  /* backgroundDark */
+  --color-text: #E3E1E9;
+  /* onBackgroundDark */
+  --color-text-secondary: #C2C5DD;
+  /* secondaryDark (using secondary for text-secondary to be readable but distinct) */
+  --color-primary: #B6C4FF;
+  /* primaryDark */
+  --color-primary-hover: #DCE1FF;
+  /* primaryContainerDark (lighter shade for hover) */
+  --color-surface: #1E1F25;
+  /* surfaceContainerDark */
+  --color-surface-hover: #292A2F;
+  /* surfaceContainerHighDark */
+  --color-border: #45464F;
+  /* outlineVariantDark */
+  --color-shadow: rgba(0, 0, 0, 0.5);
+  --color-button-text: #1D2D61;
+  /* onPrimaryDark */
+  --color-button-disabled: #E3E1E9;
+  /* onSurfaceDark */
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text);
+}
+
+p {
+  color: var(--color-text-secondary);
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+button:hover {
+  background-color: var(--color-surface-hover);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+.primary-button {
+  background-color: var(--color-primary);
+  color: var(--color-button-text);
+}
+
+.primary-button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
