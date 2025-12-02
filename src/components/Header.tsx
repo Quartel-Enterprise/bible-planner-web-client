@@ -14,6 +14,13 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         i18n.changeLanguage(lng);
     };
 
+    const cycleLanguage = () => {
+        const languages = ['en', 'pt', 'es'];
+        const currentIndex = languages.indexOf(currentLang);
+        const nextIndex = (currentIndex + 1) % languages.length;
+        changeLanguage(languages[nextIndex]);
+    };
+
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
 
@@ -32,22 +39,28 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     onClick={() => onNavigate('home')}
                 >
                     <img src="/logo.png" alt="Bible Planner Logo" style={{ width: '32px', height: '32px' }} />
-                    <h1 style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
+                    <h1 className="header-title" style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
                 </div>
 
-                <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
                     <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                        <Globe size={20} style={{ marginRight: '0.5rem', color: 'var(--color-text-secondary)' }} />
+                        <Globe
+                            size={20}
+                            style={{ color: 'var(--color-text-secondary)', cursor: 'pointer' }}
+                            onClick={cycleLanguage}
+                        />
                         <select
                             onChange={(e) => changeLanguage(e.target.value)}
                             value={currentLang}
+                            className="language-select"
                             style={{
                                 background: 'transparent',
                                 color: 'var(--color-text)',
                                 border: 'none',
                                 fontSize: '1rem',
                                 cursor: 'pointer',
-                                outline: 'none'
+                                outline: 'none',
+                                marginLeft: '0.5rem'
                             }}
                         >
                             <option value="en">English</option>

@@ -120,6 +120,18 @@ button:focus-visible {
   .container {
     padding: 0 1rem;
   }
+
+  .header-title {
+    font-size: 1.1rem !important;
+  }
+
+  .language-select {
+    width: 0;
+    padding: 0;
+    margin: 0 !important;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 /* Animations */

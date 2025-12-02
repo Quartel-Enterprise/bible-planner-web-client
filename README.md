@@ -2,6 +2,8 @@
 
 A modern, multilingual landing page for the Bible Planner mobile application. Built with React, TypeScript, and Vite, featuring a beautiful design with dark/light theme support and complete internationalization.
 
+🌐 **Live Site**: [https://bibleplanner.app/](https://www.bibleplanner.app/)
+
 <img src="./public/logo.png" alt="Screenshot" width="250" />
 
 ## ✨ Features
