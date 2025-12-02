@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe } from 'lucide-react';
 
 interface HeaderProps {
@@ -9,9 +10,13 @@ interface HeaderProps {
 
 export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const { t, i18n } = useTranslation();
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
+        const isPrivacy = location.pathname.includes('/privacy');
+        navigate(`/${lng}${isPrivacy ? '/privacy' : ''}`);
     };
 
     const cycleLanguage = () => {
