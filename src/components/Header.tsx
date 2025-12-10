@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe } from 'lucide-react';
@@ -13,21 +14,36 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const navigate = useNavigate();
     const location = useLocation();
 
+    const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+    const menuRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+                setIsLanguageMenuOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [menuRef]);
+
     const changeLanguage = (lng: string) => {
         i18n.changeLanguage(lng);
         const isPrivacy = location.pathname.includes('/privacy');
         navigate(`/${lng}${isPrivacy ? '/privacy' : ''}`);
-    };
-
-    const cycleLanguage = () => {
-        const languages = ['en', 'pt', 'es'];
-        const currentIndex = languages.indexOf(currentLang);
-        const nextIndex = (currentIndex + 1) % languages.length;
-        changeLanguage(languages[nextIndex]);
+        setIsLanguageMenuOpen(false);
     };
 
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
+
+    const languages = [
+        { code: 'en', label: t('language_en') },
+        { code: 'pt', label: t('language_pt') },
+        { code: 'es', label: t('language_es') }
+    ];
 
     return (
         <header style={{
@@ -48,30 +64,63 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                    <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-                        <Globe
-                            size={20}
-                            style={{ color: 'var(--color-text-secondary)', cursor: 'pointer' }}
-                            onClick={cycleLanguage}
-                        />
-                        <select
-                            onChange={(e) => changeLanguage(e.target.value)}
-                            value={currentLang}
-                            className="language-select"
+                    <div style={{ position: 'relative' }} ref={menuRef}>
+                        <button
+                            onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
                             style={{
                                 background: 'transparent',
-                                color: 'var(--color-text)',
                                 border: 'none',
-                                fontSize: '1rem',
                                 cursor: 'pointer',
-                                outline: 'none',
-                                marginLeft: '0.5rem'
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                padding: '0.5rem',
+                                color: 'var(--color-text-secondary)'
                             }}
+                            aria-label="Change language"
                         >
-                            <option value="en">English</option>
-                            <option value="pt">Português</option>
-                            <option value="es">Español</option>
-                        </select>
+                            <Globe size={20} />
+                        </button>
+
+                        {isLanguageMenuOpen && (
+                            <div style={{
+                                position: 'absolute',
+                                top: '100%',
+                                right: 0,
+                                marginTop: '0.5rem',
+                                backgroundColor: 'var(--color-surface)',
+                                border: '1px solid var(--color-border)',
+                                borderRadius: '8px',
+                                boxShadow: '0 4px 12px var(--color-shadow)',
+                                padding: '0.5rem',
+                                zIndex: 1000,
+                                minWidth: '160px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.25rem'
+                            }}>
+                                {languages.map((lang) => (
+                                    <button
+                                        key={lang.code}
+                                        onClick={() => changeLanguage(lang.code)}
+                                        style={{
+                                            textAlign: 'left',
+                                            background: currentLang === lang.code ? 'var(--color-primary)' : 'transparent',
+                                            color: currentLang === lang.code ? 'var(--color-button-text)' : 'var(--color-text)',
+                                            padding: '0.75rem 1rem',
+                                            borderRadius: '6px',
+                                            border: 'none',
+                                            cursor: 'pointer',
+                                            width: '100%',
+                                            fontSize: '0.95rem',
+                                            transition: 'background-color 0.2s'
+                                        }}
+                                    >
+                                        {lang.label}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
                     </div>
 
                     <button
