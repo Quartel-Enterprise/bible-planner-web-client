@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe } from 'lucide-react';
+import { InstagramIcon } from './Icons';
 
 interface HeaderProps {
     theme: 'light' | 'dark';
@@ -39,6 +40,14 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
 
+    const getInstagramUrl = () => {
+        switch (currentLang) {
+            case 'pt': return 'https://www.instagram.com/bible.planner.brasil';
+            case 'es': return 'https://www.instagram.com/bible.planner.espanol';
+            default: return 'https://www.instagram.com/bible.planner';
+        }
+    };
+
     const languages = [
         { code: 'en', label: t('language_en') },
         { code: 'pt', label: t('language_pt') },
@@ -55,12 +64,33 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
             zIndex: 100
         }}>
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
-                    onClick={() => onNavigate('home')}
-                >
-                    <img src="/logo.png" alt="Bible Planner Logo" style={{ width: '32px', height: '32px' }} />
-                    <h1 className="header-title" style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div
+                        style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
+                        onClick={() => onNavigate('home')}
+                    >
+                        <img src="/logo.png" alt="Bible Planner Logo" style={{ width: '32px', height: '32px' }} />
+                        <h1 className="header-title" style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
+                    </div>
+
+                    <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)' }} />
+
+                    <a
+                        href={getInstagramUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            color: 'var(--color-text-secondary)',
+                            transition: 'color 0.2s'
+                        }}
+                        onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                        onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+                        aria-label="Instagram"
+                    >
+                        <InstagramIcon size={20} />
+                    </a>
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
