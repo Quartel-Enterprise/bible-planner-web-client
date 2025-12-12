@@ -23,6 +23,20 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const mobileTriggerRef = useRef<HTMLButtonElement>(null);
     const downloadMenuRef = useRef<HTMLDivElement>(null);
 
+    const toggleMobileMenu = () => {
+        if (isMobileMenuOpen) {
+            window.history.back();
+        } else {
+            setIsMobileMenuOpen(true);
+        }
+    };
+
+    const closeMobileMenu = () => {
+        if (isMobileMenuOpen) {
+            window.history.back();
+        }
+    };
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             const target = event.target as Node;
@@ -40,7 +54,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 !mobileMenuRef.current.contains(target) &&
                 mobileTriggerRef.current &&
                 !mobileTriggerRef.current.contains(target)) {
-                setIsMobileMenuOpen(false);
+                closeMobileMenu();
             }
         }
         document.addEventListener("mousedown", handleClickOutside);
@@ -48,6 +62,20 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
             document.removeEventListener("mousedown", handleClickOutside);
         };
     }, [menuRef, isMobileMenuOpen]);
+
+    // Removed useEffect that triggered on location change to avoid cascading renders
+
+    // Helper to close all simple menus (not history-bound mobile menu necessarily, but good for cleanup)
+    const closeDropdowns = () => {
+        setIsLanguageMenuOpen(false);
+        setIsDownloadMenuOpen(false);
+    };
+
+    const handleLogoClick = () => {
+        closeDropdowns();
+        if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+        onNavigate('home');
+    }
 
     const changeLanguage = (language: string) => {
         i18n.changeLanguage(language);
@@ -59,9 +87,27 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         if (isTerms) path += '/terms';
 
         navigate(path);
-        setIsLanguageMenuOpen(false);
-        setIsMobileMenuOpen(false);
+        closeDropdowns();
+        if (isMobileMenuOpen) setIsMobileMenuOpen(false);
     };
+
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            // Push a state to history so the back button can intercept it
+            window.history.pushState({ menuOpen: true }, '', window.location.href);
+
+            const handlePopState = () => {
+                // If back button is pressed, close the menu
+                setIsMobileMenuOpen(false);
+            };
+
+            window.addEventListener('popstate', handlePopState);
+
+            return () => {
+                window.removeEventListener('popstate', handlePopState);
+            };
+        }
+    }, [isMobileMenuOpen]);
 
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
@@ -96,7 +142,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <div
                         style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
-                        onClick={() => onNavigate('home')}
+                        onClick={handleLogoClick}
                     >
                         <img src="/logo.png" alt="Bible Planner Logo" style={{ width: '32px', height: '32px' }} />
                         <h1 className="header-title" style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
@@ -132,6 +178,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         >
                             <Download size={18} />
                             <span className="desktop-text text-nowrap">{t('download')}</span>
+                            <span className="mobile-text-short">{t('download_short')}</span>
                         </button>
 
                         {isDownloadMenuOpen && (
@@ -257,7 +304,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     <button
                         ref={mobileTriggerRef}
                         className={`mobile-menu-trigger ${isMobileMenuOpen ? 'open' : ''}`}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        onClick={toggleMobileMenu}
                         style={{
                             background: 'transparent',
                             border: 'none',

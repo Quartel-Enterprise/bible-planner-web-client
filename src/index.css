@@ -25,6 +25,7 @@
   /* onPrimaryLight */
   --color-button-disabled: #1A1B21;
   /* onSurfaceLight (opacity handled in component) */
+  --color-primary-rgb: 76, 92, 146;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -55,6 +56,7 @@
   /* onPrimaryDark */
   --color-button-disabled: #E3E1E9;
   /* onSurfaceDark */
+  --color-primary-rgb: 182, 196, 255;
 }
 
 body {
@@ -240,15 +242,15 @@ button:focus-visible {
 
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(76, 92, 146, 0.7);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7);
   }
 
   70% {
-    box-shadow: 0 0 0 10px rgba(76, 92, 146, 0);
+    box-shadow: 0 0 0 10px rgba(var(--color-primary-rgb), 0);
   }
 
   100% {
-    box-shadow: 0 0 0 0 rgba(76, 92, 146, 0);
+    box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0);
   }
 }
 
@@ -298,6 +300,28 @@ button:focus-visible {
 
   .desktop-text {
     font-size: 0.8rem;
+  }
+}
+
+.mobile-text-short {
+  display: none;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+  .desktop-text {
+    display: none !important;
+  }
+
+  .mobile-text-short {
+    display: inline;
+  }
+}
+
+@media (max-width: 360px) {
+  .mobile-text-short {
+    display: none;
   }
 }
 
