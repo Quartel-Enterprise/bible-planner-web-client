@@ -13,7 +13,7 @@ export function Hero() {
   return (
     <section style={{ padding: '4rem 0', textAlign: 'center' }}>
       <div className="container">
-        <h2 className="animate-slide-up" style={{ fontSize: '3rem', marginBottom: '1rem', background: 'linear-gradient(45deg, var(--color-primary), var(--color-primary-hover))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 800 }}>
+        <h2 className="animate-slide-up hero-title-responsive text-nowrap" style={{ fontSize: '3rem', marginBottom: '1rem', background: 'linear-gradient(45deg, var(--color-primary), var(--color-primary-hover))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 800 }}>
           {t('app_title')}
         </h2>
         <p className="animate-slide-up delay-100" style={{ fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto 2rem', color: 'var(--color-text-secondary)' }}>

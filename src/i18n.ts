@@ -9,6 +9,7 @@ const resources = {
       "app_description": "Read the entire Bible in 1 year. Organize your reading, track your progress, and dive deeper into the Word with the ultimate Bible companion.",
       "coming_soon": "Coming Soon",
       "features": "Why Choose Bible Planner?",
+      "features_intro": "Why Choose",
       "download": "Download Now",
       "reading_plans": "Structured Reading Plans",
       "reading_plans_desc": "Stay consistent with curated plans. Choose from Chronological, Canonical, or customize your own path through Scripture.",
@@ -25,7 +26,9 @@ const resources = {
       "footer_text": "© {{year}} Quartel Enterprise. All rights reserved",
       "language_en": "English",
       "language_pt": "Portuguese",
-      "language_es": "Spanish"
+      "language_es": "Spanish",
+      "option_android": "Android",
+      "option_ios": "iOS"
     }
   },
   pt: {
@@ -34,6 +37,7 @@ const resources = {
       "app_description": "Leia a Bíblia inteira em 1 ano. Organize sua leitura, acompanhe seu progresso e mergulhe na Palavra com o companheiro definitivo.",
       "coming_soon": "Em Breve",
       "features": "Por que o Bible Planner?",
+      "features_intro": "Por que o",
       "download": "Baixe Agora",
       "reading_plans": "Planos de Leitura Estruturados",
       "reading_plans_desc": "Mantenha a constância com planos curados. Escolha entre Cronológico, Canônico ou personalize seu próprio caminho pelas Escrituras.",
@@ -50,7 +54,9 @@ const resources = {
       "footer_text": "© {{year}} Quartel Enterprise. Todos os direitos reservados",
       "language_en": "Inglês",
       "language_pt": "Português",
-      "language_es": "Espanhol"
+      "language_es": "Espanhol",
+      "option_android": "Android",
+      "option_ios": "iOS"
     }
   },
   es: {
@@ -59,6 +65,7 @@ const resources = {
       "app_description": "Lee toda la Biblia en 1 año. Organiza tu lectura, sigue tu progreso y profundiza en la Palabra con el compañero definitivo.",
       "coming_soon": "Próximamente",
       "features": "¿Por qué Bible Planner?",
+      "features_intro": "¿Por qué",
       "download": "Descargar Ahora",
       "reading_plans": "Planes de Lectura Estructurados",
       "reading_plans_desc": "Mantén la constancia con planes seleccionados. Elige entre Cronológico, Canónico o personaliza tu propio camino a través de las Escrituras.",
@@ -75,7 +82,9 @@ const resources = {
       "footer_text": "© {{year}} Quartel Enterprise. Todos los derechos reservados",
       "language_en": "Inglés",
       "language_pt": "Portugués",
-      "language_es": "Español"
+      "language_es": "Español",
+      "option_android": "Android",
+      "option_ios": "iOS"
     }
   }
 };

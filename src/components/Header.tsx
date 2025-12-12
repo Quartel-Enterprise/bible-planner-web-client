@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Moon, Sun, Globe, Menu, X } from 'lucide-react';
-import { InstagramIcon } from './Icons';
+import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
+import { InstagramIcon, AndroidIcon, AppleIcon } from './Icons';
 
 interface HeaderProps {
     theme: 'light' | 'dark';
@@ -17,9 +17,11 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
 
     const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isDownloadMenuOpen, setIsDownloadMenuOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const mobileMenuRef = useRef<HTMLDivElement>(null);
     const mobileTriggerRef = useRef<HTMLButtonElement>(null);
+    const downloadMenuRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -27,6 +29,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
 
             if (menuRef.current && !menuRef.current.contains(target)) {
                 setIsLanguageMenuOpen(false);
+            }
+
+            if (downloadMenuRef.current && !downloadMenuRef.current.contains(target)) {
+                setIsDownloadMenuOpen(false);
             }
 
             if (isMobileMenuOpen &&
@@ -43,12 +49,12 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         };
     }, [menuRef, isMobileMenuOpen]);
 
-    const changeLanguage = (lng: string) => {
-        i18n.changeLanguage(lng);
+    const changeLanguage = (language: string) => {
+        i18n.changeLanguage(language);
         const isPrivacy = location.pathname.includes('/privacy');
         const isTerms = location.pathname.includes('/terms');
 
-        let path = `/${lng}`;
+        let path = `/${language}`;
         if (isPrivacy) path += '/privacy';
         if (isTerms) path += '/terms';
 
@@ -86,7 +92,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
             backgroundColor: 'var(--color-bg)',
             zIndex: 100
         }}>
-            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <div
                         style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
@@ -119,6 +125,60 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
+                    <div style={{ position: 'relative' }} ref={downloadMenuRef}>
+                        <button
+                            onClick={() => setIsDownloadMenuOpen(!isDownloadMenuOpen)}
+                            className="primary-button animate-pulse download-action-button"
+                        >
+                            <Download size={18} />
+                            <span className="desktop-text text-nowrap">{t('download')}</span>
+                        </button>
+
+                        {isDownloadMenuOpen && (
+                            <div style={{
+                                position: 'absolute',
+                                top: '100%',
+                                right: 0,
+                                marginTop: '0.5rem',
+                                backgroundColor: 'var(--color-surface)',
+                                border: '1px solid var(--color-border)',
+                                borderRadius: '8px',
+                                boxShadow: '0 4px 12px var(--color-shadow)',
+                                padding: '0.5rem',
+                                zIndex: 1000,
+                                minWidth: '180px',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '0.25rem'
+                            }}>
+                                <div className="menu-item-disabled" style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.75rem',
+                                    padding: '0.75rem 1rem',
+                                    borderRadius: '6px',
+                                    color: 'var(--color-text)',
+                                    fontSize: '0.95rem'
+                                }}>
+                                    <AndroidIcon size={20} />
+                                    <span>{t('option_android')}</span>
+                                </div>
+                                <div className="menu-item-disabled" style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '0.75rem',
+                                    padding: '0.75rem 1rem',
+                                    borderRadius: '6px',
+                                    color: 'var(--color-text)',
+                                    fontSize: '0.95rem'
+                                }}>
+                                    <AppleIcon size={20} />
+                                    <span>{t('option_ios')}</span>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+
                     <div className="desktop-actions">
                         <div style={{ position: 'relative' }} ref={menuRef}>
                             <button
