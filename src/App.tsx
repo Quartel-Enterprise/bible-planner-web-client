@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense, lazy } from 'react'
 import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
-import { Features } from './components/Features'
+const Features = lazy(() => import('./components/Features').then(module => ({ default: module.Features })));
+
 import { Footer } from './components/Footer'
-import { PrivacyPolicy } from './components/PrivacyPolicy'
-import { TermsOfService } from './components/TermsOfService'
+
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
+const TermsOfService = lazy(() => import('./components/TermsOfService').then(module => ({ default: module.TermsOfService })));
 
 function LanguageRedirect() {
   const navigate = useNavigate();
@@ -86,9 +88,9 @@ function AppContent() {
       <Header theme={theme} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="" element={<><Hero /><Features /></>} />
-          <Route path="privacy" element={<PrivacyPolicy />} />
-          <Route path="terms" element={<TermsOfService />} />
+          <Route path="" element={<><Hero /><Suspense fallback={null}><Features /></Suspense></>} />
+          <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
+          <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
         </Routes>
       </main>
       <Footer onNavigate={handleNavigate} />

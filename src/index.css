@@ -254,6 +254,10 @@ button:focus-visible {
   }
 }
 
+.animate-pulse {
+  animation: pulse 2s infinite;
+}
+
 .mobile-menu-enter {
   animation: slideDown 0.3s ease-out forwards;
 }

@@ -144,7 +144,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
                         onClick={handleLogoClick}
                     >
-                        <img src="/logo.png" alt="Bible Planner Logo" style={{ width: '32px', height: '32px' }} />
+                        <img src="/logo.png" alt="Bible Planner Logo" width={32} height={32} style={{ width: '32px', height: '32px' }} />
                         <h1 className="header-title" style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
                     </div>
 
@@ -305,6 +305,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         ref={mobileTriggerRef}
                         className={`mobile-menu-trigger ${isMobileMenuOpen ? 'open' : ''}`}
                         onClick={toggleMobileMenu}
+                        aria-label="Toggle mobile menu"
                         style={{
                             background: 'transparent',
                             border: 'none',
