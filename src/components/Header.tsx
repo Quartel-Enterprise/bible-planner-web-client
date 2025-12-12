@@ -320,98 +320,97 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 </div>
             </div>
 
-            {isMobileMenuOpen && (
-                <div
-                    ref={mobileMenuRef}
-                    className="mobile-menu-enter"
+            <div
+                ref={mobileMenuRef}
+                className={`mobile-menu ${isMobileMenuOpen ? 'open' : ''}`}
+                aria-hidden={!isMobileMenuOpen}
+                style={{
+                    position: 'fixed',
+                    top: '73px',
+                    left: 0,
+                    right: 0,
+                    backgroundColor: 'var(--color-bg)',
+                    borderBottom: '1px solid var(--color-border)',
+                    padding: '1rem',
+                    zIndex: 99,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    gap: '1rem',
+                    boxShadow: '0 4px 12px var(--color-shadow)'
+                }}>
+                <a
+                    href={getInstagramUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{
-                        position: 'fixed', // Changed to fixed to cover screen if needed, or absolute relative to header
-                        top: '73px', // Approximate height of header
-                        left: 0,
-                        right: 0,
-                        backgroundColor: 'var(--color-bg)',
-                        borderBottom: '1px solid var(--color-border)',
-                        padding: '1rem',
-                        zIndex: 99,
                         display: 'flex',
-                        flexDirection: 'column',
-                        gap: '1rem',
-                        boxShadow: '0 4px 12px var(--color-shadow)'
-                    }}>
-                    <a
-                        href={getInstagramUrl()}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            gap: '0.75rem',
-                            color: 'var(--color-text)',
-                            textDecoration: 'none',
-                            padding: '0.75rem',
-                            borderRadius: '8px',
-                            backgroundColor: 'var(--color-surface)'
-                        }}
-                    >
-                        <InstagramIcon size={20} />
-                        <span>Instagram</span>
-                    </a>
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        color: 'var(--color-text)',
+                        textDecoration: 'none',
+                        padding: '0.75rem',
+                        borderRadius: '8px',
+                        backgroundColor: 'var(--color-surface)'
+                    }}
+                >
+                    <InstagramIcon size={20} />
+                    <span>Instagram</span>
+                </a>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--color-text-secondary)', padding: '0 0.5rem' }}>
-                            {t('language')}
-                        </p>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
-                            {languages.map((lang) => (
-                                <button
-                                    key={lang.code}
-                                    onClick={() => changeLanguage(lang.code)}
-                                    style={{
-                                        textAlign: 'center',
-                                        background: currentLang === lang.code ? 'var(--color-primary)' : 'var(--color-surface)',
-                                        color: currentLang === lang.code ? 'var(--color-button-text)' : 'var(--color-text)',
-                                        padding: '0.75rem',
-                                        borderRadius: '8px',
-                                        border: 'none',
-                                        cursor: 'pointer',
-                                        fontSize: '0.9rem'
-                                    }}
-                                >
-                                    {lang.label}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-
-                    <button
-                        onClick={() => {
-                            toggleTheme();
-                        }}
-                        style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'space-between',
-                            padding: '0.75rem',
-                            borderRadius: '8px',
-                            backgroundColor: 'var(--color-surface)',
-                            border: 'none',
-                            cursor: 'pointer',
-                            color: 'var(--color-text)',
-                            fontSize: '1rem'
-                        }}
-                    >
-                        <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
-                        {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
-                    </button>
-
-                    <div style={{ borderTop: '1px solid var(--color-border)', margin: '0.5rem 0' }} />
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        <button onClick={() => { navigate(`/${currentLang}/privacy`); setIsMobileMenuOpen(false); }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('privacy_policy')}</button>
-                        <button onClick={() => { navigate(`/${currentLang}/terms`); setIsMobileMenuOpen(false); }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('terms_of_service')}</button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--color-text-secondary)', padding: '0 0.5rem' }}>
+                        {t('language')}
+                    </p>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0.5rem' }}>
+                        {languages.map((lang) => (
+                            <button
+                                key={lang.code}
+                                onClick={() => changeLanguage(lang.code)}
+                                style={{
+                                    textAlign: 'center',
+                                    background: currentLang === lang.code ? 'var(--color-primary)' : 'var(--color-surface)',
+                                    color: currentLang === lang.code ? 'var(--color-button-text)' : 'var(--color-text)',
+                                    padding: '0.75rem',
+                                    borderRadius: '8px',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    fontSize: '0.9rem'
+                                }}
+                            >
+                                {lang.label}
+                            </button>
+                        ))}
                     </div>
                 </div>
-            )}
+
+                <button
+                    onClick={() => {
+                        toggleTheme();
+                    }}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        padding: '0.75rem',
+                        borderRadius: '8px',
+                        backgroundColor: 'var(--color-surface)',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: 'var(--color-text)',
+                        fontSize: '1rem'
+                    }}
+                >
+                    <span>{theme === 'light' ? 'Dark Mode' : 'Light Mode'}</span>
+                    {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
+                </button>
+
+                <div style={{ borderTop: '1px solid var(--color-border)', margin: '0.5rem 0' }} />
+
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                    <button onClick={() => { navigate(`/${currentLang}/privacy`); setIsMobileMenuOpen(false); }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('privacy_policy')}</button>
+                    <button onClick={() => { navigate(`/${currentLang}/terms`); setIsMobileMenuOpen(false); }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('terms_of_service')}</button>
+                </div>
+            </div>
         </header>
     );
 }

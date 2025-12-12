@@ -243,8 +243,27 @@
       animation: pulse 2s infinite;
     }
 
-    .mobile-menu-enter {
-      animation: slideDown 0.3s ease-out forwards;
+    /* Mobile Menu Animations */
+    .mobile-menu {
+      opacity: 0;
+      transform: translateY(-20px);
+      pointer-events: none;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      /* Ensure it doesn't block desktop clicks if purely visual hiding, but pointer-events: none handles that. 
+     However, standard is display: none on desktop. */
+    }
+
+    .mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    /* Hide mobile menu on desktop to be safe */
+    @media (min-width: 769px) {
+      .mobile-menu {
+        display: none !important;
+      }
     }
 
     .menu-item-disabled {
