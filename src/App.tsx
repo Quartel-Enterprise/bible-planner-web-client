@@ -5,7 +5,7 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 const Features = lazy(() => import('./components/Features').then(module => ({ default: module.Features })));
 
-import { Footer } from './components/Footer'
+const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(module => ({ default: module.TermsOfService })));
@@ -93,7 +93,7 @@ function AppContent() {
           <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
         </Routes>
       </main>
-      <Footer onNavigate={handleNavigate} />
+      <Suspense fallback={null}><Footer onNavigate={handleNavigate} /></Suspense>
     </div>
   )
 }
