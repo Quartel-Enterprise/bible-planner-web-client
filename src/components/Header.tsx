@@ -41,10 +41,13 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const currentLang = i18n.language.split('-')[0];
 
     const getInstagramUrl = () => {
+        const instagramUrl = 'https://www.instagram.com/';
+        const baseInstagramUser = "bible.planner";
+        const baseUrl = instagramUrl + baseInstagramUser;
         switch (currentLang) {
-            case 'pt': return 'https://www.instagram.com/bible.planner.brasil';
-            case 'es': return 'https://www.instagram.com/bible.planner.espanol';
-            default: return 'https://www.instagram.com/bible.planner';
+            case 'pt': return baseUrl + '.brasil';
+            case 'es': return baseUrl + '.espanol';
+            default: return baseUrl;
         }
     };
 
