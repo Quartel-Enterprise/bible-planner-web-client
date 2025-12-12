@@ -5,8 +5,56 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/png" href="/logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read the entire Bible in 1 year. Organize your reading, track your progress, and dive deeper into the Word with the ultimate Bible companion." />
+  <meta name="description"
+    content="Read the entire Bible in 1 year. Organize your reading, track your progress, and dive deeper into the Word with the ultimate Bible companion." />
   <title>Bible Planner</title>
+  <style>
+    :root {
+      font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      font-weight: 400;
+      --color-bg: #FAF8FF;
+      --color-text: #1A1B21;
+      --color-text-secondary: #45464F;
+      --color-primary: #4C5C92;
+      --color-primary-hover: #344479;
+      --color-surface: #EEEDF4;
+      --color-surface-hover: #E9E7EF;
+      --color-border: #C6C6D0;
+      --color-shadow: rgba(0, 0, 0, 0.1);
+      --color-button-text: #FFFFFF;
+      --color-button-disabled: #1A1B21;
+      --color-primary-rgb: 76, 92, 146;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    [data-theme='dark'] {
+      --color-bg: #121318;
+      --color-text: #E3E1E9;
+      --color-text-secondary: #C2C5DD;
+      --color-primary: #B6C4FF;
+      --color-primary-hover: #DCE1FF;
+      --color-surface: #1E1F25;
+      --color-surface-hover: #292A2F;
+      --color-border: #45464F;
+      --color-shadow: rgba(0, 0, 0, 0.5);
+      --color-button-text: #1D2D61;
+      --color-button-disabled: #E3E1E9;
+      --color-primary-rgb: 182, 196, 255;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      min-height: 100vh;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      transition: background-color 0.3s, color 0.3s;
+    }
+  </style>
 </head>
 
 <body>
