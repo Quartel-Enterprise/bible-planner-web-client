@@ -116,7 +116,51 @@ button:focus-visible {
   padding: 0 2rem;
 }
 
+
+.footer-separator {
+  display: inline;
+}
+
+
+.desktop-actions {
+  display: flex !important;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.mobile-menu-trigger {
+  display: none !important;
+  transition: transform 0.3s ease;
+}
+
+.mobile-menu-trigger.open {
+  transform: rotate(90deg);
+}
+
+
+
+.desktop-only-item {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 768px) {
+  .footer-separator {
+    display: none;
+  }
+
+  .desktop-actions {
+    display: none !important;
+  }
+
+  .desktop-only-item {
+    display: none !important;
+  }
+
+  .mobile-menu-trigger {
+    display: flex !important;
+  }
+
   .container {
     padding: 0 1rem;
   }
@@ -156,6 +200,23 @@ button:focus-visible {
     transform: translateY(0);
   }
 }
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-enter {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
 
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out forwards;

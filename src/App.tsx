@@ -6,6 +6,7 @@ import { Hero } from './components/Hero'
 import { Features } from './components/Features'
 import { Footer } from './components/Footer'
 import { PrivacyPolicy } from './components/PrivacyPolicy'
+import { TermsOfService } from './components/TermsOfService'
 
 function LanguageRedirect() {
   const navigate = useNavigate();
@@ -57,6 +58,8 @@ function AppContent() {
     const path = window.location.pathname;
     if (path.includes('/privacy')) {
       document.title = `${t('privacy_policy')} - ${t('app_title')}`;
+    } else if (path.includes('/terms')) {
+      document.title = `${t('terms_of_service')} - ${t('app_title')}`;
     } else {
       document.title = t('app_title');
     }
@@ -66,12 +69,14 @@ function AppContent() {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  const handleNavigate = (page: 'home' | 'privacy') => {
+  const handleNavigate = (page: 'home' | 'privacy' | 'terms') => {
     const currentLang = i18n.language.split('-')[0];
     if (page === 'home') {
       navigate(`/${currentLang}`);
-    } else {
+    } else if (page === 'privacy') {
       navigate(`/${currentLang}/privacy`);
+    } else {
+      navigate(`/${currentLang}/terms`);
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -83,6 +88,7 @@ function AppContent() {
         <Routes>
           <Route path="" element={<><Hero /><Features /></>} />
           <Route path="privacy" element={<PrivacyPolicy />} />
+          <Route path="terms" element={<TermsOfService />} />
         </Routes>
       </main>
       <Footer onNavigate={handleNavigate} />

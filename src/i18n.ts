@@ -20,7 +20,9 @@ const resources = {
       "theming_desc": "A reading experience that adapts to you. Light, dark, and dynamic themes that feel right at home on your device.",
       "download_suggestion": "Ready to dive deeper? Get the app now.",
       "privacy_policy": "Privacy Policy",
-      "footer_text": "© {{year}} Quartel Enterprise. All rights reserved.",
+      "terms_of_service": "Terms of Service",
+      "language": "Language",
+      "footer_text": "© {{year}} Quartel Enterprise. All rights reserved",
       "language_en": "English",
       "language_pt": "Portuguese",
       "language_es": "Spanish"
@@ -43,7 +45,9 @@ const resources = {
       "theming_desc": "Uma experiência de leitura que se adapta a você. Temas claros, escuros e dinâmicos que se sentem em casa no seu dispositivo.",
       "download_suggestion": "Pronto para mergulhar mais fundo? Baixe o app agora.",
       "privacy_policy": "Política de Privacidade",
-      "footer_text": "© {{year}} Quartel Enterprise. Todos os direitos reservados.",
+      "terms_of_service": "Termos de Serviço",
+      "language": "Idioma",
+      "footer_text": "© {{year}} Quartel Enterprise. Todos os direitos reservados",
       "language_en": "Inglês",
       "language_pt": "Português",
       "language_es": "Espanhol"
@@ -66,7 +70,9 @@ const resources = {
       "theming_desc": "Una experiencia de lectura que se adapta a ti. Temas claros, oscuros y dinámicos que se sienten como en casa en tu dispositivo.",
       "download_suggestion": "¿Listo para profundizar? Obtén la aplicación ahora.",
       "privacy_policy": "Política de Privacidad",
-      "footer_text": "© {{year}} Quartel Enterprise. Todos los derechos reservados.",
+      "terms_of_service": "Términos de Servicio",
+      "language": "Idioma",
+      "footer_text": "© {{year}} Quartel Enterprise. Todos los derechos reservados",
       "language_en": "Inglés",
       "language_pt": "Portugués",
       "language_es": "Español"
