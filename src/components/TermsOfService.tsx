@@ -4,16 +4,10 @@ export function TermsOfService() {
     const { i18n } = useTranslation();
     const currentLang = i18n.language.split('-')[0];
 
-    // Get current date formatted for the language
-    const getDate = (lang: string) => {
-        const date = new Date();
-        return date.toLocaleDateString(lang, { year: 'numeric', month: 'long', day: 'numeric' });
-    };
-
     const content = {
         en: {
             title: "Terms of Service",
-            lastUpdate: `Last Updated: ${getDate('en-US')}`,
+            lastUpdate: "Last Updated: December 11, 2025",
             sections: [
                 {
                     title: "1. Acceptance of Terms",
@@ -205,7 +199,7 @@ export function TermsOfService() {
         },
         pt: {
             title: "Termos de Serviço",
-            lastUpdate: `Última Atualização: ${getDate('pt-BR')}`,
+            lastUpdate: "Última Atualização: 11 de dezembro de 2025",
             sections: [
                 {
                     title: "1. Aceitação dos Termos",
@@ -397,7 +391,7 @@ export function TermsOfService() {
         },
         es: {
             title: "Términos de Servicio",
-            lastUpdate: `Última Actualización: ${getDate('es-ES')}`,
+            lastUpdate: "Última Actualización: 11 de diciembre de 2025",
             sections: [
                 {
                     title: "1. Aceptación de los Términos",

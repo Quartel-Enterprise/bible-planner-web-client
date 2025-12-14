@@ -10,7 +10,7 @@ const Footer = lazy(() => import('./components/Footer').then(module => ({ defaul
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(module => ({ default: module.TermsOfService })));
 
-function LanguageRedirect() {
+function LanguageRedirect({ to }: { to?: string }) {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,8 +25,9 @@ function LanguageRedirect() {
     }
 
     // Redirect to detected language
-    navigate(`/${targetLang}`, { replace: true });
-  }, [navigate]);
+    const targetPath = to ? `/${targetLang}/${to}` : `/${targetLang}`;
+    navigate(targetPath, { replace: true });
+  }, [navigate, to]);
 
   return null;
 }
@@ -104,6 +105,8 @@ function App() {
       <Routes>
         {/* Detect language and redirect */}
         <Route path="/" element={<LanguageRedirect />} />
+        <Route path="/privacy" element={<LanguageRedirect to="privacy" />} />
+        <Route path="/terms" element={<LanguageRedirect to="terms" />} />
 
         {/* Language-specific routes */}
         <Route path="/:lang/*" element={<AppContent />} />
