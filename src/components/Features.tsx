@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { BookOpen, BarChart2, WifiOff, Palette } from 'lucide-react';
+import { BookOpen, BarChart2, WifiOff } from 'lucide-react';
 
 export function Features() {
     const { t } = useTranslation();
@@ -20,11 +20,7 @@ export function Features() {
             title: t('offline_first'),
             description: t('offline_first_desc')
         },
-        {
-            icon: <Palette size={32} />,
-            title: t('theming'),
-            description: t('theming_desc')
-        }
+
     ];
 
     return (

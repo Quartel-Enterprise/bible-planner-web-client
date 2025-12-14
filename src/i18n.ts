@@ -18,8 +18,7 @@ const resources = {
       "progress_tracking_desc": "Watch your faith grow. Track every chapter and verse to see how far you've come in your journey.",
       "offline_first": "Always Available",
       "offline_first_desc": "Your devotionals, anywhere. Access your plans and progress offline, with zero distractions.",
-      "theming": "Beautifully Personal",
-      "theming_desc": "A reading experience that adapts to you. Light, dark, and dynamic themes that feel right at home on your device.",
+
       "download_suggestion": "Ready to dive deeper? Get the app now.",
       "privacy_policy": "Privacy Policy",
       "terms_of_service": "Terms of Service",
@@ -47,8 +46,7 @@ const resources = {
       "progress_tracking_desc": "Veja sua fé crescer. Acompanhe cada capítulo e versículo para ver o quanto você avançou em sua jornada.",
       "offline_first": "Sempre Disponível",
       "offline_first_desc": "Seus devocionais, em qualquer lugar. Acesse seus planos e progresso offline, sem distrações.",
-      "theming": "Belamente Pessoal",
-      "theming_desc": "Uma experiência de leitura que se adapta a você. Temas claros, escuros e dinâmicos que se sentem em casa no seu dispositivo.",
+
       "download_suggestion": "Pronto para mergulhar mais fundo? Baixe o app agora.",
       "privacy_policy": "Política de Privacidade",
       "terms_of_service": "Termos de Serviço",
@@ -76,8 +74,7 @@ const resources = {
       "progress_tracking_desc": "Mira crecer tu fe. Sigue cada capítulo y versículo para ver cuánto has avanzado en tu viaje.",
       "offline_first": "Siempre Disponible",
       "offline_first_desc": "Tus devocionales, en cualquier lugar. Accede a tus planes y progreso sin conexión, sin distracciones.",
-      "theming": "Bellamente Personal",
-      "theming_desc": "Una experiencia de lectura que se adapta a ti. Temas claros, oscuros y dinámicos que se sienten como en casa en tu dispositivo.",
+
       "download_suggestion": "¿Listo para profundizar? Obtén la aplicación ahora.",
       "privacy_policy": "Política de Privacidad",
       "terms_of_service": "Términos de Servicio",
