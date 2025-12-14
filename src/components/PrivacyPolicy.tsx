@@ -6,7 +6,7 @@ export function PrivacyPolicy() {
 
     const content = {
         pt: {
-            title: "Política de Privacidade - Bible Planner",
+            title: "Política de Privacidade",
             lastUpdate: "Última atualização: 2 de dezembro de 2025",
             sections: [
                 {
@@ -74,7 +74,7 @@ export function PrivacyPolicy() {
             ]
         },
         en: {
-            title: "Privacy Policy - Bible Planner",
+            title: "Privacy Policy",
             lastUpdate: "Last updated: December 2, 2025",
             sections: [
                 {
@@ -142,7 +142,7 @@ export function PrivacyPolicy() {
             ]
         },
         es: {
-            title: "Política de Privacidad - Bible Planner",
+            title: "Política de Privacidad",
             lastUpdate: "Última actualización: 2 de diciembre de 2025",
             sections: [
                 {
