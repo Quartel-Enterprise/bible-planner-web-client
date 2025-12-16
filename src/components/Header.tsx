@@ -210,18 +210,23 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                     <AndroidIcon size={20} />
                                     <span>{t('option_android')}</span>
                                 </div>
-                                <div className="menu-item-disabled" style={{
+                                <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer" className="menu-item" style={{
                                     display: 'flex',
                                     alignItems: 'center',
                                     gap: '0.75rem',
                                     padding: '0.75rem 1rem',
                                     borderRadius: '6px',
                                     color: 'var(--color-text)',
-                                    fontSize: '0.95rem'
-                                }}>
+                                    fontSize: '0.95rem',
+                                    textDecoration: 'none',
+                                    transition: 'background-color 0.2s'
+                                }}
+                                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
+                                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                                >
                                     <AppleIcon size={20} />
                                     <span>{t('option_ios')}</span>
-                                </div>
+                                </a>
                             </div>
                         )}
                     </div>
