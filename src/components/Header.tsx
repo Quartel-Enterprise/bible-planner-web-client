@@ -341,7 +341,11 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '1rem',
-                    boxShadow: '0 4px 12px var(--color-shadow)'
+                    boxShadow: '0 4px 12px var(--color-shadow)',
+                    visibility: isMobileMenuOpen ? 'visible' : 'hidden',
+                    opacity: isMobileMenuOpen ? 1 : 0,
+                    transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
+                    transition: 'opacity 0.3s ease, transform 0.3s ease, visibility 0.3s'
                 }}>
                 <a
                     href={getInstagramUrl()}
