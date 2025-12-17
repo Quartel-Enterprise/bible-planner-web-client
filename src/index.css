@@ -33,6 +33,12 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 [data-theme='dark'] {
   /* Dark Theme Variables */
   --color-bg: #121318;
@@ -91,6 +97,7 @@ button {
   background-color: var(--color-surface);
   color: var(--color-text);
   cursor: pointer;
+
   transition: border-color 0.25s, background-color 0.25s;
 }
 
@@ -376,4 +383,89 @@ button:focus-visible {
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   transform: skewX(-20deg);
   animation: shine 3s infinite;
+}
+
+/* App Preview Styles */
+.app-preview-section {
+  padding: 0 0 8rem;
+  text-align: center;
+}
+
+.app-preview-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-preview-card {
+  position: relative;
+  /* Explicit width with !important to ensure no overrides */
+  width: 300px !important;
+  max-width: 90vw;
+  /* Safety for very small screens */
+
+  /* Fallback height calculation: 300 * (19.5/9) ≈ 650 */
+  height: 650px;
+  aspect-ratio: 9/19.5;
+
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: #000;
+  margin: 0 auto;
+  flex-shrink: 0;
+  cursor: pointer;
+  z-index: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.video-element {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: none;
+}
+
+.play-button-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background 0.3s ease;
+  z-index: 10;
+}
+
+.app-preview-card:hover .play-button-overlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Youtube Style Button */
+.yt-play-button {
+  /* Enforce dimensions */
+  width: 68px !important;
+  height: 48px !important;
+  min-width: 68px;
+  min-height: 48px;
+  max-width: 68px;
+  max-height: 48px;
+
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+  /* Ensure it behaves as block for dimensions */
+}
+
+.app-preview-card:hover .yt-play-button {
+  transform: scale(1.1);
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover !important;
+  display: block;
 }
