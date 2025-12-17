@@ -1,6 +1,6 @@
-import {useTranslation} from 'react-i18next';
-import {useMemo} from 'react';
-import {VideoCard} from './VideoCard';
+import { useTranslation } from 'react-i18next';
+import { useMemo } from 'react';
+import { VideoCard } from './VideoCard';
 
 // Video IDs
 const VIDEOS = {
@@ -25,7 +25,7 @@ declare global {
 }
 
 export function AppPreview() {
-    const {i18n} = useTranslation();
+    const { i18n } = useTranslation();
 
     const isApple = useMemo(() => {
         // Logic: macOS or iOS -> use iOS video
@@ -55,10 +55,10 @@ export function AppPreview() {
     }, [i18n.language, isApple]);
 
     return (
-        <section className="app-preview-section">
+        <section className="app-preview-section" style={{ paddingBottom: '4rem', textAlign: 'center' }}>
             <div className="container app-preview-wrapper"
-                 style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <VideoCard key={videoId} videoId={videoId}/>
+                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <VideoCard key={videoId} videoId={videoId} />
             </div>
         </section>
     );
