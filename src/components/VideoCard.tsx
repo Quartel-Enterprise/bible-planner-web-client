@@ -49,7 +49,7 @@ export function VideoCard({ videoId }: { videoId: string }) {
                         src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
                         alt="App Preview Thumbnail"
                         className="video-thumbnail"
-                        loading="lazy"
+                        fetchPriority="high"
                         style={{
                             width: '100%',
                             height: '100%',
