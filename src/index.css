@@ -125,6 +125,52 @@ button:focus-visible {
   padding: 0 2rem;
 }
 
+/* Hero and Preview Container - Side by Side on Desktop */
+.hero-preview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 0;
+}
+
+@media (min-width: 1024px) {
+  .hero-preview-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem 2rem;
+  }
+
+  .hero-preview-container>section {
+    flex: 1;
+  }
+
+  .hero-preview-container>section:first-child {
+    text-align: left;
+  }
+}
+
+
+/* Hero Section Responsive Alignment */
+.hero-section {
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .hero-section {
+    text-align: left;
+  }
+
+  .hero-section .download-buttons-container {
+    justify-content: flex-start !important;
+  }
+}
+
+
+
+
 
 .footer-separator {
   display: inline;
@@ -387,7 +433,7 @@ button:focus-visible {
 
 /* App Preview Styles */
 .app-preview-section {
-  padding: 0 0 8rem;
+  padding: 0;
   text-align: center;
 }
 

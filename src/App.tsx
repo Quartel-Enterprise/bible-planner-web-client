@@ -91,7 +91,7 @@ function AppContent() {
       <Header theme={theme} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="" element={<><Hero /><AppPreview /><Suspense fallback={null}><Features /></Suspense></>} />
+          <Route path="" element={<><div className="hero-preview-container"><Hero /><AppPreview /></div><Suspense fallback={null}><Features /></Suspense></>} />
           <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
           <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
         </Routes>

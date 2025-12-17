@@ -55,7 +55,7 @@ export function AppPreview() {
     }, [i18n.language, isApple]);
 
     return (
-        <section className="app-preview-section" style={{ paddingBottom: '4rem', textAlign: 'center' }}>
+        <section className="app-preview-section" style={{ textAlign: 'center' }}>
             <div className="container app-preview-wrapper"
                 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <VideoCard key={videoId} videoId={videoId} />
