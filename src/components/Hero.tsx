@@ -24,7 +24,7 @@ export function Hero() {
           {t('download_suggestion')}
         </p>
 
-        <div className="animate-slide-up delay-300" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '4rem', flexWrap: 'wrap' }}>
+        <div className="animate-slide-up delay-300 download-buttons-container" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '4rem', flexWrap: 'wrap' }}>
           {isAndroid ? (
             <>
               <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
@@ -48,16 +48,6 @@ export function Hero() {
               </button>
             </>
           )}
-          {/* 
-          <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
-            <WindowsIcon size={20} />
-            <span>Windows <small style={{ display: 'block', fontSize: '0.7em' }}>({t('coming_soon')})</small></span>
-          </button>
-          <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
-            <AppleIcon size={20} />
-            <span>macOS <small style={{ display: 'block', fontSize: '0.7em' }}>({t('coming_soon')})</small></span>
-          </button>
-           */}
         </div>
       </div>
     </section>

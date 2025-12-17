@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-rout
 import { useTranslation } from 'react-i18next'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
+const AppPreview = lazy(() => import('./components/AppPreview').then(module => ({ default: module.AppPreview })));
 const Features = lazy(() => import('./components/Features').then(module => ({ default: module.Features })));
 
 const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
@@ -89,7 +90,7 @@ function AppContent() {
       <Header theme={theme} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="" element={<><Hero /><Suspense fallback={null}><Features /></Suspense></>} />
+          <Route path="" element={<><Hero /><Suspense fallback={null}><AppPreview /></Suspense><Suspense fallback={null}><Features /></Suspense></>} />
           <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
           <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
         </Routes>
