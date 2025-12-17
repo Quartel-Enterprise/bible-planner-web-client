@@ -5,7 +5,7 @@ export function VideoCard({ videoId }: { videoId: string }) {
 
     return (
         <div
-            className="app-preview-card animate-fade-in"
+            className="app-preview-card animate-slide-up"
             onClick={() => setIsPlaying(true)}
             role="button"
             tabIndex={0}
