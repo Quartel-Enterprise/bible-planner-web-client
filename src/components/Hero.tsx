@@ -11,7 +11,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section style={{ padding: '4rem 0', textAlign: 'center' }}>
+    <section style={{ padding: '2rem 0', textAlign: 'center' }}>
       <div className="container">
         <h2 className="animate-slide-up hero-title-responsive text-nowrap" style={{ fontSize: '3rem', marginBottom: '1rem', background: 'linear-gradient(45deg, var(--color-primary), var(--color-primary-hover))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 800 }}>
           {t('app_title')}
@@ -24,7 +24,7 @@ export function Hero() {
           {t('download_suggestion')}
         </p>
 
-        <div className="animate-slide-up delay-300 download-buttons-container" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '4rem', flexWrap: 'wrap' }}>
+        <div className="animate-slide-up delay-300 download-buttons-container" style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
           {isAndroid ? (
             <>
               <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
