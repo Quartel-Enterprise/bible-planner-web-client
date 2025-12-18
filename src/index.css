@@ -130,9 +130,9 @@ button:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 1rem 0;
+  padding: 1rem 2rem;
 }
 
 @media (min-width: 1024px) {
@@ -145,12 +145,20 @@ button:focus-visible {
 
   .hero-preview-container>section {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .hero-preview-container>section:first-child {
     text-align: left;
   }
+
+  .hero-preview-container>section:first-child .container {
+    padding: 0;
+  }
 }
+
 
 
 /* Hero Section Responsive Alignment */
@@ -165,6 +173,11 @@ button:focus-visible {
 
   .hero-section .download-buttons-container {
     justify-content: flex-start !important;
+  }
+
+  .hero-section p {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 }
 
@@ -443,6 +456,15 @@ button:focus-visible {
   align-items: center;
 }
 
+@media (min-width: 1024px) {
+  .app-preview-wrapper {
+    align-items: flex-end;
+    padding: 0 !important;
+  }
+}
+
+
+
 .app-preview-card {
   position: relative;
   /* Explicit width with !important to ensure no overrides */
@@ -463,6 +485,13 @@ button:focus-visible {
   cursor: pointer;
   z-index: 1;
   -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 1024px) {
+  .app-preview-card {
+    margin: 0;
+    transform: translateX(20px) !important;
+  }
 }
 
 .video-element {

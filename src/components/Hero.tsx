@@ -11,7 +11,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section style={{ padding: '2rem 0' }} className="hero-section">
+    <section className="hero-section">
       <div className="container">
         <h2 className="animate-slide-up hero-title-responsive text-nowrap" style={{ fontSize: '3rem', marginBottom: '1rem', background: 'linear-gradient(45deg, var(--color-primary), var(--color-primary-hover))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 800 }}>
           {t('app_title')}

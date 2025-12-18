@@ -56,7 +56,7 @@ export function AppPreview() {
 
     return (
         <section className="app-preview-section" style={{ textAlign: 'center' }}>
-            <div className="container app-preview-wrapper"
+            <div className="app-preview-wrapper"
                 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <VideoCard key={videoId} videoId={videoId} />
             </div>
