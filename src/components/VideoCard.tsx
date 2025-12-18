@@ -7,7 +7,7 @@ declare global {
     }
 }
 
-export function VideoCard({ videoId }: { videoId: string }) {
+export function VideoCard({ videoId, isInView = true }: { videoId: string; isInView?: boolean }) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [hasEnded, setHasEnded] = useState(false);
     const [isReady, setIsReady] = useState(false);
@@ -84,7 +84,7 @@ export function VideoCard({ videoId }: { videoId: string }) {
 
     return (
         <div
-            className="app-preview-card animate-slide-up"
+            className={`app-preview-card ${isInView ? 'animate-responsive-right' : 'animate-responsive-right-initial'}`}
             style={{
                 position: 'relative',
                 width: '300px',

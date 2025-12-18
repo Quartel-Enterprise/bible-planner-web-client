@@ -15,14 +15,13 @@ export function CTASection() {
     return (
         <section
             ref={ref as React.RefObject<HTMLElement>}
-            className={isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}
             style={{
                 background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)',
                 padding: '3rem 2rem',
                 textAlign: 'center',
             }}
         >
-            <div className="container">
+            <div className={`container ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`}>
                 <h2
                     className="cta-title-responsive"
                     style={{
@@ -36,6 +35,7 @@ export function CTASection() {
                     {t('cta_title')}
                 </h2>
                 <p
+                    className="cta-subtitle-responsive"
                     style={{
                         fontSize: '1.25rem',
                         color: 'var(--color-button-text)',

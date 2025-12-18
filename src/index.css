@@ -216,6 +216,10 @@ header button:active {
     font-size: 1.3rem !important;
   }
 
+  .cta-subtitle-responsive {
+    font-size: 1rem !important;
+  }
+
   .footer-text-responsive {
     font-size: 0.75rem !important;
   }
@@ -228,6 +232,10 @@ header button:active {
 @media (max-width: 380px) {
   .cta-title-responsive {
     font-size: 1.1rem !important;
+  }
+
+  .cta-subtitle-responsive {
+    font-size: 0.9rem !important;
   }
 
   .footer-text-responsive {
