@@ -73,6 +73,7 @@ body {
   background-color: var(--color-bg);
   color: var(--color-text);
   transition: background-color 0.5s ease, color 0.5s ease;
+  overflow-x: hidden;
 }
 
 h1,
@@ -240,6 +241,42 @@ header button:active {
 
   .footer-text-responsive {
     font-size: 0.65rem !important;
+  }
+}
+
+/* Very small screens (320px) - prevent horizontal overflow */
+@media (max-width: 360px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .hero-preview-container {
+    padding: 1rem;
+  }
+
+  .hero-title-responsive {
+    font-size: 2rem !important;
+    white-space: normal !important;
+    word-wrap: break-word;
+  }
+
+  .features-title-responsive {
+    font-size: 1.3rem !important;
+    white-space: normal !important;
+  }
+
+  .cta-title-responsive {
+    font-size: 1rem !important;
+    white-space: normal !important;
+  }
+
+  .cta-subtitle-responsive {
+    font-size: 0.85rem !important;
+  }
+
+  .app-preview-card {
+    width: 280px !important;
+    max-width: 90vw !important;
   }
 }
 
