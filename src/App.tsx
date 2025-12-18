@@ -1,9 +1,10 @@
 import { useState, useEffect, Suspense, lazy } from 'react'
-import { BrowserRouter, Routes, Route, useNavigate, useParams } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { AppPreview } from './components/AppPreview'
+import { logEvent } from './analytics'
 
 const Features = lazy(() => import('./components/Features').then(module => ({ default: module.Features })));
 
@@ -39,6 +40,7 @@ function LanguageRedirect({ to }: { to?: string }) {
 function AppContent() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const location = useLocation();
   const { lang } = useParams();
 
   // Initialize theme from system preference or default to light
@@ -62,7 +64,7 @@ function AppContent() {
 
   // Update page title based on current page and language
   useEffect(() => {
-    const path = window.location.pathname;
+    const path = location.pathname;
     if (path.includes('/privacy')) {
       document.title = `${t('privacy_policy')} - ${t('app_title')}`;
     } else if (path.includes('/terms')) {
@@ -70,7 +72,16 @@ function AppContent() {
     } else {
       document.title = t('app_title');
     }
-  }, [t, i18n.language]);
+
+    // Log page_view event
+    logEvent({
+      name: 'page_view',
+      params: {
+        page_path: path,
+        page_title: document.title
+      }
+    });
+  }, [t, i18n.language, location.pathname]); // Added pathname dependency to re-run on route change
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');

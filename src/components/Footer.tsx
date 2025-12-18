@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { logEvent } from '../analytics';
 
 interface FooterProps {
     onNavigate: (page: 'home' | 'privacy' | 'terms') => void;
@@ -14,7 +15,10 @@ export function Footer({ onNavigate }: FooterProps) {
             <div className="container">
                 <div className="desktop-only-item" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
                     <button
-                        onClick={() => onNavigate('privacy')}
+                        onClick={() => {
+                            logEvent({ name: 'select_content', params: { content_type: 'legal', item_id: 'privacy_policy', origin: 'footer' } });
+                            onNavigate('privacy');
+                        }}
                         style={{
                             background: 'transparent',
                             border: 'none',
@@ -33,7 +37,10 @@ export function Footer({ onNavigate }: FooterProps) {
                     </button>
                     <span className="footer-separator" style={{ color: 'var(--color-text-secondary)', alignSelf: 'center' }}>|</span>
                     <button
-                        onClick={() => onNavigate('terms')}
+                        onClick={() => {
+                            logEvent({ name: 'select_content', params: { content_type: 'legal', item_id: 'terms_of_service', origin: 'footer' } });
+                            onNavigate('terms');
+                        }}
                         style={{
                             background: 'transparent',
                             border: 'none',

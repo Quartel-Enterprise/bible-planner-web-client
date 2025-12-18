@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { logEvent } from '../analytics';
 
 declare global {
     interface Window {
@@ -12,6 +13,7 @@ export function VideoCard({ videoId, isInView = true }: { videoId: string; isInV
     const [hasEnded, setHasEnded] = useState(false);
     const [isReady, setIsReady] = useState(false);
     const playerRef = useRef<any>(null);
+    const shouldLogPlayRef = useRef(false);
     const [containerId] = useState(() => `youtube-player-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
 
     useEffect(() => {
@@ -52,9 +54,31 @@ export function VideoCard({ videoId, isInView = true }: { videoId: string; isInV
                         },
                         events: {
                             onStateChange: (event: any) => {
+                                const getVideoMetrics = () => {
+                                    if (!playerRef.current) return { time: 0, progress: 0 };
+                                    const time = Math.floor(playerRef.current.getCurrentTime());
+                                    const duration = playerRef.current.getDuration();
+                                    const progress = duration > 0 ? Number((time / duration).toFixed(2)) : 0;
+                                    return { time, progress };
+                                };
+
+                                // YT.PlayerState.PLAYING = 1
+                                if (event.data === 1) {
+                                    if (shouldLogPlayRef.current) {
+                                        logEvent({ name: 'video_play', params: { video_id: videoId } });
+                                    }
+                                }
+                                // YT.PlayerState.PAUSED = 2
+                                if (event.data === 2) {
+                                    shouldLogPlayRef.current = true;
+                                    const { time, progress } = getVideoMetrics();
+                                    logEvent({ name: 'video_pause', params: { video_id: videoId, video_time: time, video_progress: progress } });
+                                }
                                 // YT.PlayerState.ENDED = 0
                                 if (event.data === 0) {
                                     setHasEnded(true);
+                                    shouldLogPlayRef.current = false;
+                                    logEvent({ name: 'video_complete', params: { video_id: videoId } });
                                 }
                             },
                         },
@@ -71,15 +95,19 @@ export function VideoCard({ videoId, isInView = true }: { videoId: string; isInV
 
     const handleReplay = () => {
         setHasEnded(false);
+        shouldLogPlayRef.current = false;
         if (playerRef.current) {
             playerRef.current.seekTo(0);
             playerRef.current.playVideo();
+            logEvent({ name: 'video_replay', params: { video_id: videoId } });
         }
     };
 
     const handlePlay = () => {
         setIsPlaying(true);
         setHasEnded(false);
+        shouldLogPlayRef.current = false;
+        logEvent({ name: 'video_start', params: { video_id: videoId } });
     };
 
     return (
