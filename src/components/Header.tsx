@@ -187,7 +187,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         </button>
 
                         {isDownloadMenuOpen && (
-                            <div style={{
+                            <div className="dropdown-menu-enter" style={{
                                 position: 'absolute',
                                 top: '100%',
                                 right: 0,
@@ -292,7 +292,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                             </button>
 
                             {isLanguageMenuOpen && (
-                                <div style={{
+                                <div className="dropdown-menu-enter" style={{
                                     position: 'absolute',
                                     top: '100%',
                                     right: 0,
