@@ -352,6 +352,18 @@ header button:active {
   }
 }
 
+@keyframes dropdownSlideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(var(--color-primary-rgb), 0.7);
@@ -376,6 +388,10 @@ header button:active {
 
 .dropdown-menu-enter {
   animation: dropdownSlideDown 0.2s ease-out forwards;
+}
+
+.dropdown-menu-exit {
+  animation: dropdownSlideUp 0.2s ease-out forwards;
 }
 
 

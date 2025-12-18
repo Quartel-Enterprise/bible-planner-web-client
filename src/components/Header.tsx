@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
@@ -23,6 +23,8 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isDownloadMenuOpen, setIsDownloadMenuOpen] = useState(false);
+    const [isDownloadMenuClosing, setIsDownloadMenuClosing] = useState(false);
+    const [isLanguageMenuClosing, setIsLanguageMenuClosing] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);
     const mobileMenuRef = useRef<HTMLDivElement>(null);
     const mobileTriggerRef = useRef<HTMLButtonElement>(null);
@@ -36,22 +38,42 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         }
     };
 
-    const closeMobileMenu = () => {
+    const closeMobileMenu = useCallback(() => {
         if (isMobileMenuOpen) {
             window.history.back();
         }
-    };
+    }, [isMobileMenuOpen]);
+
+    const closeDownloadMenu = useCallback(() => {
+        setIsDownloadMenuClosing(true);
+        setTimeout(() => {
+            setIsDownloadMenuOpen(false);
+            setIsDownloadMenuClosing(false);
+        }, 200); // Match animation duration
+    }, []);
+
+    const closeLanguageMenu = useCallback(() => {
+        setIsLanguageMenuClosing(true);
+        setTimeout(() => {
+            setIsLanguageMenuOpen(false);
+            setIsLanguageMenuClosing(false);
+        }, 200); // Match animation duration
+    }, []);
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             const target = event.target as Node;
 
             if (menuRef.current && !menuRef.current.contains(target)) {
-                setIsLanguageMenuOpen(false);
+                if (isLanguageMenuOpen && !isLanguageMenuClosing) {
+                    closeLanguageMenu();
+                }
             }
 
             if (downloadMenuRef.current && !downloadMenuRef.current.contains(target)) {
-                setIsDownloadMenuOpen(false);
+                if (isDownloadMenuOpen && !isDownloadMenuClosing) {
+                    closeDownloadMenu();
+                }
             }
 
             if (isMobileMenuOpen &&
@@ -66,14 +88,18 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         return () => {
             document.removeEventListener("mousedown", handleClickOutside);
         };
-    }, [menuRef, isMobileMenuOpen]);
+    }, [menuRef, isMobileMenuOpen, isDownloadMenuOpen, isDownloadMenuClosing, isLanguageMenuOpen, isLanguageMenuClosing, closeMobileMenu, closeDownloadMenu, closeLanguageMenu]);
 
     // Removed useEffect that triggered on location change to avoid cascading renders
 
     // Helper to close all simple menus (not history-bound mobile menu necessarily, but good for cleanup)
     const closeDropdowns = () => {
-        setIsLanguageMenuOpen(false);
-        setIsDownloadMenuOpen(false);
+        if (isLanguageMenuOpen && !isLanguageMenuClosing) {
+            closeLanguageMenu();
+        }
+        if (isDownloadMenuOpen && !isDownloadMenuClosing) {
+            closeDownloadMenu();
+        }
     };
 
     const handleLogoClick = () => {
@@ -113,6 +139,42 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
             };
         }
     }, [isMobileMenuOpen]);
+
+    useEffect(() => {
+        if (isDownloadMenuOpen) {
+            // Push a state to history so the back button can intercept it
+            window.history.pushState({ downloadMenuOpen: true }, '', window.location.href);
+
+            const handlePopState = () => {
+                // If back button is pressed, close the menu with animation
+                closeDownloadMenu();
+            };
+
+            window.addEventListener('popstate', handlePopState);
+
+            return () => {
+                window.removeEventListener('popstate', handlePopState);
+            };
+        }
+    }, [isDownloadMenuOpen, closeDownloadMenu]);
+
+    useEffect(() => {
+        if (isLanguageMenuOpen) {
+            // Push a state to history so the back button can intercept it
+            window.history.pushState({ languageMenuOpen: true }, '', window.location.href);
+
+            const handlePopState = () => {
+                // If back button is pressed, close the menu with animation
+                closeLanguageMenu();
+            };
+
+            window.addEventListener('popstate', handlePopState);
+
+            return () => {
+                window.removeEventListener('popstate', handlePopState);
+            };
+        }
+    }, [isLanguageMenuOpen, closeLanguageMenu]);
 
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
@@ -187,7 +249,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         </button>
 
                         {isDownloadMenuOpen && (
-                            <div className="dropdown-menu-enter" style={{
+                            <div className={isDownloadMenuClosing ? "dropdown-menu-exit" : "dropdown-menu-enter"} style={{
                                 position: 'absolute',
                                 top: '100%',
                                 right: 0,
@@ -292,7 +354,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                             </button>
 
                             {isLanguageMenuOpen && (
-                                <div className="dropdown-menu-enter" style={{
+                                <div className={isLanguageMenuClosing ? "dropdown-menu-exit" : "dropdown-menu-enter"} style={{
                                     position: 'absolute',
                                     top: '100%',
                                     right: 0,

@@ -111,7 +111,7 @@ export function CTASection() {
                                 >
                                     <AndroidIcon size={28} />
                                     <div style={{ textAlign: 'left' }}>
-                                        <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('get_it_on')}</div>
+                                        <div style={{ fontSize: '0.7rem' }}>{t('get_it_on')}</div>
                                         <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>Google Play</div>
                                     </div>
                                 </div>
@@ -141,7 +141,7 @@ export function CTASection() {
                                 >
                                     <AndroidIcon size={28} />
                                     <div style={{ textAlign: 'left' }}>
-                                        <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('get_it_on')}</div>
+                                        <div style={{ fontSize: '0.7rem' }}>{t('get_it_on')}</div>
                                         <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>Google Play</div>
                                     </div>
                                 </div>

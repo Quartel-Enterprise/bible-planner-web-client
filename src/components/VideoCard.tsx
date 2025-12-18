@@ -67,7 +67,7 @@ export function VideoCard({ videoId }: { videoId: string }) {
             // Small delay to ensure DOM is ready
             setTimeout(initPlayer, 100);
         }
-    }, [isPlaying, isReady, videoId]);
+    }, [isPlaying, isReady, videoId, containerId]);
 
     const handleReplay = () => {
         setHasEnded(false);
