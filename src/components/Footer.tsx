@@ -12,7 +12,7 @@ export function Footer({ onNavigate }: FooterProps) {
     return (
         <footer style={{ padding: '2rem 0', textAlign: 'center', borderTop: '1px solid var(--color-border)', marginTop: 'auto' }}>
             <div className="container">
-                <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+                <div className="desktop-only-item" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
                     <button
                         onClick={() => onNavigate('privacy')}
                         style={{

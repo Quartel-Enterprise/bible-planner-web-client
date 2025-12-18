@@ -28,7 +28,11 @@ const resources = {
       "language_pt": "Portuguese",
       "language_es": "Spanish",
       "option_android": "Android",
-      "option_ios": "iOS"
+      "option_ios": "iOS",
+      "cta_title": "Start Your Journey Today!",
+      "cta_subtitle": "Download Bible Planner.",
+      "download_on_the": "Download on the",
+      "get_it_on": "Get it on"
     }
   },
   pt: {
@@ -56,7 +60,11 @@ const resources = {
       "language_pt": "Português",
       "language_es": "Espanhol",
       "option_android": "Android",
-      "option_ios": "iOS"
+      "option_ios": "iOS",
+      "cta_title": "Comece Sua Jornada Hoje!",
+      "cta_subtitle": "Baixe o Bible Planner.",
+      "download_on_the": "Baixe na",
+      "get_it_on": "Disponível no"
     }
   },
   es: {
@@ -84,7 +92,11 @@ const resources = {
       "language_pt": "Portugués",
       "language_es": "Español",
       "option_android": "Android",
-      "option_ios": "iOS"
+      "option_ios": "iOS",
+      "cta_title": "¡Comienza Tu Viaje Hoy!",
+      "cta_subtitle": "Descarga Bible Planner.",
+      "download_on_the": "Descárgalo en",
+      "get_it_on": "Disponible en"
     }
   }
 };

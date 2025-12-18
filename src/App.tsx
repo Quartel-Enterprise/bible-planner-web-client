@@ -7,6 +7,8 @@ import { AppPreview } from './components/AppPreview'
 
 const Features = lazy(() => import('./components/Features').then(module => ({ default: module.Features })));
 
+const CTASection = lazy(() => import('./components/CTASection').then(module => ({ default: module.CTASection })));
+
 const Footer = lazy(() => import('./components/Footer').then(module => ({ default: module.Footer })));
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
@@ -91,7 +93,7 @@ function AppContent() {
       <Header theme={theme} toggleTheme={toggleTheme} onNavigate={handleNavigate} />
       <main style={{ flex: 1 }}>
         <Routes>
-          <Route path="" element={<><div className="hero-preview-container"><Hero /><AppPreview /></div><Suspense fallback={null}><Features /></Suspense></>} />
+          <Route path="" element={<><div className="hero-preview-container"><Hero /><AppPreview /></div><Suspense fallback={null}><Features /></Suspense><Suspense fallback={null}><CTASection /></Suspense></>} />
           <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
           <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
         </Routes>
