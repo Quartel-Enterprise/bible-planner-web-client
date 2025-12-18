@@ -130,7 +130,7 @@ header button:active {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -140,7 +140,7 @@ header button:active {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 1rem 2rem;
 }
@@ -166,6 +166,7 @@ header button:active {
 
   .hero-preview-container>section:first-child .container {
     padding: 0;
+    margin-left: 0;
   }
 }
 
@@ -188,6 +189,49 @@ header button:active {
   .hero-section p {
     margin-left: 0 !important;
     margin-right: 0 !important;
+  }
+}
+
+/* Responsive text classes to prevent line breaks */
+.cta-title-responsive {
+  white-space: nowrap;
+}
+
+.footer-text-responsive {
+  white-space: nowrap;
+}
+
+.features-title-responsive {
+  white-space: normal;
+}
+
+@media (max-width: 768px) {
+  .cta-title-responsive {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .cta-title-responsive {
+    font-size: 1.3rem !important;
+  }
+
+  .footer-text-responsive {
+    font-size: 0.75rem !important;
+  }
+
+  .features-title-responsive {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .cta-title-responsive {
+    font-size: 1.1rem !important;
+  }
+
+  .footer-text-responsive {
+    font-size: 0.65rem !important;
   }
 }
 
@@ -415,6 +459,16 @@ header button:active {
   animation: slideUp 0.8s ease-out forwards;
 }
 
+/* Initial hidden states - applied before animation */
+.animate-slide-up-initial {
+  opacity: 0;
+}
+
+.animate-responsive-left-initial,
+.animate-responsive-right-initial {
+  opacity: 0;
+}
+
 /* Mobile: all elements slide up from bottom */
 .animate-responsive-left,
 .animate-responsive-right {
@@ -574,7 +628,6 @@ header button:active {
 @media (min-width: 1024px) {
   .app-preview-card {
     margin: 0;
-    transform: translateX(20px) !important;
   }
 }
 

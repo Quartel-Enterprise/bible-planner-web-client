@@ -57,9 +57,8 @@ export function AppPreview() {
     }, [i18n.language, isApple]);
 
     return (
-        <section ref={ref as React.RefObject<HTMLElement>} className={`app-preview-section ${isInView ? 'animate-responsive-right' : ''}`} style={{ textAlign: 'center' }}>
-            <div className="app-preview-wrapper"
-                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <section ref={ref as React.RefObject<HTMLElement>} className={`app-preview-section ${isInView ? 'animate-responsive-right' : 'animate-responsive-right-initial'}`} style={{ textAlign: 'center' }}>
+            <div className="app-preview-wrapper">
                 <VideoCard key={videoId} videoId={videoId} />
             </div>
         </section>

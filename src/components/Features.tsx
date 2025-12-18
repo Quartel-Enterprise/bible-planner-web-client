@@ -28,13 +28,13 @@ export function Features() {
     return (
         <section ref={ref as React.RefObject<HTMLElement>} style={{ padding: '2rem 0 4rem 0', backgroundColor: 'var(--color-surface)' }}>
             <div className="container">
-                <h3 className={`features-title-responsive ${isInView ? 'animate-slide-up' : ''}`} style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '3rem', fontWeight: 700 }}>
+                <h3 className={`features-title-responsive ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`} style={{ fontSize: '2rem', textAlign: 'center', marginBottom: '3rem', fontWeight: 700 }}>
                     {t('features_intro')} <span className="app-title-break">{t('app_title')}?</span>
                 </h3>
 
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
                     {features.map((feature, index) => (
-                        <div key={index} className={isInView ? 'animate-slide-up' : ''} style={{
+                        <div key={index} className={isInView ? 'animate-slide-up' : 'animate-slide-up-initial'} style={{
                             padding: '2rem',
                             backgroundColor: 'var(--color-bg)',
                             borderRadius: '1rem',

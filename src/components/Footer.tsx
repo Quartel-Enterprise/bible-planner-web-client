@@ -51,7 +51,7 @@ export function Footer({ onNavigate }: FooterProps) {
                         {t('terms_of_service')}
                     </button>
                 </div>
-                <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', margin: 0 }}>{t('footer_text', { year: currentYear })}</p>
+                <p className="footer-text-responsive" style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', margin: 0 }}>{t('footer_text', { year: currentYear })}</p>
             </div>
         </footer>
     );

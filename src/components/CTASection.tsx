@@ -15,7 +15,7 @@ export function CTASection() {
     return (
         <section
             ref={ref as React.RefObject<HTMLElement>}
-            className={isInView ? 'animate-slide-up' : ''}
+            className={isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}
             style={{
                 background: 'linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%)',
                 padding: '3rem 2rem',
@@ -24,6 +24,7 @@ export function CTASection() {
         >
             <div className="container">
                 <h2
+                    className="cta-title-responsive"
                     style={{
                         fontSize: '2rem',
                         fontWeight: 700,

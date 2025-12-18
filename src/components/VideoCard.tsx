@@ -93,7 +93,6 @@ export function VideoCard({ videoId }: { videoId: string }) {
                 overflow: 'hidden',
                 boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
                 background: '#000',
-                margin: '0 auto',
                 flexShrink: 0,
                 cursor: isPlaying ? 'default' : 'pointer',
                 zIndex: 1,
