@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { useMemo } from 'react';
 import { VideoCard } from './VideoCard';
+import { useInView } from '../hooks/useInView';
 
 // Video IDs
 const VIDEOS = {
@@ -26,6 +27,7 @@ declare global {
 
 export function AppPreview() {
     const { i18n } = useTranslation();
+    const { ref, isInView } = useInView({ threshold: 0.1 });
 
     const isApple = useMemo(() => {
         // Logic: macOS or iOS -> use iOS video
@@ -55,7 +57,7 @@ export function AppPreview() {
     }, [i18n.language, isApple]);
 
     return (
-        <section className="app-preview-section" style={{ textAlign: 'center' }}>
+        <section ref={ref as React.RefObject<HTMLElement>} className={`app-preview-section ${isInView ? 'animate-responsive-right' : ''}`} style={{ textAlign: 'center' }}>
             <div className="app-preview-wrapper"
                 style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                 <VideoCard key={videoId} videoId={videoId} />

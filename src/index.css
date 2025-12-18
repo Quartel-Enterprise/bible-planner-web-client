@@ -304,6 +304,30 @@ header button:active {
   }
 }
 
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 @keyframes slideDown {
   from {
     opacity: 0;
@@ -373,6 +397,24 @@ header button:active {
 .animate-slide-up {
   opacity: 0;
   animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Mobile: all elements slide up from bottom */
+.animate-responsive-left,
+.animate-responsive-right {
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+/* Desktop: directional animations */
+@media (min-width: 1024px) {
+  .animate-responsive-left {
+    animation: slideInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-responsive-right {
+    animation: slideInRight 0.8s ease-out forwards;
+  }
 }
 
 .download-action-button {
