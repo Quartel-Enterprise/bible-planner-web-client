@@ -40,7 +40,6 @@ export function Features() {
                             borderRadius: '1rem',
                             border: '1px solid var(--color-border)',
                             transition: 'transform 0.2s',
-                            cursor: 'default',
                             animationDelay: `${index * 0.1}s`
                         }}
                             onMouseEnter={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
