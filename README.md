@@ -4,7 +4,7 @@ A modern, multilingual landing page for the Bible Planner mobile application. Bu
 
 🌐 **Live Site**: [https://bibleplanner.app/](https://www.bibleplanner.app/)
 
-<img src="./public/logo.png" alt="Screenshot" width="250" />
+<img src="./public/logo.png" alt="Screenshot" />
 
 ## ✨ Features
 
@@ -186,6 +186,10 @@ Edit the CSS variables in `src/index.css`:
 - **Dynamic Page Titles**: Browser tab title changes based on current page and language
 - **Smooth Animations**: Staggered fade-in effects for better UX
 - **Hover Effects**: Interactive elements with smooth transitions
+
+## 📊 Analytics
+
+For a detailed list of tracked events, see [Analytics Events](docs/analytics_events.md).
 
 ## 🤝 Contributing
 

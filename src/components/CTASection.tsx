@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { AppleIcon, AndroidIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
 import { useMemo } from 'react';
+import { logEvent } from '../analytics';
 
 export function CTASection() {
     const { t } = useTranslation();
@@ -61,6 +62,7 @@ export function CTASection() {
                                 href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'cta_section' } })}
                                 style={{
                                     display: 'inline-block',
                                     transition: 'transform 0.2s',
@@ -96,6 +98,7 @@ export function CTASection() {
                                     opacity: 0.6,
                                     cursor: 'not-allowed',
                                 }}
+                                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'play_store', item_id: 'android_download', status: 'coming_soon', origin: 'cta_section' } })}
                             >
                                 <div
                                     style={{
@@ -126,6 +129,7 @@ export function CTASection() {
                                     opacity: 0.6,
                                     cursor: 'not-allowed',
                                 }}
+                                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'play_store', item_id: 'android_download', status: 'coming_soon', origin: 'cta_section' } })}
                             >
                                 <div
                                     style={{
@@ -152,6 +156,7 @@ export function CTASection() {
                                 href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777"
                                 target="_blank"
                                 rel="noopener noreferrer"
+                                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'cta_section' } })}
                                 style={{
                                     display: 'inline-block',
                                     transition: 'transform 0.2s',

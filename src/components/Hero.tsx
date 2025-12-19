@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { AndroidIcon, AppleIcon } from './Icons';
 import { useMemo } from 'react';
 import { useInView } from '../hooks/useInView';
+import { logEvent } from '../analytics';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -29,22 +30,32 @@ export function Hero() {
         <div className={`delay-300 download-buttons-container ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`} style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
           {isAndroid ? (
             <>
-              <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
+              <button
+                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'play_store', item_id: 'android_download', status: 'coming_soon', origin: 'hero' } })}
+                aria-disabled="true"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
                 <AndroidIcon size={28} />
                 <span>Android <small style={{ display: 'block', fontSize: '0.7em' }}>({t('coming_soon')})</small></span>
               </button>
-              <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer" className="animate-shine" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', backgroundColor: 'var(--color-primary)', color: 'var(--color-button-text)', border: '1px solid var(--color-primary)', textDecoration: 'none', borderRadius: '8px', transition: 'transform 0.2s', cursor: 'pointer', boxShadow: '0 4px 14px rgba(var(--color-primary-rgb), 0.4)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+              <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer"
+                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'hero' } })}
+                className="animate-shine" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', backgroundColor: 'var(--color-primary)', color: 'var(--color-button-text)', border: '1px solid var(--color-primary)', textDecoration: 'none', borderRadius: '8px', transition: 'transform 0.2s', cursor: 'pointer', boxShadow: '0 4px 14px rgba(var(--color-primary-rgb), 0.4)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <AppleIcon size={28} />
                 <span>iOS</span>
               </a>
             </>
           ) : (
             <>
-              <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer" className="animate-shine" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', backgroundColor: 'var(--color-primary)', color: 'var(--color-button-text)', border: '1px solid var(--color-primary)', textDecoration: 'none', borderRadius: '8px', transition: 'transform 0.2s', cursor: 'pointer', boxShadow: '0 4px 14px rgba(var(--color-primary-rgb), 0.4)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
+              <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer"
+                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'hero' } })}
+                className="animate-shine" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', backgroundColor: 'var(--color-primary)', color: 'var(--color-button-text)', border: '1px solid var(--color-primary)', textDecoration: 'none', borderRadius: '8px', transition: 'transform 0.2s', cursor: 'pointer', boxShadow: '0 4px 14px rgba(var(--color-primary-rgb), 0.4)' }} onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'} onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}>
                 <AppleIcon size={28} />
                 <span>iOS</span>
               </a>
-              <button disabled style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
+              <button
+                onClick={() => logEvent({ name: 'select_content', params: { content_type: 'play_store', item_id: 'android_download', status: 'coming_soon', origin: 'hero' } })}
+                aria-disabled="true"
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
                 <AndroidIcon size={28} />
                 <span>Android <small style={{ display: 'block', fontSize: '0.7em' }}>({t('coming_soon')})</small></span>
               </button>

@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
 import { InstagramIcon, AndroidIcon, AppleIcon } from './Icons';
+import { logEvent } from '../analytics';
 
 interface HeaderProps {
     theme: 'light' | 'dark';
@@ -29,34 +30,42 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const mobileMenuRef = useRef<HTMLDivElement>(null);
     const mobileTriggerRef = useRef<HTMLButtonElement>(null);
     const downloadMenuRef = useRef<HTMLDivElement>(null);
+    const dismissMethodRef = useRef<'back_button' | 'toggle_button' | 'click_outside' | 'navigation' | 'close_icon'>('back_button');
 
     const toggleMobileMenu = () => {
         if (isMobileMenuOpen) {
+            dismissMethodRef.current = 'close_icon';
             window.history.back();
         } else {
+            dismissMethodRef.current = 'back_button'; // Reset default
             setIsMobileMenuOpen(true);
         }
     };
 
     const closeMobileMenu = useCallback(() => {
         if (isMobileMenuOpen) {
+            dismissMethodRef.current = 'click_outside';
             window.history.back();
         }
     }, [isMobileMenuOpen]);
 
     const closeDownloadMenu = useCallback(() => {
+        logEvent({ name: 'menu_dismiss', params: { menu_id: 'download_menu', method: dismissMethodRef.current } });
         setIsDownloadMenuClosing(true);
         setTimeout(() => {
             setIsDownloadMenuOpen(false);
             setIsDownloadMenuClosing(false);
+            dismissMethodRef.current = 'back_button'; // Reset
         }, 200); // Match animation duration
     }, []);
 
     const closeLanguageMenu = useCallback(() => {
+        logEvent({ name: 'menu_dismiss', params: { menu_id: 'language_menu', method: dismissMethodRef.current } });
         setIsLanguageMenuClosing(true);
         setTimeout(() => {
             setIsLanguageMenuOpen(false);
             setIsLanguageMenuClosing(false);
+            dismissMethodRef.current = 'back_button'; // Reset
         }, 200); // Match animation duration
     }, []);
 
@@ -66,13 +75,15 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
 
             if (menuRef.current && !menuRef.current.contains(target)) {
                 if (isLanguageMenuOpen && !isLanguageMenuClosing) {
-                    closeLanguageMenu();
+                    dismissMethodRef.current = 'click_outside';
+                    window.history.back();
                 }
             }
 
             if (downloadMenuRef.current && !downloadMenuRef.current.contains(target)) {
                 if (isDownloadMenuOpen && !isDownloadMenuClosing) {
-                    closeDownloadMenu();
+                    dismissMethodRef.current = 'click_outside';
+                    window.history.back();
                 }
             }
 
@@ -102,9 +113,14 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         }
     };
 
-    const handleLogoClick = () => {
+    const handleLogoClick = (target: 'icon' | 'text') => {
+        logEvent({ name: 'logo_click', params: { target } });
+        dismissMethodRef.current = 'navigation';
         closeDropdowns();
-        if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+        if (isMobileMenuOpen) {
+            dismissMethodRef.current = 'navigation';
+            setIsMobileMenuOpen(false); // Direct close for navigation, bypassing history if simpler or handle standard
+        }
         onNavigate('home');
     }
 
@@ -128,8 +144,12 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
             window.history.pushState({ menuOpen: true }, '', window.location.href);
 
             const handlePopState = () => {
-                // If back button is pressed, close the menu
+                // If back button is pressed (or history.back() called), close the menu
+                // Default to 'back_button' if not set by button click
+                const method = dismissMethodRef.current || 'back_button';
+                logEvent({ name: 'menu_dismiss', params: { menu_id: 'mobile_menu', method } });
                 setIsMobileMenuOpen(false);
+                dismissMethodRef.current = 'back_button'; // Reset
             };
 
             window.addEventListener('popstate', handlePopState);
@@ -147,6 +167,9 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
 
             const handlePopState = () => {
                 // If back button is pressed, close the menu with animation
+                if (dismissMethodRef.current === 'back_button') { // Only if not already handled by outside/toggle
+                    // It is back button
+                }
                 closeDownloadMenu();
             };
 
@@ -209,10 +232,22 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <div
                         style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', cursor: 'pointer' }}
-                        onClick={handleLogoClick}
                     >
-                        <img src="/logo.png" alt="Bible Planner Logo" width={32} height={32} style={{ width: '32px', height: '32px' }} />
-                        <h1 className="header-title" style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}>{t('app_title')}</h1>
+                        <img
+                            src="/logo.png"
+                            alt="Bible Planner Logo"
+                            width={32}
+                            height={32}
+                            style={{ width: '32px', height: '32px' }}
+                            onClick={() => handleLogoClick('icon')}
+                        />
+                        <h1
+                            className="header-title"
+                            style={{ margin: 0, fontSize: '1.5rem', color: 'var(--color-primary)', fontWeight: 700 }}
+                            onClick={() => handleLogoClick('text')}
+                        >
+                            {t('app_title')}
+                        </h1>
                     </div>
 
                     <div className="desktop-only-item" style={{ gap: '1rem' }}>
@@ -222,6 +257,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                             href={getInstagramUrl()}
                             target="_blank"
                             rel="noopener noreferrer"
+                            onClick={() => logEvent({ name: 'social_click', params: { platform: 'instagram', origin: 'header_desktop' } })}
                             style={{
                                 display: 'flex',
                                 alignItems: 'center',
@@ -240,7 +276,15 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
                     <div style={{ position: 'relative' }} ref={downloadMenuRef}>
                         <button
-                            onClick={() => setIsDownloadMenuOpen(!isDownloadMenuOpen)}
+                            onClick={() => {
+                                if (!isDownloadMenuOpen) {
+                                    logEvent({ name: 'menu_click', params: { menu_id: 'download_menu' } });
+                                    setIsDownloadMenuOpen(true);
+                                } else {
+                                    dismissMethodRef.current = 'toggle_button';
+                                    window.history.back();
+                                }
+                            }}
                             className="primary-button animate-pulse download-action-button"
                         >
                             <Download size={18} />
@@ -278,6 +322,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
+                                            onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'header_menu' } })}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -322,6 +367,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
+                                            onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'header_menu' } })}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -337,7 +383,15 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     <div className="desktop-actions">
                         <div style={{ position: 'relative' }} ref={menuRef}>
                             <button
-                                onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                                onClick={() => {
+                                    if (!isLanguageMenuOpen) {
+                                        logEvent({ name: 'menu_click', params: { menu_id: 'language_menu' } });
+                                        setIsLanguageMenuOpen(true);
+                                    } else {
+                                        dismissMethodRef.current = 'toggle_button';
+                                        window.history.back();
+                                    }
+                                }}
                                 style={{
                                     background: 'transparent',
                                     border: 'none',
@@ -373,7 +427,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                     {languages.map((lang) => (
                                         <button
                                             key={lang.code}
-                                            onClick={() => changeLanguage(lang.code)}
+                                            onClick={() => {
+                                                changeLanguage(lang.code);
+                                                logEvent({ name: 'language_change', params: { language: lang.code } });
+                                            }}
                                             style={{
                                                 textAlign: 'left',
                                                 background: currentLang === lang.code ? 'var(--color-primary)' : 'transparent',
@@ -395,7 +452,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         </div>
 
                         <button
-                            onClick={toggleTheme}
+                            onClick={() => {
+                                toggleTheme();
+                                logEvent({ name: 'theme_change', params: { theme: theme === 'light' ? 'dark' : 'light' } });
+                            }}
                             style={{
                                 background: 'transparent',
                                 padding: '0.5rem',
@@ -412,7 +472,14 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     <button
                         ref={mobileTriggerRef}
                         className={`mobile-menu-trigger ${isMobileMenuOpen ? 'open' : ''}`}
-                        onClick={toggleMobileMenu}
+                        onClick={() => {
+                            if (!isMobileMenuOpen) {
+                                logEvent({ name: 'menu_click', params: { menu_id: 'mobile_menu' } });
+                            } else {
+                                logEvent({ name: 'menu_dismiss', params: { menu_id: 'mobile_menu' } });
+                            }
+                            toggleMobileMenu();
+                        }}
                         aria-label="Toggle mobile menu"
                         style={{
                             background: 'transparent',
@@ -454,6 +521,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     href={getInstagramUrl()}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={() => logEvent({ name: 'social_click', params: { platform: 'instagram', origin: 'mobile_menu' } })}
                     style={{
                         display: 'flex',
                         alignItems: 'center',
@@ -477,7 +545,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         {languages.map((lang) => (
                             <button
                                 key={lang.code}
-                                onClick={() => changeLanguage(lang.code)}
+                                onClick={() => {
+                                    changeLanguage(lang.code);
+                                    logEvent({ name: 'language_change', params: { language: lang.code } });
+                                }}
                                 style={{
                                     textAlign: 'center',
                                     background: currentLang === lang.code ? 'var(--color-primary)' : 'var(--color-surface)',
@@ -498,6 +569,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 <button
                     onClick={() => {
                         toggleTheme();
+                        logEvent({ name: 'theme_change', params: { theme: theme === 'light' ? 'dark' : 'light' } });
                     }}
                     style={{
                         display: 'flex',
@@ -519,8 +591,16 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 <div style={{ borderTop: '1px solid var(--color-border)', margin: '0.5rem 0' }} />
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <button onClick={() => { navigate(`/${currentLang}/privacy`); setIsMobileMenuOpen(false); }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('privacy_policy')}</button>
-                    <button onClick={() => { navigate(`/${currentLang}/terms`); setIsMobileMenuOpen(false); }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('terms_of_service')}</button>
+                    <button onClick={() => {
+                        logEvent({ name: 'select_content', params: { content_type: 'legal', item_id: 'privacy_policy', origin: 'mobile_menu' } });
+                        navigate(`/${currentLang}/privacy`);
+                        setIsMobileMenuOpen(false);
+                    }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('privacy_policy')}</button>
+                    <button onClick={() => {
+                        logEvent({ name: 'select_content', params: { content_type: 'legal', item_id: 'terms_of_service', origin: 'mobile_menu' } });
+                        navigate(`/${currentLang}/terms`);
+                        setIsMobileMenuOpen(false);
+                    }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('terms_of_service')}</button>
                 </div>
             </div>
         </header>
