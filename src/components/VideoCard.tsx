@@ -205,7 +205,7 @@ export function VideoCard({ videoId, isInView = true }: { videoId: string; isInV
             ) : (
                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                     <img
-                        src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                        src={`/thumbnails/${videoId}.jpg`}
                         alt="App Preview Thumbnail"
                         className="video-thumbnail"
                         fetchPriority="high"
