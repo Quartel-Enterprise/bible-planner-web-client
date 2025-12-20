@@ -322,7 +322,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
-                                            onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'header_menu' } })}
+                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_menu' } })}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -367,7 +367,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
-                                            onClick={() => logEvent({ name: 'select_content', params: { content_type: 'app_store', item_id: 'ios_download', origin: 'header_menu' } })}
+                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_menu' } })}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >

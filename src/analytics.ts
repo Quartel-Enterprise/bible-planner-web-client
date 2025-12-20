@@ -4,6 +4,7 @@ import { analytics } from "./firebase";
 // Define strict types for our events to ensure consistency
 export type AnalyticsEvent =
     | { name: 'select_content', params: { content_type: string; item_id: string; origin?: string; status?: string } }
+    | { name: 'download_click', params: { platform: 'ios' | 'android'; origin: string } }
     | { name: 'video_start', params: { video_id: string } }
     | { name: 'video_play', params: { video_id: string } }
     | { name: 'video_pause', params: { video_id: string; video_time: number; video_progress: number } }

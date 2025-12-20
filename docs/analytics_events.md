@@ -7,7 +7,8 @@ This document describes the custom analytics events implemented in the Bible Pla
 | Event Name | Description | Trigger | Parameters |
 |:--- |:--- |:--- |:--- |
 | **`page_view`** | Triggered when a user views a page. | On route change or initial load. | `page_path` (string): Current URL path.<br>`page_title` (string): Document title. |
-| **`select_content`** | Triggered when a user clicks a content CTA (Downloads, Legal). | Click on specific links/buttons. | `content_type` (string): 'app_store', 'play_store', 'legal'.<br>`item_id` (string): 'ios_download', 'android_download', 'privacy_policy', 'terms_of_service'.<br>`origin` (string): 'header_menu', 'hero', 'cta_section', 'mobile_menu', 'footer'.<br>`status` (string, optional): e.g., 'coming_soon'. |
+| **`select_content`** | Triggered when a user clicks a content CTA (Legal). | Click on specific links/buttons. | `content_type` (string): 'legal'.<br>`item_id` (string): 'privacy_policy', 'terms_of_service'.<br>`origin` (string): 'header_menu', 'hero', 'cta_section', 'mobile_menu', 'footer'. |
+| **`download_click`** | Triggered when a user clicks a download button. | Click on App Store or Google Play buttons. | `platform` (string): 'ios' or 'android'.<br>`origin` (string): 'header_menu', 'hero', 'cta_section'. |
 | **`video_start`** | Triggered when a user plays a video for the first time. | Thumbnail click. | `video_id` (string): YouTube video ID. |
 | **`video_play`** | Triggered when video playback resumes. | Play button click (after initial start). | `video_id` (string): YouTube video ID. |
 | **`video_pause`** | Triggered when user pauses the video. | Pause button click. | `video_id` (string): YouTube video ID.<br>`video_time` (number): Current time in seconds.<br>`video_progress` (number): Completion percentage (0.0 - 1.0). |
