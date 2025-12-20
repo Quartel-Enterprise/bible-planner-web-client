@@ -95,7 +95,7 @@ export function CTASection() {
                             <div
                                 style={{
                                     display: 'inline-block',
-                                    opacity: 0.6,
+                                    opacity: 1,
                                     cursor: 'not-allowed',
                                 }}
                                 onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
@@ -126,7 +126,7 @@ export function CTASection() {
                             <div
                                 style={{
                                     display: 'inline-block',
-                                    opacity: 0.6,
+                                    opacity: 1,
                                     cursor: 'not-allowed',
                                 }}
                                 onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}

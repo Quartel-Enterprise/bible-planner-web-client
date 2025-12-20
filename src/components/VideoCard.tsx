@@ -205,7 +205,7 @@ export function VideoCard({ videoId, isInView = true }: { videoId: string; isInV
             ) : (
                 <div style={{ position: 'relative', width: '100%', height: '100%' }}>
                     <img
-                        src={`/thumbnails/${videoId}.jpg`}
+                        src={`/thumbnails/${videoId}.webp`}
                         alt="App Preview Thumbnail"
                         className="video-thumbnail"
                         fetchPriority="high"

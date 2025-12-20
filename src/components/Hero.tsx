@@ -33,7 +33,7 @@ export function Hero() {
               <button
                 onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'hero' } })}
                 aria-disabled="true"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
                 <AndroidIcon size={28} />
                 <span>Android <small style={{ display: 'block', fontSize: '0.7em' }}>({t('coming_soon')})</small></span>
               </button>
@@ -55,7 +55,7 @@ export function Hero() {
               <button
                 onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'hero' } })}
                 aria-disabled="true"
-                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', opacity: 0.6, cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
+                style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 2rem', fontSize: '1.2rem', cursor: 'not-allowed', backgroundColor: 'var(--color-surface)', color: 'var(--color-text-secondary)', border: '1px solid var(--color-border)' }}>
                 <AndroidIcon size={28} />
                 <span>Android <small style={{ display: 'block', fontSize: '0.7em' }}>({t('coming_soon')})</small></span>
               </button>

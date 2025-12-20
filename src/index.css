@@ -598,15 +598,11 @@ header button:active {
 /* Shimmer/Shine Animation */
 @keyframes shine {
   0% {
-    left: -100%;
-  }
-
-  20% {
-    left: 100%;
+    transform: translateX(-100%) skewX(-20deg);
   }
 
   100% {
-    left: 100%;
+    transform: translateX(200%) skewX(-20deg);
   }
 }
 
@@ -619,12 +615,13 @@ header button:active {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
+  left: 0;
   width: 50%;
   height: 100%;
   background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-  transform: skewX(-20deg);
+  transform: translateX(-100%) skewX(-20deg);
   animation: shine 3s infinite;
+  will-change: transform;
 }
 
 /* App Preview Styles */
