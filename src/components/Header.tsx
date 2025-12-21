@@ -5,6 +5,7 @@ import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
 import { InstagramIcon, GooglePlayIcon, AppleIcon } from './Icons';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
+import { useDownloadConfirmation } from '../hooks/useDownloadConfirmation';
 import { logEvent } from '../analytics';
 
 interface HeaderProps {
@@ -47,8 +48,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const { isApple } = useDeviceDetection();
+    const { isApple, isIos, isAndroid } = useDeviceDetection();
     const isAppleDevice = isApple;
+
+    const { handleDownload, DownloadConfirmationModal } = useDownloadConfirmation();
 
     const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -251,6 +254,17 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     <div style={{ position: 'relative' }} ref={downloadMenuRef}>
                         <button
                             onClick={() => {
+                                if (isIos) {
+                                    logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_main_button' } });
+                                    window.open(appStoreUrl, '_blank');
+                                    return;
+                                }
+                                if (isAndroid) {
+                                    logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_main_button' } });
+                                    window.open(playStoreUrl, '_blank');
+                                    return;
+                                }
+
                                 if (!isDownloadMenuOpen) {
                                     logEvent({ name: 'menu_click', params: { menu_id: 'download_menu' } });
                                     setIsDownloadMenuOpen(true);
@@ -296,7 +310,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
-                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_menu' } })}
+                                            onClick={(e) => {
+                                                logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_menu' } });
+                                                handleDownload('ios', appStoreUrl, e);
+                                            }}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -314,7 +331,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
-                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_menu' } })}
+                                            onClick={(e) => {
+                                                logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_menu' } });
+                                                handleDownload('android', playStoreUrl, e);
+                                            }}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -335,7 +355,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
-                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_menu' } })}
+                                            onClick={(e) => {
+                                                logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_menu' } });
+                                                handleDownload('android', playStoreUrl, e);
+                                            }}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -353,7 +376,10 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             textDecoration: 'none',
                                             transition: 'background-color 0.2s'
                                         }}
-                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_menu' } })}
+                                            onClick={(e) => {
+                                                logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'header_menu' } });
+                                                handleDownload('ios', appStoreUrl, e);
+                                            }}
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
@@ -589,6 +615,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     }} style={{ textAlign: 'left', padding: '0.5rem' }}>{t('terms_of_service')}</button>
                 </div>
             </div>
-        </header>
+            {DownloadConfirmationModal}
+        </header >
     );
 }

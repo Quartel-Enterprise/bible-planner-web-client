@@ -32,7 +32,11 @@ const resources = {
       "cta_title": "Start Your Journey Today!",
       "cta_subtitle": "Download Bible Planner.",
       "download_on_the": "Download on the",
-      "get_it_on": "Get it on"
+      "get_it_on": "Get it on",
+      "modal_title": "Choose your store",
+      "modal_message": "We noticed you're on {{currentPlatform}}. For the best experience, we recommend downloading from {{recommendedStore}}.",
+      "modal_confirm": "Go to {{recommendedStore}}",
+      "modal_cancel": "Continue to {{clickedStore}}"
     }
   },
   pt: {
@@ -64,7 +68,11 @@ const resources = {
       "cta_title": "Comece Sua Jornada Hoje!",
       "cta_subtitle": "Baixe o Bible Planner.",
       "download_on_the": "Baixe na",
-      "get_it_on": "Disponível no"
+      "get_it_on": "Disponível no",
+      "modal_title": "Escolha sua loja",
+      "modal_message": "Notamos que você está no {{currentPlatform}}. Para a melhor experiência, recomendamos baixar na {{recommendedStore}}.",
+      "modal_confirm": "Ir para {{recommendedStore}}",
+      "modal_cancel": "Continuar para {{clickedStore}}"
     }
   },
   es: {
@@ -96,7 +104,11 @@ const resources = {
       "cta_title": "¡Comienza Tu Viaje Hoy!",
       "cta_subtitle": "Descarga Bible Planner.",
       "download_on_the": "Descárgalo en",
-      "get_it_on": "Disponible en"
+      "get_it_on": "Disponible en",
+      "modal_title": "Elige tu tienda",
+      "modal_message": "Notamos que estás en {{currentPlatform}}. Para la mejor experiencia, recomendamos descargar desde {{recommendedStore}}.",
+      "modal_confirm": "Ir a {{recommendedStore}}",
+      "modal_cancel": "Continuar a {{clickedStore}}"
     }
   }
 };

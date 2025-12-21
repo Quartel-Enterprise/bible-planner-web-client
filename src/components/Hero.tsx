@@ -4,6 +4,7 @@ import { GooglePlayIcon, AppleIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
+import { useDownloadConfirmation } from '../hooks/useDownloadConfirmation';
 import { logEvent } from '../analytics';
 
 export function Hero() {
@@ -16,6 +17,7 @@ export function Hero() {
   const highlightIOS = isApple || isDesktop;
 
   const { playStoreUrl, appStoreUrl } = useStoreLinks();
+  const { handleDownload, DownloadConfirmationModal } = useDownloadConfirmation();
 
   const primaryStyle = {
     display: 'flex',
@@ -71,7 +73,10 @@ export function Hero() {
                 href={appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'hero' } })}
+                onClick={(e) => {
+                  logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'hero' } });
+                  handleDownload('ios', appStoreUrl, e);
+                }}
                 className={highlightIOS ? "animate-shine" : ""}
                 style={highlightIOS ? primaryStyle : secondaryStyle}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -86,7 +91,10 @@ export function Hero() {
                 href={playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'hero' } })}
+                onClick={(e) => {
+                  logEvent({ name: 'download_click', params: { platform: 'android', origin: 'hero' } });
+                  handleDownload('android', playStoreUrl, e);
+                }}
                 className={highlightAndroid ? "animate-shine" : ""}
                 style={highlightAndroid ? primaryStyle : secondaryStyle}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -103,7 +111,10 @@ export function Hero() {
                 href={playStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'hero' } })}
+                onClick={(e) => {
+                  logEvent({ name: 'download_click', params: { platform: 'android', origin: 'hero' } });
+                  handleDownload('android', playStoreUrl, e);
+                }}
                 className={highlightAndroid ? "animate-shine" : ""}
                 style={highlightAndroid ? primaryStyle : secondaryStyle}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -118,7 +129,10 @@ export function Hero() {
                 href={appStoreUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'hero' } })}
+                onClick={(e) => {
+                  logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'hero' } });
+                  handleDownload('ios', appStoreUrl, e);
+                }}
                 className={highlightIOS ? "animate-shine" : ""}
                 style={highlightIOS ? primaryStyle : secondaryStyle}
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
@@ -131,6 +145,7 @@ export function Hero() {
           )}
         </div>
       </div>
+      {DownloadConfirmationModal}
     </section>
 
   );

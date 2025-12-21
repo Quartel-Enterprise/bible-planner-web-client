@@ -1,0 +1,68 @@
+/* CSS for Download Confirmation Modal Animations */
+
+/* Keyframes for the modal overlay fade in/out */
+@keyframes modalOverlayEnter {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+}
+
+@keyframes modalOverlayExit {
+    from {
+        opacity: 1;
+        backdrop-filter: blur(4px);
+    }
+
+    to {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+}
+
+/* Keyframes for the modal content scale/fade in/out */
+@keyframes modalContentEnter {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes modalContentExit {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+}
+
+/* Base styles for the animation classes */
+.modal-overlay-animate-enter {
+    animation: modalOverlayEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-overlay-animate-exit {
+    animation: modalOverlayExit 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-content-animate-enter {
+    animation: modalContentEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-content-animate-exit {
+    animation: modalContentExit 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

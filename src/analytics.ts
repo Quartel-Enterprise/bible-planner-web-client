@@ -16,7 +16,11 @@ export type AnalyticsEvent =
     | { name: 'logo_click', params: { target: 'icon' | 'text' } }
     | { name: 'menu_click', params: { menu_id: string } }
     | { name: 'menu_dismiss', params: { menu_id: string; method?: string } }
-    | { name: 'page_view', params: { page_path: string; page_title: string } };
+    | { name: 'page_view', params: { page_path: string; page_title: string } }
+    | { name: 'download_confirmation_view', params: { current_platform: string; clicked_store: string; recommended_store: string } }
+    | { name: 'download_confirmation_confirm', params: { recommended_store: string } }
+    | { name: 'download_confirmation_continue', params: { clicked_store: string } }
+    | { name: 'download_confirmation_dismiss', params: { method?: string } };
 
 export const logEvent = (event: AnalyticsEvent) => {
     try {

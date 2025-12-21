@@ -5,6 +5,7 @@ import { useInView } from '../hooks/useInView';
 import { logEvent } from '../analytics';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
+import { useDownloadConfirmation } from '../hooks/useDownloadConfirmation';
 
 export function CTASection() {
     const { t } = useTranslation();
@@ -13,6 +14,7 @@ export function CTASection() {
     const { isApple } = useDeviceDetection();
     const isAppleDevice = isApple;
     const { playStoreUrl, appStoreUrl } = useStoreLinks();
+    const { handleDownload, DownloadConfirmationModal } = useDownloadConfirmation();
 
     return (
         <section
@@ -63,7 +65,10 @@ export function CTASection() {
                                 href={appStoreUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'cta_section' } })}
+                                onClick={(e) => {
+                                    logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'cta_section' } });
+                                    handleDownload('ios', appStoreUrl, e);
+                                }}
                                 style={{
                                     display: 'inline-block',
                                     transition: 'transform 0.2s',
@@ -97,7 +102,10 @@ export function CTASection() {
                                 href={playStoreUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
+                                onClick={(e) => {
+                                    logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } });
+                                    handleDownload('android', playStoreUrl, e);
+                                }}
                                 style={{
                                     display: 'inline-block',
                                     transition: 'transform 0.2s',
@@ -133,7 +141,10 @@ export function CTASection() {
                                 href={playStoreUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
+                                onClick={(e) => {
+                                    logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } });
+                                    handleDownload('android', playStoreUrl, e);
+                                }}
                                 style={{
                                     display: 'inline-block',
                                     transition: 'transform 0.2s',
@@ -167,7 +178,10 @@ export function CTASection() {
                                 href={appStoreUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'cta_section' } })}
+                                onClick={(e) => {
+                                    logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'cta_section' } });
+                                    handleDownload('ios', appStoreUrl, e);
+                                }}
                                 style={{
                                     display: 'inline-block',
                                     transition: 'transform 0.2s',
@@ -200,6 +214,7 @@ export function CTASection() {
                     )}
                 </div>
             </div>
+            {DownloadConfirmationModal}
         </section>
     );
 }
