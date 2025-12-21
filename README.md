@@ -97,6 +97,10 @@ The application supports both light and dark themes:
 
 For a detailed list of tracked events, see [Analytics Events](docs/analytics_events.md).
 
+## 🎛️ Remote Configuration
+
+The application uses Firebase Remote Config for real-time feature management. For setup instructions, see [Remote Configuration](docs/remote_config.md).
+
 ## 📄 License
 
 This project is part of the Bible Planner application suite.

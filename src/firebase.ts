@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getRemoteConfig } from "firebase/remote-config";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -16,5 +17,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const remoteConfig = getRemoteConfig(app);
 
-export { app, analytics };
+// Set minimum fetch interval to 0 for development, otherwise default is 12 hours
+remoteConfig.settings.minimumFetchIntervalMillis = 10000; // 10 seconds for dev / debug purposes
+remoteConfig.defaultConfig = {
+    show_instagram: true,
+};
+
+export { app, analytics, remoteConfig };

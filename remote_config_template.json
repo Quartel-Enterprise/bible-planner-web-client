@@ -1,0 +1,11 @@
+{
+    "parameters": {
+        "show_instagram": {
+            "defaultValue": {
+                "value": "true"
+            },
+            "description": "Controls the visibility of the Instagram link/icon in the header and mobile menu.",
+            "valueType": "BOOLEAN"
+        }
+    }
+}

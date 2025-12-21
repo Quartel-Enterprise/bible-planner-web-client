@@ -6,6 +6,7 @@ import { InstagramIcon, GooglePlayIcon, AppleIcon } from './Icons';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
 import { useDownloadConfirmation } from '../hooks/useDownloadConfirmation';
+import { useRemoteConfig } from '../hooks/useRemoteConfig';
 import { logEvent } from '../analytics';
 
 interface HeaderProps {
@@ -50,6 +51,8 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
 
     const { isApple, isIos, isAndroid } = useDeviceDetection();
     const isAppleDevice = isApple;
+
+    const { showInstagram } = useRemoteConfig();
 
     const { handleDownload, DownloadConfirmationModal } = useDownloadConfirmation();
 
@@ -227,27 +230,29 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         </h1>
                     </div>
 
-                    <div className="desktop-only-item" style={{ gap: '1rem' }}>
-                        <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)' }} />
+                    {showInstagram && (
+                        <div className="desktop-only-item" style={{ gap: '1rem' }}>
+                            <div style={{ width: '1px', height: '24px', backgroundColor: 'var(--color-border)' }} />
 
-                        <a
-                            href={getInstagramUrl()}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={() => logEvent({ name: 'social_click', params: { platform: 'instagram', origin: 'header_desktop' } })}
-                            style={{
-                                display: 'flex',
-                                alignItems: 'center',
-                                color: 'var(--color-text-secondary)',
-                                transition: 'color 0.2s'
-                            }}
-                            onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
-                            onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
-                            aria-label="Instagram"
-                        >
-                            <InstagramIcon size={20} />
-                        </a>
-                    </div>
+                            <a
+                                href={getInstagramUrl()}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => logEvent({ name: 'social_click', params: { platform: 'instagram', origin: 'header_desktop' } })}
+                                style={{
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    color: 'var(--color-text-secondary)',
+                                    transition: 'color 0.2s'
+                                }}
+                                onMouseEnter={(e) => e.currentTarget.style.color = 'var(--color-primary)'}
+                                onMouseLeave={(e) => e.currentTarget.style.color = 'var(--color-text-secondary)'}
+                                aria-label="Instagram"
+                            >
+                                <InstagramIcon size={20} />
+                            </a>
+                        </div>
+                    )}
                 </div>
 
                 <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
@@ -529,25 +534,27 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                     transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(-10px)',
                     transition: 'opacity 0.3s ease, transform 0.3s ease, visibility 0.3s'
                 }}>
-                <a
-                    href={getInstagramUrl()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => logEvent({ name: 'social_click', params: { platform: 'instagram', origin: 'mobile_menu' } })}
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '0.75rem',
-                        color: 'var(--color-text)',
-                        textDecoration: 'none',
-                        padding: '0.75rem',
-                        borderRadius: '8px',
-                        backgroundColor: 'var(--color-surface)'
-                    }}
-                >
-                    <InstagramIcon size={20} />
-                    <span>Instagram</span>
-                </a>
+                {showInstagram && (
+                    <a
+                        href={getInstagramUrl()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => logEvent({ name: 'social_click', params: { platform: 'instagram', origin: 'mobile_menu' } })}
+                        style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                            color: 'var(--color-text)',
+                            textDecoration: 'none',
+                            padding: '0.75rem',
+                            borderRadius: '8px',
+                            backgroundColor: 'var(--color-surface)'
+                        }}
+                    >
+                        <InstagramIcon size={20} />
+                        <span>Instagram</span>
+                    </a>
+                )}
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     <p style={{ margin: 0, fontSize: '0.9rem', color: 'var(--color-text-secondary)', padding: '0 0.5rem' }}>
