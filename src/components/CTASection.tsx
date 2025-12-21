@@ -3,6 +3,7 @@ import { AppleIcon, AndroidIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
 import { useMemo } from 'react';
 import { logEvent } from '../analytics';
+import { useStoreLinks } from '../hooks/useStoreLinks';
 
 export function CTASection() {
     const { t } = useTranslation();
@@ -12,6 +13,10 @@ export function CTASection() {
         const userAgent = navigator.userAgent.toLowerCase();
         return /macintosh|mac os x|iphone|ipad|ipod/.test(userAgent);
     }, []);
+
+
+
+    const { playStoreUrl, appStoreUrl } = useStoreLinks();
 
     return (
         <section
@@ -59,7 +64,7 @@ export function CTASection() {
                     {isAppleDevice ? (
                         <>
                             <a
-                                href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777"
+                                href={appStoreUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'cta_section' } })}
@@ -92,13 +97,18 @@ export function CTASection() {
                                 </div>
                             </a>
 
-                            <div
+                            <a
+                                href={playStoreUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
                                 style={{
                                     display: 'inline-block',
-                                    opacity: 1,
-                                    cursor: 'not-allowed',
+                                    transition: 'transform 0.2s',
+                                    textDecoration: 'none',
                                 }}
-                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
+                                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                             >
                                 <div
                                     style={{
@@ -119,17 +129,22 @@ export function CTASection() {
                                         <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>Google Play</div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </>
                     ) : (
                         <>
-                            <div
+                            <a
+                                href={playStoreUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
                                 style={{
                                     display: 'inline-block',
-                                    opacity: 1,
-                                    cursor: 'not-allowed',
+                                    transition: 'transform 0.2s',
+                                    textDecoration: 'none',
                                 }}
-                                onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'cta_section' } })}
+                                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
                             >
                                 <div
                                     style={{
@@ -150,10 +165,10 @@ export function CTASection() {
                                         <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>Google Play</div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
 
                             <a
-                                href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777"
+                                href={appStoreUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 onClick={() => logEvent({ name: 'download_click', params: { platform: 'ios', origin: 'cta_section' } })}

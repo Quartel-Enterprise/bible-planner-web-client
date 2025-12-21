@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
 import { InstagramIcon, AndroidIcon, AppleIcon } from './Icons';
+import { useStoreLinks } from '../hooks/useStoreLinks';
 import { logEvent } from '../analytics';
 
 interface HeaderProps {
@@ -10,6 +11,35 @@ interface HeaderProps {
     toggleTheme: () => void;
     onNavigate: (page: 'home' | 'privacy') => void;
 }
+
+const useMenuCloseOnBack = (
+    isOpen: boolean,
+    closeMenu: () => void,
+    menuId: string,
+    dismissMethodRef: React.MutableRefObject<string>
+) => {
+    useEffect(() => {
+        if (isOpen) {
+            window.history.pushState({ [`${menuId}Open`]: true }, '', window.location.href);
+
+            const handlePopState = () => {
+                const method = dismissMethodRef.current || 'back_button';
+                if (method === 'back_button') {
+                    // Only log if it's an actual back button press (implied)
+                }
+                closeMenu();
+                // Reset is up to the closer usually, but for mobile menu specifics:
+                if (menuId === 'mobile_menu') {
+                    logEvent({ name: 'menu_dismiss', params: { menu_id: 'mobile_menu', method } });
+                    dismissMethodRef.current = 'back_button';
+                }
+            };
+
+            window.addEventListener('popstate', handlePopState);
+            return () => window.removeEventListener('popstate', handlePopState);
+        }
+    }, [isOpen, closeMenu, menuId, dismissMethodRef]);
+};
 
 export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const { t, i18n } = useTranslation();
@@ -138,66 +168,9 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         if (isMobileMenuOpen) setIsMobileMenuOpen(false);
     };
 
-    useEffect(() => {
-        if (isMobileMenuOpen) {
-            // Push a state to history so the back button can intercept it
-            window.history.pushState({ menuOpen: true }, '', window.location.href);
-
-            const handlePopState = () => {
-                // If back button is pressed (or history.back() called), close the menu
-                // Default to 'back_button' if not set by button click
-                const method = dismissMethodRef.current || 'back_button';
-                logEvent({ name: 'menu_dismiss', params: { menu_id: 'mobile_menu', method } });
-                setIsMobileMenuOpen(false);
-                dismissMethodRef.current = 'back_button'; // Reset
-            };
-
-            window.addEventListener('popstate', handlePopState);
-
-            return () => {
-                window.removeEventListener('popstate', handlePopState);
-            };
-        }
-    }, [isMobileMenuOpen]);
-
-    useEffect(() => {
-        if (isDownloadMenuOpen) {
-            // Push a state to history so the back button can intercept it
-            window.history.pushState({ downloadMenuOpen: true }, '', window.location.href);
-
-            const handlePopState = () => {
-                // If back button is pressed, close the menu with animation
-                if (dismissMethodRef.current === 'back_button') { // Only if not already handled by outside/toggle
-                    // It is back button
-                }
-                closeDownloadMenu();
-            };
-
-            window.addEventListener('popstate', handlePopState);
-
-            return () => {
-                window.removeEventListener('popstate', handlePopState);
-            };
-        }
-    }, [isDownloadMenuOpen, closeDownloadMenu]);
-
-    useEffect(() => {
-        if (isLanguageMenuOpen) {
-            // Push a state to history so the back button can intercept it
-            window.history.pushState({ languageMenuOpen: true }, '', window.location.href);
-
-            const handlePopState = () => {
-                // If back button is pressed, close the menu with animation
-                closeLanguageMenu();
-            };
-
-            window.addEventListener('popstate', handlePopState);
-
-            return () => {
-                window.removeEventListener('popstate', handlePopState);
-            };
-        }
-    }, [isLanguageMenuOpen, closeLanguageMenu]);
+    useMenuCloseOnBack(isMobileMenuOpen, () => setIsMobileMenuOpen(false), 'mobile_menu', dismissMethodRef as any);
+    useMenuCloseOnBack(isDownloadMenuOpen, closeDownloadMenu, 'download_menu', dismissMethodRef as any);
+    useMenuCloseOnBack(isLanguageMenuOpen, closeLanguageMenu, 'language_menu', dismissMethodRef as any);
 
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
@@ -212,6 +185,8 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
             default: return baseUrl;
         }
     };
+
+    const { playStoreUrl, appStoreUrl } = useStoreLinks();
 
     const languages = [
         { code: 'en', label: t('language_en') },
@@ -311,7 +286,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                             }}>
                                 {isAppleDevice ? (
                                     <>
-                                        <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer" className="menu-item" style={{
+                                        <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" className="menu-item" style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '0.75rem',
@@ -329,34 +304,46 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             <AppleIcon size={20} />
                                             <span>{t('option_ios')}</span>
                                         </a>
-                                        <div className="menu-item-disabled" style={{
+                                        <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" className="menu-item" style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '0.75rem',
                                             padding: '0.75rem 1rem',
                                             borderRadius: '6px',
                                             color: 'var(--color-text)',
-                                            fontSize: '0.95rem'
-                                        }}>
+                                            fontSize: '0.95rem',
+                                            textDecoration: 'none',
+                                            transition: 'background-color 0.2s'
+                                        }}
+                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_menu' } })}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                                        >
                                             <AndroidIcon size={20} />
                                             <span>{t('option_android')}</span>
-                                        </div>
+                                        </a>
                                     </>
                                 ) : (
                                     <>
-                                        <div className="menu-item-disabled" style={{
+                                        <a href={playStoreUrl} target="_blank" rel="noopener noreferrer" className="menu-item" style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '0.75rem',
                                             padding: '0.75rem 1rem',
                                             borderRadius: '6px',
                                             color: 'var(--color-text)',
-                                            fontSize: '0.95rem'
-                                        }}>
+                                            fontSize: '0.95rem',
+                                            textDecoration: 'none',
+                                            transition: 'background-color 0.2s'
+                                        }}
+                                            onClick={() => logEvent({ name: 'download_click', params: { platform: 'android', origin: 'header_menu' } })}
+                                            onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
+                                            onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                                        >
                                             <AndroidIcon size={20} />
                                             <span>{t('option_android')}</span>
-                                        </div>
-                                        <a href="https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777" target="_blank" rel="noopener noreferrer" className="menu-item" style={{
+                                        </a>
+                                        <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" className="menu-item" style={{
                                             display: 'flex',
                                             alignItems: 'center',
                                             gap: '0.75rem',
