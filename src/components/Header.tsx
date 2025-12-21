@@ -2,7 +2,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
-import { InstagramIcon, AndroidIcon, AppleIcon } from './Icons';
+import { InstagramIcon, GooglePlayIcon, AppleIcon } from './Icons';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
 import { logEvent } from '../analytics';
@@ -318,7 +318,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
-                                            <AndroidIcon size={20} />
+                                            <GooglePlayIcon size={20} />
                                             <span>{t('option_android')}</span>
                                         </a>
                                     </>
@@ -339,7 +339,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                                             onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--color-surface-hover)'}
                                             onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
                                         >
-                                            <AndroidIcon size={20} />
+                                            <GooglePlayIcon size={20} />
                                             <span>{t('option_android')}</span>
                                         </a>
                                         <a href={appStoreUrl} target="_blank" rel="noopener noreferrer" className="menu-item" style={{

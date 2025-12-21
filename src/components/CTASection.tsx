@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { AppleIcon, AndroidIcon } from './Icons';
+import { AppleIcon, GooglePlayIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
 
 import { logEvent } from '../analytics';
@@ -88,7 +88,7 @@ export function CTASection() {
                                     <AppleIcon size={28} />
                                     <div style={{ textAlign: 'left' }}>
                                         <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('download_on_the')}</div>
-                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>App Store</div>
+                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>{t('option_ios')}</div>
                                     </div>
                                 </div>
                             </a>
@@ -119,10 +119,10 @@ export function CTASection() {
                                         fontWeight: 500,
                                     }}
                                 >
-                                    <AndroidIcon size={28} />
+                                    <GooglePlayIcon size={28} />
                                     <div style={{ textAlign: 'left' }}>
                                         <div style={{ fontSize: '0.7rem' }}>{t('get_it_on')}</div>
-                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>Google Play</div>
+                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>{t('option_android')}</div>
                                     </div>
                                 </div>
                             </a>
@@ -155,10 +155,10 @@ export function CTASection() {
                                         fontWeight: 500,
                                     }}
                                 >
-                                    <AndroidIcon size={28} />
+                                    <GooglePlayIcon size={28} />
                                     <div style={{ textAlign: 'left' }}>
                                         <div style={{ fontSize: '0.7rem' }}>{t('get_it_on')}</div>
-                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>Google Play</div>
+                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>{t('option_android')}</div>
                                     </div>
                                 </div>
                             </a>
@@ -192,7 +192,7 @@ export function CTASection() {
                                     <AppleIcon size={28} />
                                     <div style={{ textAlign: 'left' }}>
                                         <div style={{ fontSize: '0.7rem', opacity: 0.8 }}>{t('download_on_the')}</div>
-                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>App Store</div>
+                                        <div style={{ fontSize: '1.1rem', fontWeight: 600 }}>{t('option_ios')}</div>
                                     </div>
                                 </div>
                             </a>

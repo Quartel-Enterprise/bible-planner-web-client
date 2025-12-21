@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { AndroidIcon, AppleIcon } from './Icons';
+import { GooglePlayIcon, AppleIcon } from './Icons';
 
 import { useInView } from '../hooks/useInView';
 import { useStoreLinks } from '../hooks/useStoreLinks';
@@ -78,7 +78,7 @@ export function Hero() {
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
                 <AppleIcon size={28} />
-                <span>iOS</span>
+                <span>{t('option_ios')}</span>
               </a>
 
               {/* Android Button */}
@@ -92,8 +92,8 @@ export function Hero() {
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
-                <AndroidIcon size={28} />
-                <span>Android</span>
+                <GooglePlayIcon size={28} />
+                <span>{t('option_android')}</span>
               </a>
             </>
           ) : (
@@ -109,8 +109,8 @@ export function Hero() {
                 onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
-                <AndroidIcon size={28} />
-                <span>Android</span>
+                <GooglePlayIcon size={28} />
+                <span>{t('option_android')}</span>
               </a>
 
               {/* iOS Button */}
@@ -125,7 +125,7 @@ export function Hero() {
                 onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
               >
                 <AppleIcon size={28} />
-                <span>iOS</span>
+                <span>{t('option_ios')}</span>
               </a>
             </>
           )}
