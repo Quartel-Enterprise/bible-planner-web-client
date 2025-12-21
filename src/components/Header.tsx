@@ -1,9 +1,10 @@
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
 import { InstagramIcon, AndroidIcon, AppleIcon } from './Icons';
 import { useStoreLinks } from '../hooks/useStoreLinks';
+import { useDeviceDetection } from '../hooks/useDeviceDetection';
 import { logEvent } from '../analytics';
 
 interface HeaderProps {
@@ -46,10 +47,8 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const isAppleDevice = useMemo(() => {
-        const userAgent = navigator.userAgent.toLowerCase();
-        return /macintosh|mac os x|iphone|ipad|ipod/.test(userAgent);
-    }, []);
+    const { isApple } = useDeviceDetection();
+    const isAppleDevice = isApple;
 
     const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);

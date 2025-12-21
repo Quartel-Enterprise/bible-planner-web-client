@@ -1,21 +1,17 @@
 import { useTranslation } from 'react-i18next';
 import { AppleIcon, AndroidIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
-import { useMemo } from 'react';
+
 import { logEvent } from '../analytics';
 import { useStoreLinks } from '../hooks/useStoreLinks';
+import { useDeviceDetection } from '../hooks/useDeviceDetection';
 
 export function CTASection() {
     const { t } = useTranslation();
     const { ref, isInView } = useInView({ threshold: 0.1 });
 
-    const isAppleDevice = useMemo(() => {
-        const userAgent = navigator.userAgent.toLowerCase();
-        return /macintosh|mac os x|iphone|ipad|ipod/.test(userAgent);
-    }, []);
-
-
-
+    const { isApple } = useDeviceDetection();
+    const isAppleDevice = isApple;
     const { playStoreUrl, appStoreUrl } = useStoreLinks();
 
     return (
