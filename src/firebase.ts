@@ -22,7 +22,7 @@ const remoteConfig = getRemoteConfig(app);
 // Set minimum fetch interval to 0 for development, otherwise default is 12 hours
 remoteConfig.settings.minimumFetchIntervalMillis = 10000; // 10 seconds for dev / debug purposes
 remoteConfig.defaultConfig = {
-    show_instagram: true,
+    show_instagram: false,
 };
 
 export { app, analytics, remoteConfig };
