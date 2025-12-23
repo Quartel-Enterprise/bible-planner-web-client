@@ -7,17 +7,25 @@ export const useStoreLinks = () => {
     const playStoreUrl = useMemo(() => {
         const lang = (i18n.language || 'en').split('-')[0];
         const baseUrl = 'https://play.google.com/store/apps/details?id=com.quare.bibleplanner';
-        if (lang === 'pt') return `${baseUrl}&hl=pt-BR`;
-        if (lang === 'es') return `${baseUrl}&hl=es`;
-        return baseUrl;
+
+        switch (lang) {
+            case 'pt': return `${baseUrl}&hl=pt-BR`; // Brazil
+            case 'es': return `${baseUrl}&hl=es`;    // Spanish (Generic)
+            case 'en': return `${baseUrl}&hl=en`;    // English
+            default: return baseUrl;
+        }
     }, [i18n.language]);
 
     const appStoreUrl = useMemo(() => {
         const lang = (i18n.language || 'en').split('-')[0];
         const baseUrl = 'https://apps.apple.com/us/app/bible-planner-reading-plans/id6756151777';
-        if (lang === 'pt') return baseUrl.replace('/us/', '/br/');
-        if (lang === 'es') return baseUrl.replace('/us/', '/es/');
-        return baseUrl;
+
+        // Base URL is already US (English)
+        switch (lang) {
+            case 'pt': return baseUrl.replace('/us/', '/br/'); // Brazil
+            case 'es': return baseUrl.replace('/us/', '/es/'); // Spain/Latin America
+            default: return baseUrl;
+        }
     }, [i18n.language]);
 
     return { playStoreUrl, appStoreUrl };

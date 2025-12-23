@@ -14,6 +14,7 @@ const Footer = lazy(() => import('./components/Footer').then(module => ({ defaul
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(module => ({ default: module.TermsOfService })));
+const StoreRedirectStub = lazy(() => import('./components/StoreRedirect').then(module => ({ default: module.StoreRedirect })));
 
 function LanguageRedirect({ to }: { to?: string }) {
   const navigate = useNavigate();
@@ -127,6 +128,8 @@ function AppContent() {
           <Route path="" element={<><div className="hero-preview-container"><Hero /><AppPreview /></div><Suspense fallback={null}><Features /></Suspense><Suspense fallback={null}><CTASection /></Suspense></>} />
           <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
           <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
+          <Route path="download/ios" element={<Suspense fallback={<div>Redirecting...</div>}><StoreRedirectStub platform="ios" /></Suspense>} />
+          <Route path="download/android" element={<Suspense fallback={<div>Redirecting...</div>}><StoreRedirectStub platform="android" /></Suspense>} />
         </Routes>
       </main>
       <Suspense fallback={null}><Footer onNavigate={handleNavigate} /></Suspense>
@@ -142,6 +145,8 @@ function App() {
         <Route path="/" element={<LanguageRedirect />} />
         <Route path="/privacy" element={<LanguageRedirect to="privacy" />} />
         <Route path="/terms" element={<LanguageRedirect to="terms" />} />
+        <Route path="/download/ios" element={<LanguageRedirect to="download/ios" />} />
+        <Route path="/download/android" element={<LanguageRedirect to="download/android" />} />
 
         {/* Language-specific routes */}
         <Route path="/:lang/*" element={<AppContent />} />
