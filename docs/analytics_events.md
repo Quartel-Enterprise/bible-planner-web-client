@@ -24,10 +24,12 @@ This document describes the custom analytics events implemented in the Bible Pla
 | **`social_click`** | Triggered when user clicks a social media link. | Click on Instagram icon/link. | `platform` (string): 'instagram'.<br>`origin` (string): 'header_desktop', 'mobile_menu'. |
 | **`language_change`** | Triggered when user switches language. | Language button click. | `language` (string): Language code (e.g., 'en', 'pt', 'es'). |
 | **`theme_change`** | Triggered when user switches theme. | Theme toggle click. | `theme` (string): 'light' or 'dark'. |
+| **`traffic_source`** | Triggered when a user visits with UTM parameters. | App load or route change with `utm_source` present. | `source` (string): UTM source.<br>`medium` (string, optional): UTM medium.<br>`campaign` (string, optional): UTM campaign.<br>`term` (string, optional): UTM term.<br>`content` (string, optional): UTM content. |
 
 ## Implementation Details
 
 - **Page Views**: Implemented via a `useEffect` hook in `App.tsx` that listens for location changes using `react-router-dom`'s `useLocation`.
+- **Traffic Source**: Implemented directly in `App.tsx`. Parses URL query parameters for standard UTM tags (`utm_source`, `utm_medium`, etc.) and logs a `traffic_source` event if found. Query parameters are preserved during language redirects.
 - **Menu Tracking**: Uses a `dismissMethodRef` to accurately capture the closure method (`back_button`, `click_outside`, etc.), interacting with the browser's History API (`pushState`/`popstate`).
 - **Video Tracking**: Uses the YouTube IFrame Player API to track precise playback states and progress.
 - **Download Confirmation**: Logic is centralized in `useDownloadConfirmation` hook, which intercepts `onClick` events for download buttons.

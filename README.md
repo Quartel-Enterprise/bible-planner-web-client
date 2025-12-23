@@ -16,6 +16,7 @@ A modern, multilingual landing page for the Bible Planner mobile application. Bu
 - ♿ **Accessible** - Follows web accessibility best practices
 - 🔒 **Privacy-First** - Dedicated privacy policy page
 - 📲 **Smart Platform Detection** - Automatically prioritizes iOS/Android buttons based on user's device
+- 📈 **UTM Tracking** - Built-in support for tracking traffic sources via standard UTM parameters
 
 ## 🛠️ Tech Stack
 
