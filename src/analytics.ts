@@ -39,7 +39,7 @@ export const logEvent = (event: AnalyticsEvent) => {
             console.log(`[Analytics] ${event.name}`, event.params);
         }
 
-        if (analytics) {
+        if (import.meta.env.PROD && analytics) {
             firebaseLogEvent(analytics, event.name as string, event.params as any);
         }
     } catch (error) {
