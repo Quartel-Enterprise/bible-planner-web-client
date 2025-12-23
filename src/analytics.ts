@@ -20,7 +20,17 @@ export type AnalyticsEvent =
     | { name: 'download_confirmation_view', params: { current_platform: string; clicked_store: string; recommended_store: string } }
     | { name: 'download_confirmation_confirm', params: { recommended_store: string } }
     | { name: 'download_confirmation_continue', params: { clicked_store: string } }
-    | { name: 'download_confirmation_dismiss', params: { method?: string } };
+    | { name: 'download_confirmation_dismiss', params: { method?: string } }
+    | {
+        name: 'traffic_source',
+        params: {
+            source: string;
+            medium?: string;
+            campaign?: string;
+            term?: string;
+            content?: string;
+        }
+    };
 
 export const logEvent = (event: AnalyticsEvent) => {
     try {

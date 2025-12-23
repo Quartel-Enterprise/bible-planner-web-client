@@ -30,7 +30,8 @@ function LanguageRedirect({ to }: { to?: string }) {
     }
 
     // Redirect to detected language
-    const targetPath = to ? `/${targetLang}/${to}` : `/${targetLang}`;
+    const search = window.location.search;
+    const targetPath = to ? `/${targetLang}/${to}${search}` : `/${targetLang}${search}`;
     navigate(targetPath, { replace: true });
   }, [navigate, to]);
 
@@ -82,6 +83,25 @@ function AppContent() {
       }
     });
   }, [t, i18n.language, location.pathname]); // Added pathname dependency to re-run on route change
+
+  // Log UTM parameters
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const utmSource = searchParams.get('utm_source');
+
+    if (utmSource) {
+      logEvent({
+        name: 'traffic_source',
+        params: {
+          source: utmSource,
+          medium: searchParams.get('utm_medium') || undefined,
+          campaign: searchParams.get('utm_campaign') || undefined,
+          term: searchParams.get('utm_term') || undefined,
+          content: searchParams.get('utm_content') || undefined
+        }
+      });
+    }
+  }, [location.search]);
 
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
