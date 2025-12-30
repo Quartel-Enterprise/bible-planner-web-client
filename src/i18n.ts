@@ -36,7 +36,14 @@ const resources = {
       "modal_title": "Choose your store",
       "modal_message": "We noticed you're on {{currentPlatform}}. For the best experience, we recommend downloading from {{recommendedStore}}.",
       "modal_confirm": "Go to {{recommendedStore}}",
-      "modal_cancel": "Continue to {{clickedStore}}"
+      "modal_cancel": "Continue to {{clickedStore}}",
+      "open_source": "Open Source",
+      "open_source_title": "Open Source Project",
+      "open_source_message": "Bible Planner is an open source project and contributions are welcome!",
+      "open_source_warning": "The commercial sale of this software or its source code is strictly prohibited without prior authorization.",
+      "mobile_client": "Mobile Client",
+      "web_client": "Web Client",
+      "view_on_github": "View on GitHub"
     }
   },
   pt: {
@@ -72,7 +79,14 @@ const resources = {
       "modal_title": "Escolha sua loja",
       "modal_message": "Notamos que você está no {{currentPlatform}}. Para a melhor experiência, recomendamos baixar na {{recommendedStore}}.",
       "modal_confirm": "Ir para {{recommendedStore}}",
-      "modal_cancel": "Continuar para {{clickedStore}}"
+      "modal_cancel": "Continuar para {{clickedStore}}",
+      "open_source": "Código Aberto",
+      "open_source_title": "Projeto de Código Aberto",
+      "open_source_message": "O Bible Planner é um projeto de código aberto e contribuições são bem-vindas!",
+      "open_source_warning": "A venda comercial deste software ou de seu código-fonte é estritamente proibida sem autorização prévia.",
+      "mobile_client": "Cliente Mobile",
+      "web_client": "Cliente Web",
+      "view_on_github": "Ver no GitHub"
     }
   },
   es: {
@@ -108,7 +122,14 @@ const resources = {
       "modal_title": "Elige tu tienda",
       "modal_message": "Notamos que estás en {{currentPlatform}}. Para la mejor experiencia, recomendamos descargar desde {{recommendedStore}}.",
       "modal_confirm": "Ir a {{recommendedStore}}",
-      "modal_cancel": "Continuar a {{clickedStore}}"
+      "modal_cancel": "Continuar a {{clickedStore}}",
+      "open_source": "Código Abierto",
+      "open_source_title": "Proyecto de Código Abierto",
+      "open_source_message": "Bible Planner es un proyecto de código abierto y las contribuciones son bienvenidas!",
+      "open_source_warning": "La venta comercial de este software o de su código fuente está estrictamente prohibida sin autorización previa.",
+      "mobile_client": "Cliente Móvil",
+      "web_client": "Cliente Web",
+      "view_on_github": "Ver en GitHub"
     }
   }
 };

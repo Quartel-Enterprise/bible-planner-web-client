@@ -14,6 +14,7 @@ const Footer = lazy(() => import('./components/Footer').then(module => ({ defaul
 
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy').then(module => ({ default: module.PrivacyPolicy })));
 const TermsOfService = lazy(() => import('./components/TermsOfService').then(module => ({ default: module.TermsOfService })));
+const OpenSource = lazy(() => import('./components/OpenSource').then(module => ({ default: module.OpenSource })));
 const StoreRedirectStub = lazy(() => import('./components/StoreRedirect').then(module => ({ default: module.StoreRedirect })));
 
 function LanguageRedirect({ to }: { to?: string }) {
@@ -71,6 +72,8 @@ function AppContent() {
       document.title = `${t('privacy_policy')} - ${t('app_title')}`;
     } else if (path.includes('/terms')) {
       document.title = `${t('terms_of_service')} - ${t('app_title')}`;
+    } else if (path.includes('/open-source')) {
+      document.title = `${t('open_source')} - ${t('app_title')}`;
     } else {
       document.title = t('app_title');
     }
@@ -108,12 +111,14 @@ function AppContent() {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
 
-  const handleNavigate = (page: 'home' | 'privacy' | 'terms') => {
+  const handleNavigate = (page: 'home' | 'privacy' | 'terms' | 'open-source') => {
     const currentLang = i18n.language.split('-')[0];
     if (page === 'home') {
       navigate(`/${currentLang}`);
     } else if (page === 'privacy') {
       navigate(`/${currentLang}/privacy`);
+    } else if (page === 'open-source') {
+      navigate(`/${currentLang}/open-source`);
     } else {
       navigate(`/${currentLang}/terms`);
     }
@@ -128,6 +133,7 @@ function AppContent() {
           <Route path="" element={<><div className="hero-preview-container"><Hero /><AppPreview /></div><Suspense fallback={null}><Features /></Suspense><Suspense fallback={null}><CTASection /></Suspense></>} />
           <Route path="privacy" element={<Suspense fallback={<div>Loading...</div>}><PrivacyPolicy /></Suspense>} />
           <Route path="terms" element={<Suspense fallback={<div>Loading...</div>}><TermsOfService /></Suspense>} />
+          <Route path="open-source" element={<Suspense fallback={<div>Loading...</div>}><OpenSource /></Suspense>} />
           <Route path="download/ios" element={<Suspense fallback={<div>Redirecting...</div>}><StoreRedirectStub platform="ios" /></Suspense>} />
           <Route path="download/android" element={<Suspense fallback={<div>Redirecting...</div>}><StoreRedirectStub platform="android" /></Suspense>} />
         </Routes>
@@ -145,6 +151,7 @@ function App() {
         <Route path="/" element={<LanguageRedirect />} />
         <Route path="/privacy" element={<LanguageRedirect to="privacy" />} />
         <Route path="/terms" element={<LanguageRedirect to="terms" />} />
+        <Route path="/open-source" element={<LanguageRedirect to="open-source" />} />
         <Route path="/download/ios" element={<LanguageRedirect to="download/ios" />} />
         <Route path="/download/android" element={<LanguageRedirect to="download/android" />} />
 

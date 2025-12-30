@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
+import { Moon, Sun, Globe, Menu, X, Download, Github } from 'lucide-react';
 import { InstagramIcon, GooglePlayIcon, AppleIcon } from './Icons';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
@@ -12,14 +12,14 @@ import { logEvent } from '../analytics';
 interface HeaderProps {
     theme: 'light' | 'dark';
     toggleTheme: () => void;
-    onNavigate: (page: 'home' | 'privacy') => void;
+    onNavigate: (page: 'home' | 'privacy' | 'open-source') => void;
 }
 
 const useMenuCloseOnBack = (
     isOpen: boolean,
     closeMenu: () => void,
     menuId: string,
-    dismissMethodRef: React.MutableRefObject<string>
+    dismissMethodRef: React.MutableRefObject<'back_button' | 'toggle_button' | 'click_outside' | 'navigation' | 'close_icon'>
 ) => {
     useEffect(() => {
         if (isOpen) {
@@ -173,9 +173,9 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
         if (isMobileMenuOpen) setIsMobileMenuOpen(false);
     };
 
-    useMenuCloseOnBack(isMobileMenuOpen, () => setIsMobileMenuOpen(false), 'mobile_menu', dismissMethodRef as any);
-    useMenuCloseOnBack(isDownloadMenuOpen, closeDownloadMenu, 'download_menu', dismissMethodRef as any);
-    useMenuCloseOnBack(isLanguageMenuOpen, closeLanguageMenu, 'language_menu', dismissMethodRef as any);
+    useMenuCloseOnBack(isMobileMenuOpen, () => setIsMobileMenuOpen(false), 'mobile_menu', dismissMethodRef);
+    useMenuCloseOnBack(isDownloadMenuOpen, closeDownloadMenu, 'download_menu', dismissMethodRef);
+    useMenuCloseOnBack(isLanguageMenuOpen, closeLanguageMenu, 'language_menu', dismissMethodRef);
 
     // Get the base language (e.g., 'pt-BR' -> 'pt') to match our resources keys
     const currentLang = i18n.language.split('-')[0];
@@ -470,6 +470,26 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
 
                         <button
                             onClick={() => {
+                                logEvent({ name: 'navigation_click', params: { target: 'open_source' } });
+                                onNavigate('open-source');
+                            }}
+                            style={{
+                                background: 'transparent',
+                                border: 'none',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                                padding: '0.5rem',
+                                color: 'var(--color-text-secondary)'
+                            }}
+                            aria-label="Open Source"
+                        >
+                            <Github size={20} />
+                        </button>
+
+                        <button
+                            onClick={() => {
                                 toggleTheme();
                                 logEvent({ name: 'theme_change', params: { theme: theme === 'light' ? 'dark' : 'light' } });
                             }}
@@ -608,6 +628,30 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                 </button>
 
                 <div style={{ borderTop: '1px solid var(--color-border)', margin: '0.5rem 0' }} />
+
+                <button
+                    onClick={() => {
+                        logEvent({ name: 'navigation_click', params: { target: 'open_source', origin: 'mobile_menu' } });
+                        navigate(`/${currentLang}/open-source`);
+                        setIsMobileMenuOpen(false);
+                    }}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.75rem',
+                        padding: '0.75rem',
+                        borderRadius: '8px',
+                        backgroundColor: 'var(--color-surface)',
+                        border: 'none',
+                        cursor: 'pointer',
+                        color: 'var(--color-text)',
+                        fontSize: '1rem',
+                        textAlign: 'left'
+                    }}
+                >
+                    <Github size={20} />
+                    <span>{t('open_source')}</span>
+                </button>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     <button onClick={() => {
