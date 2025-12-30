@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Moon, Sun, Globe, Menu, X, Download, Github } from 'lucide-react';
-import { InstagramIcon, GooglePlayIcon, AppleIcon } from './Icons';
+import { Moon, Sun, Globe, Menu, X, Download } from 'lucide-react';
+import { InstagramIcon, GooglePlayIcon, AppleIcon, GithubIcon } from './Icons';
 import { useStoreLinks } from '../hooks/useStoreLinks';
 import { useDeviceDetection } from '../hooks/useDeviceDetection';
 import { useDownloadConfirmation } from '../hooks/useDownloadConfirmation';
@@ -485,7 +485,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                             }}
                             aria-label="Open Source"
                         >
-                            <Github size={20} />
+                            <GithubIcon size={20} />
                         </button>
 
                         <button
@@ -649,7 +649,7 @@ export function Header({ theme, toggleTheme, onNavigate }: HeaderProps) {
                         textAlign: 'left'
                     }}
                 >
-                    <Github size={20} />
+                    <GithubIcon size={20} />
                     <span>{t('open_source')}</span>
                 </button>
 
