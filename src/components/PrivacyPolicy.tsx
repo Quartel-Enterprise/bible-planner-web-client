@@ -7,7 +7,7 @@ export function PrivacyPolicy() {
     const content = {
         pt: {
             title: "Política de Privacidade",
-            lastUpdate: "Última atualização: 2 de dezembro de 2025",
+            lastUpdate: "Última atualização: 7 de janeiro de 2026",
             sections: [
                 {
                     title: "1. Introdução",
@@ -26,7 +26,15 @@ export function PrivacyPolicy() {
                             ]
                         },
                         {
-                            title: "2.2 Dados que NÃO Coletamos",
+                            title: "2.2 Dados de Assinatura (Opcional)",
+                            content: "Se você optar por assinar o Bible Planner Pro, as transações são processadas através da Apple App Store ou Google Play Store. O Bible Planner utiliza o RevenueCat para gerenciar o status da sua assinatura.",
+                            list: [
+                                "Não coletamos nem armazenamos detalhes de pagamento ou cartões de crédito.",
+                                "Apenas recebemos confirmação de que sua assinatura está ativa para desbloquear recursos Pro."
+                            ]
+                        },
+                        {
+                            title: "2.3 Dados que NÃO Coletamos",
                             content: "O Bible Planner NÃO coleta, armazena ou transmite:",
                             list: [
                                 "Informações pessoais identificáveis (nome, e-mail, telefone, endereço)",
@@ -35,7 +43,7 @@ export function PrivacyPolicy() {
                                 "Dados de navegação na internet",
                                 "Informações de outros aplicativos",
                                 "Dados biométricos",
-                                "Informações financeiras ou de pagamento"
+                                "Informações financeiras diretas (processadas pelas lojas de aplicativos)"
                             ]
                         }
                     ]
@@ -64,7 +72,11 @@ export function PrivacyPolicy() {
                 },
                 {
                     title: "5. Compartilhamento de Dados",
-                    content: "O Bible Planner não compartilha, vende ou transfere seus dados para terceiros."
+                    content: "O Bible Planner não vende seus dados. Compartilhamos apenas informações anônimas e técnicas necessárias para o funcionamento do aplicativo com:",
+                    list: [
+                        "RevenueCat: Para gerenciamento de assinaturas e validação de compras.",
+                        "Lojas de Aplicativos (Apple/Google): Para processamento de pagamentos."
+                    ]
                 },
                 {
                     title: "Resumo",
@@ -75,7 +87,7 @@ export function PrivacyPolicy() {
         },
         en: {
             title: "Privacy Policy",
-            lastUpdate: "Last updated: December 2, 2025",
+            lastUpdate: "Last updated: January 7, 2026",
             sections: [
                 {
                     title: "1. Introduction",
@@ -94,7 +106,15 @@ export function PrivacyPolicy() {
                             ]
                         },
                         {
-                            title: "2.2 Data We DO NOT Collect",
+                            title: "2.2 Subscription Data (Optional)",
+                            content: "If you choose to subscribe to Bible Planner Pro, transactions are processed through the Apple App Store or Google Play Store. Bible Planner uses RevenueCat to manage your subscription status.",
+                            list: [
+                                "We do not collect or store payment details or credit cards.",
+                                "We only receive confirmation that your subscription is active to unlock Pro features."
+                            ]
+                        },
+                        {
+                            title: "2.3 Data We DO NOT Collect",
                             content: "Bible Planner DOES NOT collect, store, or transmit:",
                             list: [
                                 "Personally identifiable information (name, email, phone, address)",
@@ -103,7 +123,7 @@ export function PrivacyPolicy() {
                                 "Internet browsing data",
                                 "Information from other apps",
                                 "Biometric data",
-                                "Financial or payment information"
+                                "Direct financial information (processed by app stores)"
                             ]
                         }
                     ]
@@ -132,7 +152,11 @@ export function PrivacyPolicy() {
                 },
                 {
                     title: "5. Data Sharing",
-                    content: "Bible Planner does not share, sell, or transfer your data to third parties."
+                    content: "Bible Planner does not sell your data. We only share anonymous and technical information necessary for the app to function with:",
+                    list: [
+                        "RevenueCat: For subscription management and purchase validation.",
+                        "App Stores (Apple/Google): For payment processing."
+                    ]
                 },
                 {
                     title: "Summary",
@@ -143,7 +167,7 @@ export function PrivacyPolicy() {
         },
         es: {
             title: "Política de Privacidad",
-            lastUpdate: "Última actualización: 2 de diciembre de 2025",
+            lastUpdate: "Última actualización: 7 de enero de 2026",
             sections: [
                 {
                     title: "1. Introducción",
@@ -162,7 +186,15 @@ export function PrivacyPolicy() {
                             ]
                         },
                         {
-                            title: "2.2 Datos que NO Recopilamos",
+                            title: "2.2 Datos de Suscripción (Opcional)",
+                            content: "Si optas por suscribirte a Bible Planner Pro, as transacciones se procesan a través de Apple App Store o Google Play Store. Bible Planner utiliza RevenueCat para gestionar el estado de tu suscripción.",
+                            list: [
+                                "No recopilamos ni almacenamos detalles de pago o tarjetas de crédito.",
+                                "Solo recibimos confirmación de que tu suscripción está activa para desbloquear funciones Pro."
+                            ]
+                        },
+                        {
+                            title: "2.3 Datos que NO Recopilamos",
                             content: "Bible Planner NO recopila, almacena ni transmite:",
                             list: [
                                 "Información personal identificable (nombre, correo, teléfono, dirección)",
@@ -171,7 +203,7 @@ export function PrivacyPolicy() {
                                 "Datos de navegación por internet",
                                 "Información de otras aplicaciones",
                                 "Datos biométricos",
-                                "Información financiera o de pago"
+                                "Información financiera directa (procesada por las tiendas de aplicaciones)"
                             ]
                         }
                     ]
@@ -200,7 +232,11 @@ export function PrivacyPolicy() {
                 },
                 {
                     title: "5. Compartir Datos",
-                    content: "Bible Planner no comparte, vende ni transfiere sus datos a terceros."
+                    content: "Bible Planner no vende sus datos. Solo compartimos información anónima y técnica necesaria para que la aplicación funcione con:",
+                    list: [
+                        "RevenueCat: Para la gestión de suscripciones y validación de compras.",
+                        "Tiendas de Aplicaciones (Apple/Google): Para el procesamiento de pagos."
+                    ]
                 },
                 {
                     title: "Resumen",
