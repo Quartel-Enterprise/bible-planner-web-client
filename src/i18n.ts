@@ -19,7 +19,7 @@ const resources = {
       "offline_first": "Always Available",
       "offline_first_desc": "Your devotionals, anywhere. Access your plans and progress offline, with zero distractions.",
 
-      "download_suggestion": "Ready to dive deeper? Get the app now.",
+      "download_suggestion": "Ready to dive deeper? <highlight>Download the app for free</highlight> now.",
       "privacy_policy": "Privacy Policy",
       "terms_of_service": "Terms of Service",
       "language": "Language",
@@ -63,7 +63,7 @@ const resources = {
       "offline_first": "Sempre Disponível",
       "offline_first_desc": "Seus devocionais, em qualquer lugar. Acesse seus planos e progresso offline, sem distrações.",
 
-      "download_suggestion": "Pronto para mergulhar mais fundo? Baixe o app agora.",
+      "download_suggestion": "Pronto para mergulhar mais fundo? <highlight>Baixe o app gratuitamente</highlight> agora.",
       "privacy_policy": "Política de Privacidade",
       "terms_of_service": "Termos de Serviço",
       "language": "Idioma",
@@ -107,7 +107,7 @@ const resources = {
       "offline_first": "Siempre Disponible",
       "offline_first_desc": "Tus devocionales, en cualquier lugar. Accede a tus planes y progreso sin conexión, sin distracciones.",
 
-      "download_suggestion": "¿Listo para profundizar? Obtén la aplicación ahora.",
+      "download_suggestion": "¿Listo para profundizar? <highlight>Descarga la aplicación gratis</highlight> ahora.",
       "privacy_policy": "Política de Privacidad",
       "terms_of_service": "Términos de Servicio",
       "language": "Idioma",

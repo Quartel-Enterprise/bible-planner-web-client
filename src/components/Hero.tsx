@@ -1,4 +1,4 @@
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { GooglePlayIcon, AppleIcon } from './Icons';
 
 import { useInView } from '../hooks/useInView';
@@ -61,8 +61,13 @@ export function Hero() {
           {t('app_description')}
         </p>
 
-        <p className={`delay-200 ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`} style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.5rem', color: 'var(--color-text)' }}>
-          {t('download_suggestion')}
+        <p className={`delay-200 ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`} style={{ fontSize: '1.1rem', marginBottom: '1.5rem', color: 'var(--color-text)' }}>
+          <Trans
+            i18nKey="download_suggestion"
+            components={{
+              highlight: <span style={{ color: 'var(--color-primary)', fontWeight: 700 }} />
+            }}
+          />
         </p>
 
         <div className={`delay-300 download-buttons-container ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`} style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', marginBottom: '2rem', flexWrap: 'wrap' }}>
