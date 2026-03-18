@@ -44,7 +44,9 @@ const resources = {
       "open_source_warning": "The commercial sale of this software or its source code is strictly prohibited without prior authorization.",
       "mobile_client": "Mobile Client",
       "web_client": "Web Client",
-      "view_on_github": "View on GitHub"
+      "view_on_github": "View on GitHub",
+      "bible_versions": "Bible Versions",
+      "check_out_bible_versions": "Bible Versions Repository"
     }
   },
   pt: {
@@ -88,7 +90,9 @@ const resources = {
       "open_source_warning": "A venda comercial deste software ou de seu código-fonte é estritamente proibida sem autorização prévia.",
       "mobile_client": "Cliente Mobile",
       "web_client": "Cliente Web",
-      "view_on_github": "Ver no GitHub"
+      "view_on_github": "Ver no GitHub",
+      "bible_versions": "Versões da Bíblia",
+      "check_out_bible_versions": "Repositório de Versões da Bíblia"
     }
   },
   es: {
@@ -132,7 +136,9 @@ const resources = {
       "open_source_warning": "La venta comercial de este software o de su código fuente está estrictamente prohibida sin autorización previa.",
       "mobile_client": "Cliente Móvil",
       "web_client": "Cliente Web",
-      "view_on_github": "Ver en GitHub"
+      "view_on_github": "Ver en GitHub",
+      "bible_versions": "Versiones de la Biblia",
+      "check_out_bible_versions": "Repositorio de Versiones de la Biblia"
     }
   }
 };

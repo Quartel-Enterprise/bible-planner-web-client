@@ -65,7 +65,15 @@ export function Hero() {
           <Trans
             i18nKey="download_suggestion"
             components={{
-              highlight: <span style={{ color: 'var(--color-primary)', fontWeight: 700 }} />
+              highlight: <a
+                href={isApple ? appStoreUrl : playStoreUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => logEvent({ name: 'download_suggestion_click', params: { platform: isApple ? 'ios' : 'android' } })}
+                style={{ color: 'var(--color-primary)', fontWeight: 700, textDecoration: 'none', cursor: 'pointer' }}
+                onMouseEnter={(e) => e.currentTarget.style.textDecoration = 'underline'}
+                onMouseLeave={(e) => e.currentTarget.style.textDecoration = 'none'}
+              />
             }}
           />
         </p>

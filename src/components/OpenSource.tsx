@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { Smartphone, Globe, AlertTriangle } from 'lucide-react';
 import { GithubIcon } from './Icons';
 import { useInView } from '../hooks/useInView';
+import { logEvent } from '../analytics';
 
 export function OpenSource() {
     const { t } = useTranslation();
@@ -12,11 +13,13 @@ export function OpenSource() {
             icon: <Smartphone size={40} />,
             title: t('mobile_client'),
             link: 'https://github.com/Quartel-Enterprise/bible-planner-mobile-client',
+            trackId: 'mobile'
         },
         {
             icon: <Globe size={40} />,
             title: t('web_client'),
             link: 'https://github.com/Quartel-Enterprise/bible-planner-web-client',
+            trackId: 'web'
         }
     ];
 
@@ -50,6 +53,13 @@ export function OpenSource() {
                             rel="noopener noreferrer"
                             className={`open-source-card ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`}
                             style={{ animationDelay: `${index * 0.1}s` }}
+                            onClick={() => logEvent({ 
+                                name: 'social_click', 
+                                params: { 
+                                    platform: 'github', 
+                                    origin: `open_source_${project.trackId}` 
+                                } 
+                            })}
                         >
                             <div style={{ color: 'var(--color-primary)', marginBottom: '1rem' }}>
                                 {project.icon}
@@ -61,6 +71,25 @@ export function OpenSource() {
                             </div>
                         </a>
                     ))}
+                </div>
+
+                <div className={`open-source-footer ${isInView ? 'animate-slide-up' : 'animate-slide-up-initial'}`} style={{ animationDelay: '0.3s' }}>
+                    <a
+                        href="https://github.com/Quartel-Enterprise/bible-versions/tree/main"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="open-source-link-container"
+                        onClick={() => logEvent({ 
+                            name: 'social_click', 
+                            params: { 
+                                platform: 'github', 
+                                origin: 'open_source_bible_versions' 
+                            } 
+                        })}
+                    >
+                        <GithubIcon size={20} />
+                        <span>{t('check_out_bible_versions')}</span>
+                    </a>
                 </div>
             </div>
         </section>
