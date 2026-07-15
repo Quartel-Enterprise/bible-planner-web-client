@@ -7,7 +7,7 @@ export function TermsOfService() {
     const content = {
         en: {
             title: "Terms of Service",
-            lastUpdate: "Last Updated: January 7, 2026",
+            lastUpdate: "Last Updated: July 14, 2026",
             sections: [
                 {
                     title: "1. Acceptance of Terms",
@@ -15,65 +15,87 @@ export function TermsOfService() {
                 },
                 {
                     title: "2. Description of Service",
-                    content: "Bible Planner is a mobile and desktop application designed to help you plan and track your Bible reading progress. The App provides:",
+                    content: "Bible Planner is a mobile, desktop, and web application designed to help you plan and track your Bible reading progress. The App provides:",
                     list: [
-                        "Reading Plans: Multiple reading plan types including books order and chronological order",
-                        "Progress Tracking: Track reading progress at the book, chapter, and verse level",
+                        "Reading Plans: multiple reading plan types, including books order and chronological order",
+                        "Progress Tracking: track reading progress at the book, chapter, and verse level",
                         "Weekly Organization: 52-week reading plans with weekly breakdowns",
-                        "Theme Customization: Light and dark themes, Material You dynamic colors support, and custom theme selection",
-                        "Multi-platform Support: Available on Android, iOS, and Web",
-                        "Local Data Storage: All data is stored locally on your device",
-                        "Pro Features (Optional Subscription):",
-                        " - Create Unlimited Notes (Free plan limited to 3 notes)",
+                        "Personal Notes: create notes on reading plan days (free plan includes a limited number of notes; Pro removes this limit)",
+                        "Bible Version Downloads: download and manage multiple Bible translations for offline reading",
+                        "AI Daily Study (Pro Feature): AI-generated devotional content for the day's reading, with a limited number of free uses",
+                        "Account and Sync (Optional): sign in with Google or Apple to sync your progress and preferences across devices, and manage connected devices",
+                        "Theme Customization: light and dark themes, Material You dynamic colors support, and custom theme selection",
+                        "Multi-platform Support: available on Android, iOS, Web, and Desktop"
                     ]
                 },
                 {
-                    title: "3. Subscriptions and Payments",
+                    title: "3. Accounts and Sign-In",
                     subsections: [
                         {
-                            title: "3.1 Pro Subscription",
+                            title: "3.1 Optional Sign-In",
+                            content: "Signing in with Google or Apple is optional. Without an account, the App works fully with data stored locally on your device. Signing in enables syncing your reading progress, notes, and favorites across your devices, and unlocks the AI Daily Study feature."
+                        },
+                        {
+                            title: "3.2 Account Responsibility",
+                            list: [
+                                "You are responsible for maintaining the confidentiality of your Google or Apple account credentials",
+                                "You are responsible for all activity that occurs through your account",
+                                "You may view and remotely sign out devices connected to your account through the App's Account Details screen"
+                            ]
+                        },
+                        {
+                            title: "3.3 Account Deletion",
+                            content: "You may request deletion of your account and associated cloud data at any time by contacting us as described in our Privacy Policy. We do not currently offer automatic in-app account deletion."
+                        }
+                    ]
+                },
+                {
+                    title: "4. Subscriptions and Payments",
+                    subsections: [
+                        {
+                            title: "4.1 Pro Subscription",
                             content: "Bible Planner offers an optional 'Pro' subscription with additional features. Subscriptions are available on a monthly or annual basis."
                         },
                         {
-                            title: "3.2 Payment Processing",
+                            title: "4.2 Payment Processing",
                             content: "All payments are processed through the Apple App Store or Google Play Store. We use RevenueCat to manage and validate your subscription status."
                         },
                         {
-                            title: "3.3 Management and Cancellation",
+                            title: "4.3 Management and Cancellation",
                             content: "You can manage or cancel your subscription at any time through your device's store settings (Apple ID or Google Account)."
                         }
                     ]
                 },
                 {
-                    title: "4. User Rights",
+                    title: "5. User Rights and Data",
                     subsections: [
                         {
-                            title: "4.1 Right to Use",
+                            title: "5.1 Right to Use",
                             content: "You have the right to download, install, and use the App for personal, non-commercial purposes in accordance with these Terms."
                         },
                         {
-                            title: "4.2 Data Ownership and Control",
+                            title: "5.2 Data Ownership and Control",
                             list: [
                                 "You own all data you create using the App, including your reading progress, notes, and preferences",
-                                "All your data is stored locally on your device and remains under your control",
-                                "You have the right to delete your progress and data at any time through the App's built-in deletion functionality"
+                                "Data is stored locally on your device and, if you sign in, also synced to our cloud database so it is available across your devices",
+                                "You have the right to request deletion of your account and cloud-synced data at any time; locally stored progress can be cleared directly through the App"
                             ]
                         },
                         {
-                            title: "4.3 Privacy",
+                            title: "5.3 Privacy",
                             list: [
-                                "The App operates offline-first and does not require an internet connection",
-                                "Your data is stored locally on your device and is not transmitted to external servers",
-                                "We do not collect, access, or share your personal data or reading progress"
+                                "The App's core reading and progress-tracking features work offline and do not require an internet connection",
+                                "Signing in, syncing, downloading Bible versions, AI Daily Study, and update checks require an internet connection",
+                                "Please review our Privacy Policy for details on what information we collect and how we use it"
                             ]
                         }
                     ]
                 },
                 {
-                    title: "5. User Responsibilities",
+                    title: "6. User Responsibilities",
                     subsections: [
                         {
-                            title: "5.1 Appropriate Use",
+                            title: "6.1 Appropriate Use",
                             content: "You agree to use the App only for lawful purposes and in accordance with these Terms. You agree not to:",
                             list: [
                                 "Use the App for any commercial purpose without express written permission",
@@ -84,15 +106,15 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "5.2 Device and Account Security",
+                            title: "6.2 Device and Account Security",
                             list: [
-                                "You are responsible for maintaining the security of your device",
-                                "You are responsible for backing up your data if you wish to preserve it, as the App stores data locally on your device",
-                                "The App does not provide cloud backup services. Data loss due to device failure, uninstallation, or accidental deletion is not the responsibility of the App developers"
+                                "You are responsible for maintaining the security of your device and account credentials",
+                                "You are responsible for backing up any data you have not synced to your account, as locally stored data may be lost if the App is uninstalled",
+                                "The App does not provide cloud backup for data that has not been synced through sign-in. Data loss due to device failure, uninstallation, or accidental deletion is not the responsibility of the App developers"
                             ]
                         },
                         {
-                            title: "5.3 Accuracy of Information",
+                            title: "6.3 Accuracy of Information",
                             list: [
                                 "You are responsible for the accuracy of any information you input into the App",
                                 "The App is a tool to assist your Bible reading planning but does not guarantee the accuracy of Bible content, reading plans, or interpretations"
@@ -101,27 +123,37 @@ export function TermsOfService() {
                     ]
                 },
                 {
-                    title: "6. Intellectual Property",
+                    title: "7. AI-Generated Content",
+                    content: "The AI Daily Study feature uses a third-party AI service to automatically generate devotional content based on the Bible passage you are reading. This content:",
+                    list: [
+                        "Is generated automatically and may contain inaccuracies, omissions, or content that does not reflect any particular theological tradition",
+                        "Does not constitute religious, theological, or professional guidance",
+                        "Should be used as a supplementary study aid, at your own discretion",
+                        "May be subject to usage limits based on your subscription plan"
+                    ]
+                },
+                {
+                    title: "8. Intellectual Property",
                     subsections: [
                         {
-                            title: "6.1 App Content",
-                            content: "The App, including its design, code, features, and user interface, is the property of the App developers and is protected by copyright and other intellectual property laws. The App is distributed under the MIT License, which allows for certain uses as specified in the license agreement."
+                            title: "8.1 App Content",
+                            content: "The App, including its design, code, features, and user interface, is the property of the App developers and is protected by copyright and other intellectual property laws. The App's source code is publicly available under a custom license that permits certain uses, such as personal use and modification, but prohibits commercial sale, rental, or redistribution of the Software without prior written permission from the copyright holder. See the LICENSE file in the App's public repository for the full terms."
                         },
                         {
-                            title: "6.2 Bible Content",
+                            title: "8.2 Bible Content",
                             content: "Bible texts and content displayed or referenced in the App are typically in the public domain or are used under appropriate licenses. The App does not claim ownership of Bible content itself."
                         },
                         {
-                            title: "6.3 Third-Party Components",
+                            title: "8.3 Third-Party Components",
                             content: "The App may incorporate third-party open-source libraries and components, which are used in accordance with their respective licenses."
                         }
                     ]
                 },
                 {
-                    title: "7. Limitations of Liability",
+                    title: "9. Limitations of Liability",
                     subsections: [
                         {
-                            title: "7.1 No Warranties",
+                            title: "9.1 No Warranties",
                             content: "THE APP IS PROVIDED \"AS IS\" AND \"AS AVAILABLE\" WITHOUT ANY WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR ACCURACY. WE DO NOT WARRANT THAT:",
                             list: [
                                 "The App will meet your requirements",
@@ -131,7 +163,7 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "7.2 Data Loss",
+                            title: "9.2 Data Loss",
                             content: "We are not responsible for any loss of data due to:",
                             list: [
                                 "Device malfunction or failure",
@@ -143,74 +175,74 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "7.3 Limitation of Liability",
+                            title: "9.3 Limitation of Liability",
                             content: "TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE APP DEVELOPERS, CONTRIBUTORS, OR ANY RELATED PARTIES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES."
                         },
                         {
-                            title: "7.4 Maximum Liability",
+                            title: "9.4 Maximum Liability",
                             content: "IF, NOTWITHSTANDING THE ABOVE, WE ARE FOUND LIABLE FOR ANY DAMAGES RELATED TO THE APP, OUR TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT YOU PAID TO USE THE APP (OR IF THE APP IS FREE, ZERO DOLLARS)."
                         }
                     ]
                 },
                 {
-                    title: "8. Disclaimers",
+                    title: "10. Disclaimers",
                     subsections: [
                         {
-                            title: "8.1 Spiritual Content",
+                            title: "10.1 Spiritual Content",
                             content: "The App is a tool for planning and tracking Bible reading. It does not provide religious guidance, theological interpretation, or spiritual counseling."
                         },
                         {
-                            title: "8.2 Accuracy Disclaimer",
-                            content: "While we strive to provide accurate information, we do not guarantee the accuracy, completeness, or reliability of Bible text references, reading plan schedules, or progress tracking calculations."
+                            title: "10.2 Accuracy Disclaimer",
+                            content: "While we strive to provide accurate information, we do not guarantee the accuracy, completeness, or reliability of Bible text references, reading plan schedules, progress tracking calculations, or AI-generated study content."
                         },
                         {
-                            title: "8.3 Platform Compatibility",
+                            title: "10.3 Platform Compatibility",
                             content: "The App may not be compatible with all devices or operating system versions. We are not responsible for compatibility issues or performance on unsupported platforms."
                         },
                         {
-                            title: "8.4 Third-Party Services",
-                            content: "The App operates primarily offline. If any third-party services are integrated in the future, we are not responsible for their availability, functionality, or content."
+                            title: "10.4 Third-Party Services",
+                            content: "The App integrates third-party services to provide its features, including Firebase (Google), Supabase, RevenueCat, Google Sign-In, Sign in with Apple, and a third-party AI content provider. We are not responsible for the availability, functionality, security, or content of these third-party services, which are governed by their own terms and privacy policies."
                         }
                     ]
                 },
                 {
-                    title: "9. Modifications to Terms",
+                    title: "11. Modifications to Terms",
                     content: "We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting the updated Terms. Your continued use of the App after changes are posted constitutes your acceptance of the modified Terms."
                 },
                 {
-                    title: "10. Modifications to the App",
+                    title: "12. Modifications to the App",
                     content: "We reserve the right to modify, update, or discontinue any feature of the App at any time. We are under no obligation to maintain or update the App."
                 },
                 {
-                    title: "11. Termination",
-                    content: "You may stop using the App at any time by uninstalling it. We reserve the right to terminate or suspend your access to the App at any time, with or without cause or notice."
+                    title: "13. Termination",
+                    content: "You may stop using the App at any time by uninstalling it or, if you have an account, by requesting account deletion as described in Section 3.3. We reserve the right to terminate or suspend your access to the App or account at any time, with or without cause or notice."
                 },
                 {
-                    title: "12. Data Backup and Recovery",
-                    content: "The App does not provide automatic cloud backup. You are solely responsible for backing up your data if you wish to preserve it."
+                    title: "14. Data Backup and Recovery",
+                    content: "Locally stored data that has not been synced through sign-in is not backed up automatically. If you sign in, your progress, notes, and favorites are synced to our cloud database, providing a degree of backup as long as your account remains active. You are responsible for backing up any data you wish to preserve that is not synced to your account."
                 },
                 {
-                    title: "13. Indemnification",
+                    title: "15. Indemnification",
                     content: "You agree to indemnify, defend, and hold harmless the App developers from any claims arising from your use of the App or violation of these Terms."
                 },
                 {
-                    title: "14. Governing Law",
-                    content: "These Terms shall be governed by and construed in accordance with applicable local laws."
+                    title: "16. Governing Law",
+                    content: "These Terms shall be governed by and construed in accordance with the laws of the Federative Republic of Brazil, without regard to its conflict of law provisions. Any disputes arising from these Terms shall be subject to the jurisdiction of the courts of Brazil, except where applicable consumer protection law requires otherwise."
                 },
                 {
-                    title: "15. Severability",
+                    title: "17. Severability",
                     content: "If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary."
                 },
                 {
-                    title: "16. Entire Agreement",
+                    title: "18. Entire Agreement",
                     content: "These Terms constitute the entire agreement between you and the App developers regarding the use of the App."
                 },
                 {
-                    title: "17. Contact Information",
-                    content: "If you have any questions about these Terms, please contact us through the appropriate channels (GitHub repository, etc)."
+                    title: "19. Contact Information",
+                    content: "If you have any questions about these Terms, please contact us at quare.software@gmail.com or through our GitHub repository."
                 },
                 {
-                    title: "18. Acknowledgment",
+                    title: "20. Acknowledgment",
                     content: "BY USING THE APP, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS, UNDERSTAND THEM, AND AGREE TO BE BOUND BY THEM.",
                     highlight: true
                 }
@@ -218,7 +250,7 @@ export function TermsOfService() {
         },
         pt: {
             title: "Termos de Serviço",
-            lastUpdate: "Última Atualização: 7 de janeiro de 2026",
+            lastUpdate: "Última Atualização: 14 de julho de 2026",
             sections: [
                 {
                     title: "1. Aceitação dos Termos",
@@ -226,65 +258,87 @@ export function TermsOfService() {
                 },
                 {
                     title: "2. Descrição do Serviço",
-                    content: "O Bible Planner é um aplicativo móvel e desktop projetado para ajudá-lo a planejar e acompanhar seu progresso de leitura da Bíblia. O App oferece:",
+                    content: "O Bible Planner é um aplicativo móvel, desktop e web projetado para ajudá-lo a planejar e acompanhar seu progresso de leitura da Bíblia. O App oferece:",
                     list: [
-                        "Planos de Leitura: Múltiplos tipos de planos de leitura, incluindo ordem dos livros e ordem cronológica",
-                        "Acompanhamento de Progresso: Acompanhe o progresso da leitura no nível de livro, capítulo e versículo",
-                        "Organização Semanal: Planos de leitura de 52 semanas com divisões semanais",
-                        "Personalização de Tema: Temas claro e escuro, suporte a cores dinâmicas do Material You e seleção de tema personalizado",
-                        "Suporte Multiplataforma: Disponível no Android, iOS e Web",
-                        "Armazenamento de Dados Local: Todos os dados são armazenados localmente no seu dispositivo",
-                        "Recursos Pro (Assinatura Opcional):",
-                        " - Criar Notas Ilimitadas (Plano gratuito limitado a 3 notas)",
+                        "Planos de Leitura: múltiplos tipos de planos, incluindo ordem dos livros e ordem cronológica",
+                        "Acompanhamento de Progresso: acompanhe o progresso da leitura no nível de livro, capítulo e versículo",
+                        "Organização Semanal: planos de leitura de 52 semanas com divisões semanais",
+                        "Notas Pessoais: crie notas nos dias do plano de leitura (o plano gratuito inclui um número limitado de notas; o Pro remove esse limite)",
+                        "Download de Versões da Bíblia: baixe e gerencie múltiplas traduções para leitura offline",
+                        "Estudo Diário com IA (Recurso Pro): conteúdo devocional gerado por IA para a leitura do dia, com um número limitado de usos gratuitos",
+                        "Conta e Sincronização (Opcional): faça login com Google ou Apple para sincronizar seu progresso e preferências entre dispositivos, e gerencie os dispositivos conectados",
+                        "Personalização de Tema: temas claro e escuro, suporte a cores dinâmicas do Material You e seleção de tema personalizado",
+                        "Suporte Multiplataforma: disponível no Android, iOS, Web e Desktop"
                     ]
                 },
                 {
-                    title: "3. Assinaturas e Pagamentos",
+                    title: "3. Contas e Login",
                     subsections: [
                         {
-                            title: "3.1 Assinatura Pro",
+                            title: "3.1 Login Opcional",
+                            content: "Fazer login com Google ou Apple é opcional. Sem uma conta, o App funciona integralmente com os dados armazenados localmente no seu dispositivo. Fazer login permite sincronizar seu progresso de leitura, notas e favoritos entre dispositivos, além de desbloquear o recurso de Estudo Diário com IA."
+                        },
+                        {
+                            title: "3.2 Responsabilidade pela Conta",
+                            list: [
+                                "Você é responsável por manter a confidencialidade das credenciais da sua conta Google ou Apple",
+                                "Você é responsável por toda atividade realizada através da sua conta",
+                                "Você pode visualizar e desconectar remotamente os dispositivos conectados à sua conta na tela de Detalhes da Conta do App"
+                            ]
+                        },
+                        {
+                            title: "3.3 Exclusão de Conta",
+                            content: "Você pode solicitar a exclusão da sua conta e dos dados associados na nuvem a qualquer momento, entrando em contato conforme descrito em nossa Política de Privacidade. Atualmente não oferecemos exclusão automática de conta pelo App."
+                        }
+                    ]
+                },
+                {
+                    title: "4. Assinaturas e Pagamentos",
+                    subsections: [
+                        {
+                            title: "4.1 Assinatura Pro",
                             content: "O Bible Planner oferece uma assinatura opcional 'Pro' com recursos adicionais. As assinaturas estão disponíveis mensalmente ou anualmente."
                         },
                         {
-                            title: "3.2 Processamento de Pagamento",
+                            title: "4.2 Processamento de Pagamento",
                             content: "Todos os pagamentos são processados através da Apple App Store ou Google Play Store. Utilizamos o RevenueCat para gerenciar e validar o status da sua assinatura."
                         },
                         {
-                            title: "3.3 Gerenciamento e Cancelamento",
+                            title: "4.3 Gerenciamento e Cancelamento",
                             content: "Você pode gerenciar ou cancelar sua assinatura a qualquer momento através das configurações da loja do seu dispositivo (Apple ID ou conta do Google)."
                         }
                     ]
                 },
                 {
-                    title: "4. Direitos do Usuário",
+                    title: "5. Direitos do Usuário e Dados",
                     subsections: [
                         {
-                            title: "4.1 Direito de Uso",
+                            title: "5.1 Direito de Uso",
                             content: "Você tem o direito de baixar, instalar e usar o App para fins pessoais e não comerciais, de acordo com estes Termos."
                         },
                         {
-                            title: "4.2 Propriedade e Controle de Dados",
+                            title: "5.2 Propriedade e Controle de Dados",
                             list: [
                                 "Você possui todos os dados que cria usando o App, incluindo seu progresso de leitura, notas e preferências",
-                                "Todos os seus dados são armazenados localmente no seu dispositivo e permanecem sob seu controle",
-                                "Você tem o direito de excluir seu progresso e dados a qualquer momento através da funcionalidade de exclusão integrada no App"
+                                "Os dados são armazenados localmente no seu dispositivo e, se você fizer login, também são sincronizados com nosso banco de dados na nuvem para ficarem disponíveis em todos os seus dispositivos",
+                                "Você tem o direito de solicitar a exclusão da sua conta e dos dados sincronizados na nuvem a qualquer momento; o progresso armazenado localmente pode ser apagado diretamente pelo App"
                             ]
                         },
                         {
-                            title: "4.3 Privacidade",
+                            title: "5.3 Privacidade",
                             list: [
-                                "O App opera offline-first e não requer conexão com a internet",
-                                "Seus dados são armazenados localmente no seu dispositivo e não são transmitidos para servidores externos",
-                                "Nós não coletamos, acessamos ou compartilhamos seus dados pessoais ou progresso de leitura"
+                                "Os recursos principais de leitura e acompanhamento de progresso funcionam offline e não exigem conexão com a internet",
+                                "Fazer login, sincronizar, baixar versões da Bíblia, usar o Estudo Diário com IA e verificar atualizações exigem conexão com a internet",
+                                "Consulte nossa Política de Privacidade para detalhes sobre quais informações coletamos e como as utilizamos"
                             ]
                         }
                     ]
                 },
                 {
-                    title: "5. Responsabilidades do Usuário",
+                    title: "6. Responsabilidades do Usuário",
                     subsections: [
                         {
-                            title: "5.1 Uso Apropriado",
+                            title: "6.1 Uso Apropriado",
                             content: "Você concorda em usar o App apenas para fins legais e de acordo com estes Termos. Você concorda em não:",
                             list: [
                                 "Usar o App para qualquer finalidade comercial sem permissão expressa por escrito",
@@ -295,15 +349,15 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "5.2 Segurança do Dispositivo e da Conta",
+                            title: "6.2 Segurança do Dispositivo e da Conta",
                             list: [
-                                "Você é responsável por manter a segurança do seu dispositivo",
-                                "Você é responsável por fazer backup de seus dados se desejar preservá-los, pois o App armazena dados localmente no seu dispositivo",
-                                "O App não fornece serviços de backup em nuvem. A perda de dados devido a falha do dispositivo, desinstalação ou exclusão acidental não é responsabilidade dos desenvolvedores do App"
+                                "Você é responsável por manter a segurança do seu dispositivo e das credenciais da sua conta",
+                                "Você é responsável por fazer backup de quaisquer dados que não tenham sido sincronizados com sua conta, já que dados armazenados apenas localmente podem ser perdidos se o App for desinstalado",
+                                "O App não fornece backup em nuvem para dados que não tenham sido sincronizados através do login. A perda de dados devido a falha do dispositivo, desinstalação ou exclusão acidental não é responsabilidade dos desenvolvedores do App"
                             ]
                         },
                         {
-                            title: "5.3 Precisão das Informações",
+                            title: "6.3 Precisão das Informações",
                             list: [
                                 "Você é responsável pela precisão de qualquer informação que inserir no App",
                                 "O App é uma ferramenta para auxiliar no planejamento da leitura da Bíblia, mas não garante a precisão do conteúdo da Bíblia, planos de leitura ou interpretações"
@@ -312,27 +366,37 @@ export function TermsOfService() {
                     ]
                 },
                 {
-                    title: "6. Propriedade Intelectual",
+                    title: "7. Conteúdo Gerado por IA",
+                    content: "O recurso de Estudo Diário com IA utiliza um serviço de inteligência artificial de terceiros para gerar automaticamente conteúdo devocional com base na passagem bíblica que você está lendo. Esse conteúdo:",
+                    list: [
+                        "É gerado automaticamente e pode conter imprecisões, omissões ou conteúdo que não reflete uma tradição teológica específica",
+                        "Não constitui orientação religiosa, teológica ou profissional",
+                        "Deve ser utilizado como material de apoio ao estudo, a seu critério",
+                        "Pode estar sujeito a limites de uso de acordo com seu plano de assinatura"
+                    ]
+                },
+                {
+                    title: "8. Propriedade Intelectual",
                     subsections: [
                         {
-                            title: "6.1 Conteúdo do App",
-                            content: "O App, incluindo seu design, código, recursos e interface do usuário, é propriedade dos desenvolvedores do App e é protegido por direitos autorais e outras leis de propriedade intelectual. O App é distribuído sob a Licença MIT, que permite certos usos conforme especificado no acordo de licença."
+                            title: "8.1 Conteúdo do App",
+                            content: "O App, incluindo seu design, código, recursos e interface do usuário, é propriedade dos desenvolvedores do App e é protegido por direitos autorais e outras leis de propriedade intelectual. O código-fonte do App está disponível publicamente sob uma licença personalizada, que permite determinados usos, como uso pessoal e modificação, mas proíbe a venda, locação ou redistribuição comercial do Software sem permissão prévia por escrito do titular dos direitos autorais. Consulte o arquivo LICENSE no repositório público do App para os termos completos."
                         },
                         {
-                            title: "6.2 Conteúdo da Bíblia",
+                            title: "8.2 Conteúdo da Bíblia",
                             content: "Os textos bíblicos e o conteúdo exibido ou referenciado no App estão tipicamente em domínio público ou são usados sob licenças apropriadas. O App não reivindica a propriedade do próprio conteúdo da Bíblia."
                         },
                         {
-                            title: "6.3 Componentes de Terceiros",
+                            title: "8.3 Componentes de Terceiros",
                             content: "O App pode incorporar bibliotecas e componentes de código aberto de terceiros, que são usados de acordo com suas respectivas licenças."
                         }
                     ]
                 },
                 {
-                    title: "7. Limitações de Responsabilidade",
+                    title: "9. Limitações de Responsabilidade",
                     subsections: [
                         {
-                            title: "7.1 Sem Garantias",
+                            title: "9.1 Sem Garantias",
                             content: "O APP É FORNECIDO \"COMO ESTÁ\" E \"CONFORME DISPONÍVEL\" SEM QUAISQUER GARANTIAS DE QUALQUER TIPO, EXPRESSAS OU IMPLÍCITAS, INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS DE COMERCIABILIDADE, ADEQUAÇÃO A UM DETERMINADO FIM, NÃO VIOLAÇÃO OU PRECISÃO. NÓS NÃO GARANTIMOS QUE:",
                             list: [
                                 "O App atenderá aos seus requisitos",
@@ -342,7 +406,7 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "7.2 Perda de Dados",
+                            title: "9.2 Perda de Dados",
                             content: "Não somos responsáveis por qualquer perda de dados devido a:",
                             list: [
                                 "Mau funcionamento ou falha do dispositivo",
@@ -354,74 +418,74 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "7.3 Limitação de Responsabilidade",
+                            title: "9.3 Limitação de Responsabilidade",
                             content: "ATÉ A MÁXIMA EXTENSÃO PERMITIDA PELA LEI APLICÁVEL, EM NENHUMA HIPÓTESE OS DESENVOLVEDORES DO APP, COLABORADORES OU QUAISQUER PARTES RELACIONADAS SERÃO RESPONSÁVEIS POR QUAISQUER DANOS INDIRETOS, INCIDENTAIS, ESPECIAIS, CONSEQUENCIAIS OU PUNITIVOS."
                         },
                         {
-                            title: "7.4 Responsabilidade Máxima",
+                            title: "9.4 Responsabilidade Máxima",
                             content: "SE, APESAR DO ACIMA EXPOSTO, FORMOS CONSIDERADOS RESPONSÁVEIS POR QUAISQUER DANOS RELACIONADOS AO APP, NOSSA RESPONSABILIDADE TOTAL NÃO EXCEDERÁ O VALOR QUE VOCÊ PAGOU PARA USAR O APP (OU SE O APP FOR GRATUITO, ZERO DÓLARES)."
                         }
                     ]
                 },
                 {
-                    title: "8. Isenções de Responsabilidade",
+                    title: "10. Isenções de Responsabilidade",
                     subsections: [
                         {
-                            title: "8.1 Conteúdo Espiritual",
+                            title: "10.1 Conteúdo Espiritual",
                             content: "O App é uma ferramenta para planejar e acompanhar a leitura da Bíblia. Não fornece orientação religiosa, interpretação teológica ou aconselhamento espiritual."
                         },
                         {
-                            title: "8.2 Isenção de Precisão",
-                            content: "Embora nos esforcemos para fornecer informações precisas, não garantimos a precisão, integridade ou confiabilidade de referências bíblicas, cronogramas ou cálculos de progresso."
+                            title: "10.2 Isenção de Precisão",
+                            content: "Embora nos esforcemos para fornecer informações precisas, não garantimos a precisão, integridade ou confiabilidade de referências bíblicas, cronogramas, cálculos de progresso ou conteúdo de estudo gerado por IA."
                         },
                         {
-                            title: "8.3 Compatibilidade de Plataforma",
+                            title: "10.3 Compatibilidade de Plataforma",
                             content: "O App pode não ser compatível com todos os dispositivos ou versões de sistemas operacionais. Não somos responsáveis por problemas de compatibilidade ou desempenho em plataformas não suportadas."
                         },
                         {
-                            title: "8.4 Serviços de Terceiros",
-                            content: "O App opera principalmente offline. Se quaisquer serviços de terceiros forem integrados no futuro, não somos responsáveis por sua disponibilidade, funcionalidade ou conteúdo."
+                            title: "10.4 Serviços de Terceiros",
+                            content: "O App integra serviços de terceiros para fornecer seus recursos, incluindo Firebase (Google), Supabase, RevenueCat, Google Sign-In, Sign in with Apple e um provedor de IA de terceiros. Não somos responsáveis pela disponibilidade, funcionalidade, segurança ou conteúdo desses serviços de terceiros, que são regidos por seus próprios termos e políticas de privacidade."
                         }
                     ]
                 },
                 {
-                    title: "9. Modificações aos Termos",
+                    title: "11. Modificações aos Termos",
                     content: "Nós nos reservamos o direito de modificar estes Termos a qualquer momento. As alterações entrarão em vigor imediatamente após a publicação. O uso continuado do App constitui aceitação dos Termos modificados."
                 },
                 {
-                    title: "10. Modificações ao App",
+                    title: "12. Modificações ao App",
                     content: "Nós nos reservamos o direito de modificar, atualizar ou descontinuar qualquer recurso do App a qualquer momento. Não temos obrigação de manter ou atualizar o App."
                 },
                 {
-                    title: "11. Rescisão",
-                    content: "Você pode parar de usar o App a qualquer momento desinstalando-o. Nós nos reservamos o direito de rescindir ou suspender seu acesso ao App a qualquer momento."
+                    title: "13. Rescisão",
+                    content: "Você pode parar de usar o App a qualquer momento desinstalando-o ou, se tiver uma conta, solicitando a exclusão da conta conforme descrito na Seção 3.3. Nós nos reservamos o direito de rescindir ou suspender seu acesso ao App ou à sua conta a qualquer momento, com ou sem justa causa ou aviso prévio."
                 },
                 {
-                    title: "12. Backup e Recuperação de Dados",
-                    content: "O App não fornece backup automático em nuvem. Você é o único responsável por fazer backup de seus dados se desejar preservá-los."
+                    title: "14. Backup e Recuperação de Dados",
+                    content: "Dados armazenados apenas localmente, que não foram sincronizados através do login, não possuem backup automático. Se você fizer login, seu progresso, notas e favoritos são sincronizados com nosso banco de dados na nuvem, oferecendo um nível de backup enquanto sua conta estiver ativa. Você é responsável por fazer backup de quaisquer dados que deseje preservar e que não estejam sincronizados com sua conta."
                 },
                 {
-                    title: "13. Indenização",
+                    title: "15. Indenização",
                     content: "Você concorda em indenizar e isentar os desenvolvedores do App de quaisquer reivindicações decorrentes do seu uso do App ou violação destes Termos."
                 },
                 {
-                    title: "14. Lei Aplicável",
-                    content: "Estes Termos serão regidos e interpretados de acordo com as leis locais aplicáveis."
+                    title: "16. Lei Aplicável",
+                    content: "Estes Termos serão regidos e interpretados de acordo com as leis da República Federativa do Brasil. Quaisquer disputas decorrentes destes Termos estarão sujeitas à jurisdição dos tribunais brasileiros, exceto quando a legislação de proteção ao consumidor aplicável determinar de forma diversa."
                 },
                 {
-                    title: "15. Divisibilidade",
+                    title: "17. Divisibilidade",
                     content: "Se qualquer disposição destes Termos for considerada inexequível ou inválida, essa disposição será limitada ou eliminada na medida mínima necessária."
                 },
                 {
-                    title: "16. Acordo Integral",
+                    title: "18. Acordo Integral",
                     content: "Estes Termos constituem o acordo integral entre você e os desenvolvedores do App em relação ao uso do App."
                 },
                 {
-                    title: "17. Informações de Contato",
-                    content: "Se você tiver alguma dúvida sobre estes Termos, entre em contato conosco através dos canais apropriados (repositório GitHub, etc)."
+                    title: "19. Informações de Contato",
+                    content: "Se você tiver alguma dúvida sobre estes Termos, entre em contato conosco pelo e-mail quare.software@gmail.com ou através do nosso repositório no GitHub."
                 },
                 {
-                    title: "18. Reconhecimento",
+                    title: "20. Reconhecimento",
                     content: "AO USAR O APP, VOCÊ RECONHECE QUE LEU ESTES TERMOS, OS ENTENDEU E CONCORDA EM FICAR VINCULADO A ELES.",
                     highlight: true
                 }
@@ -429,7 +493,7 @@ export function TermsOfService() {
         },
         es: {
             title: "Términos de Servicio",
-            lastUpdate: "Última Actualización: 7 de enero de 2026",
+            lastUpdate: "Última Actualización: 14 de julio de 2026",
             sections: [
                 {
                     title: "1. Aceptación de los Términos",
@@ -437,65 +501,87 @@ export function TermsOfService() {
                 },
                 {
                     title: "2. Descripción del Servicio",
-                    content: "Bible Planner es una aplicación móvil y de escritorio diseñada para ayudarle a planificar y realizar un seguimiento de su progreso de lectura de la Biblia. La App proporciona:",
+                    content: "Bible Planner es una aplicación móvil, de escritorio y web diseñada para ayudarte a planificar y realizar un seguimiento de tu progreso de lectura de la Biblia. La App proporciona:",
                     list: [
-                        "Planes de Lectura: Múltiplos tipos de planes de lectura, incluyendo orden de libros y orden cronológico",
-                        "Seguimiento de Progreso: Rastrea el progreso de la lectura a nivel de libro, capítulo y versículo",
-                        "Organización Semanal: Planes de lectura de 52 semanas con desgloses semanales",
-                        "Personalización de Tema: Temas claro y oscuro, soporte para colores dinámicos de Material You y selección de tema personalizado",
-                        "Soporte Multiplataforma: Disponible en Android, iOS y Web",
-                        "Almacenamiento de Datos Local: Todos los datos se almacenan localmente en su dispositivo",
-                        "Funciones Pro (Suscripción Opcional):",
-                        " - Crear Notas Ilimitadas (Plan gratuito limitado a 3 notas)",
+                        "Planes de Lectura: múltiples tipos de planes, incluyendo orden de libros y orden cronológico",
+                        "Seguimiento de Progreso: rastrea el progreso de la lectura a nivel de libro, capítulo y versículo",
+                        "Organización Semanal: planes de lectura de 52 semanas con desgloses semanales",
+                        "Notas Personales: crea notas en los días del plan de lectura (el plan gratuito incluye un número limitado de notas; el Pro elimina ese límite)",
+                        "Descarga de Versiones de la Biblia: descarga y gestiona múltiples traducciones para lectura sin conexión",
+                        "Estudio Diario con IA (Función Pro): contenido devocional generado por IA para la lectura del día, con un número limitado de usos gratuitos",
+                        "Cuenta y Sincronización (Opcional): inicia sesión con Google o Apple para sincronizar tu progreso y preferencias entre dispositivos, y gestiona los dispositivos conectados",
+                        "Personalización de Tema: temas claro y oscuro, soporte para colores dinámicos de Material You y selección de tema personalizado",
+                        "Soporte Multiplataforma: disponible en Android, iOS, Web y Escritorio"
                     ]
                 },
                 {
-                    title: "3. Suscripciones y Pagos",
+                    title: "3. Cuentas e Inicio de Sesión",
                     subsections: [
                         {
-                            title: "3.1 Suscripción Pro",
+                            title: "3.1 Inicio de Sesión Opcional",
+                            content: "Iniciar sesión con Google o Apple es opcional. Sin una cuenta, la App funciona completamente con los datos almacenados localmente en tu dispositivo. Iniciar sesión permite sincronizar tu progreso de lectura, notas y favoritos entre dispositivos, y desbloquea la función de Estudio Diario con IA."
+                        },
+                        {
+                            title: "3.2 Responsabilidad de la Cuenta",
+                            list: [
+                                "Eres responsable de mantener la confidencialidad de las credenciales de tu cuenta de Google o Apple",
+                                "Eres responsable de toda actividad realizada a través de tu cuenta",
+                                "Puedes ver y cerrar sesión remotamente en los dispositivos conectados a tu cuenta desde la pantalla de Detalles de la Cuenta de la App"
+                            ]
+                        },
+                        {
+                            title: "3.3 Eliminación de Cuenta",
+                            content: "Puedes solicitar la eliminación de tu cuenta y de los datos asociados en la nube en cualquier momento, contactándonos según se describe en nuestra Política de Privacidad. Actualmente no ofrecemos eliminación automática de cuenta desde la App."
+                        }
+                    ]
+                },
+                {
+                    title: "4. Suscripciones y Pagos",
+                    subsections: [
+                        {
+                            title: "4.1 Suscripción Pro",
                             content: "Bible Planner ofrece una suscripción opcional 'Pro' con funciones adicionales. Las suscripciones están disponibles de forma mensual o anual."
                         },
                         {
-                            title: "3.2 Procesamiento de Pagos",
-                            content: "Todos los pagos se procesan a través de Apple App Store o Google Play Store. Utilizamos RevenueCat para gestionar y validar el estado de su suscripción."
+                            title: "4.2 Procesamiento de Pagos",
+                            content: "Todos los pagos se procesan a través de Apple App Store o Google Play Store. Utilizamos RevenueCat para gestionar y validar el estado de tu suscripción."
                         },
                         {
-                            title: "3.3 Gestión y Cancelación",
-                            content: "Puede gestionar o cancelar su suscripción en cualquier momento a través de los ajustes de la tienda de su dispositivo (Apple ID o cuenta de Google)."
+                            title: "4.3 Gestión y Cancelación",
+                            content: "Puedes gestionar o cancelar tu suscripción en cualquier momento a través de los ajustes de la tienda de tu dispositivo (Apple ID o cuenta de Google)."
                         }
                     ]
                 },
                 {
-                    title: "4. Derechos del Usuario",
+                    title: "5. Derechos del Usuario y Datos",
                     subsections: [
                         {
-                            title: "4.1 Derecho de Uso",
+                            title: "5.1 Derecho de Uso",
                             content: "Usted tiene el derecho de descargar, instalar y utilizar la App para fines personales y no comerciales, de acuerdo con estos Términos."
                         },
                         {
-                            title: "4.2 Propiedad y Control de Datos",
+                            title: "5.2 Propiedad y Control de Datos",
                             list: [
-                                "Usted es dueño de todos los datos que crea utilizando la App, incluyendo su progreso de lectura, notas y preferencias",
-                                "Todos sus datos se almacenan localmente en su dispositivo y permanecen bajo su control",
-                                "Usted tiene el derecho de eliminar su progreso y datos en cualquier momento a través de la funcionalidad de eliminación integrada en la App"
+                                "Eres dueño de todos los datos que creas utilizando la App, incluyendo tu progreso de lectura, notas y preferencias",
+                                "Los datos se almacenan localmente en tu dispositivo y, si inicias sesión, también se sincronizan con nuestra base de datos en la nube para que estén disponibles en todos tus dispositivos",
+                                "Tienes derecho a solicitar la eliminación de tu cuenta y de los datos sincronizados en la nube en cualquier momento; el progreso almacenado localmente se puede borrar directamente desde la App"
                             ]
                         },
                         {
-                            title: "4.3 Privacidad",
+                            title: "5.3 Privacidad",
                             list: [
-                                "La App funciona primero sin conexión (offline-first) y no requiere conexión a internet",
-                                "Sus datos se almacenan localmente en su dispositivo y no se transmiten a servidores externos",
-                                "No recopilamos, accedemos ni compartimos sus datos personales o progreso de lectura"
+                                "Las funciones principales de lectura y seguimiento de progreso funcionan sin conexión y no requieren conexión a internet",
+                                "Iniciar sesión, sincronizar, descargar versiones de la Biblia, usar el Estudio Diario con IA y verificar actualizaciones requieren conexión a internet",
+                                "Consulta nuestra Política de Privacidad para más detalles sobre qué información recopilamos y cómo la utilizamos"
                             ]
                         }
                     ]
                 },
                 {
-                    title: "5. Responsabilidades del Usuario",
+                    title: "6. Responsabilidades del Usuario",
                     subsections: [
                         {
-                            title: "5.1 Uso Apropiado",
+                            title: "6.1 Uso Apropiado",
                             content: "Usted acepta utilizar la App solo para fines legales y de acuerdo con estos Términos. Usted acepta no:",
                             list: [
                                 "Utilizar la App para cualquier propósito comercial sin permiso expreso por escrito",
@@ -506,15 +592,15 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "5.2 Seguridad del Dispositivo y de la Cuenta",
+                            title: "6.2 Seguridad del Dispositivo y de la Cuenta",
                             list: [
-                                "Usted es responsable de mantener la seguridad de su dispositivo",
-                                "Usted es responsable de hacer una copia de seguridad de sus datos si desea conservarlos, ya que la App almacena datos localmente en su dispositivo",
-                                "La App no proporciona servicios de copia de seguridad en la nube. La pérdida de datos debido a fallas del dispositivo, desinstalación o eliminación accidental no es responsabilidad de los desarrolladores de la App"
+                                "Eres responsable de mantener la seguridad de tu dispositivo y de las credenciales de tu cuenta",
+                                "Eres responsable de hacer una copia de seguridad de cualquier dato que no se haya sincronizado con tu cuenta, ya que los datos almacenados solo localmente pueden perderse si se desinstala la App",
+                                "La App no proporciona copia de seguridad en la nube para datos que no se hayan sincronizado mediante el inicio de sesión. La pérdida de datos debido a fallas del dispositivo, desinstalación o eliminación accidental no es responsabilidad de los desarrolladores de la App"
                             ]
                         },
                         {
-                            title: "5.3 Precisión de la Información",
+                            title: "6.3 Precisión de la Información",
                             list: [
                                 "Usted es responsable de la precisión de cualquier información que ingrese en la App",
                                 "La App es una herramienta para ayudar en la planificación de su lectura bíblica, pero no garantiza la precisión del contenido de la Biblia, planes de lectura o interpretaciones"
@@ -523,27 +609,37 @@ export function TermsOfService() {
                     ]
                 },
                 {
-                    title: "6. Propiedad Intelectual",
+                    title: "7. Contenido Generado por IA",
+                    content: "La función de Estudio Diario con IA utiliza un servicio de inteligencia artificial de terceros para generar automáticamente contenido devocional basado en el pasaje bíblico que estás leyendo. Este contenido:",
+                    list: [
+                        "Se genera automáticamente y puede contener imprecisiones, omisiones o contenido que no refleje una tradición teológica específica",
+                        "No constituye orientación religiosa, teológica o profesional",
+                        "Debe utilizarse como material de apoyo al estudio, a tu propio criterio",
+                        "Puede estar sujeto a límites de uso según tu plan de suscripción"
+                    ]
+                },
+                {
+                    title: "8. Propiedad Intelectual",
                     subsections: [
                         {
-                            title: "6.1 Contenido de la App",
-                            content: "La App, incluyendo su diseño, código, características e interfaz de usuario, es propiedad de los desarrolladores de la App y está protegida por derechos de autor y otras leyes de propiedad intelectual. La App se distribuye bajo la Licencia MIT, que permite ciertos usos según lo especificado en el acuerdo de licencia."
+                            title: "8.1 Contenido de la App",
+                            content: "La App, incluyendo su diseño, código, características e interfaz de usuario, es propiedad de los desarrolladores de la App y está protegida por derechos de autor y otras leyes de propiedad intelectual. El código fuente de la App está disponible públicamente bajo una licencia personalizada, que permite ciertos usos, como el uso personal y la modificación, pero prohíbe la venta, alquiler o redistribución comercial del Software sin permiso previo por escrito del titular de los derechos de autor. Consulta el archivo LICENSE en el repositorio público de la App para conocer los términos completos."
                         },
                         {
-                            title: "6.2 Contenido de la Biblia",
+                            title: "8.2 Contenido de la Biblia",
                             content: "Los textos bíblicos y el contenido mostrado o referenciado en la App están típicamente en el dominio público o se utilizan bajo licencias apropiadas. La App no reclama la propiedad del contenido bíblico en sí."
                         },
                         {
-                            title: "6.3 Componentes de Terceros",
+                            title: "8.3 Componentes de Terceros",
                             content: "La App puede incorporar bibliotecas y componentes de código abierto de terceros, que se utilizan de acuerdo con sus respectivas licencias."
                         }
                     ]
                 },
                 {
-                    title: "7. Limitaciones de Responsabilidad",
+                    title: "9. Limitaciones de Responsabilidad",
                     subsections: [
                         {
-                            title: "7.1 Sin Garantías",
+                            title: "9.1 Sin Garantías",
                             content: "LA APP SE PROPORCIONA \"TAL CUAL\" Y \"SEGÚN DISPONIBILIDAD\" SIN NINGUNA GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR, NO INFRACCIÓN O PRECISIÓN. NO GARANTIZAMOS QUE:",
                             list: [
                                 "La App cumplirá con sus requisitos",
@@ -553,7 +649,7 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "7.2 Pérdida de Datos",
+                            title: "9.2 Pérdida de Datos",
                             content: "No somos responsables de ninguna pérdida de datos debido a:",
                             list: [
                                 "Mal funcionamiento o falla del dispositivo",
@@ -565,74 +661,74 @@ export function TermsOfService() {
                             ]
                         },
                         {
-                            title: "7.3 Limitación de Responsabilidad",
+                            title: "9.3 Limitación de Responsabilidad",
                             content: "EN LA MEDIDA MÁXIMA PERMITIDA POR LA LEY APLICABLE, EN NINGÚN CASO LOS DESARROLLADORES DE LA APP, COLABORADORES O CUALQUIER PARTE RELACIONADA SERÁN RESPONSABLES POR CUALQUIER DAÑO INDIRECTO, INCIDENTAL, ESPECIAL, CONSECUENTE O PUNITIVO."
                         },
                         {
-                            title: "7.4 Responsabilidad Máxima",
+                            title: "9.4 Responsabilidad Máxima",
                             content: "SI, A PESAR DE LO ANTERIOR, SE NOS ENCUENTRA RESPONSABLES POR CUALQUIER DAÑO RELACIONADO CON LA APP, NUESTRA RESPONSABILIDAD TOTAL NO EXCEDERÁ LA CANTIDAD QUE USTED PAGÓ POR USAR LA APP (O SI LA APP ES GRATUITA, CERO DÓLARES)."
                         }
                     ]
                 },
                 {
-                    title: "8. Descargos de Responsabilidad",
+                    title: "10. Descargos de Responsabilidad",
                     subsections: [
                         {
-                            title: "8.1 Contenido Espiritual",
+                            title: "10.1 Contenido Espiritual",
                             content: "La App es una herramienta para planificar y rastrear la lectura de la Biblia. No proporciona orientación religiosa, interpretación teológica o asesoramiento espiritual."
                         },
                         {
-                            title: "8.2 Descargo de Precisión",
-                            content: "Aunque nos esforzamos por proporcionar información precisa, no garantizamos la precisión, integridad o confiabilidad de referencias bíblicas, horarios o cálculos de progreso."
+                            title: "10.2 Descargo de Precisión",
+                            content: "Aunque nos esforzamos por proporcionar información precisa, no garantizamos la precisión, integridad o confiabilidad de referencias bíblicas, horarios, cálculos de progreso o contenido de estudio generado por IA."
                         },
                         {
-                            title: "8.3 Compatibilidad de Plataforma",
+                            title: "10.3 Compatibilidad de Plataforma",
                             content: "La App puede no ser compatible con todos los dispositivos o versiones de sistemas operativos. No somos responsables por problemas de compatibilidad o rendimiento en plataformas no soportadas."
                         },
                         {
-                            title: "8.4 Servicios de Terceros",
-                            content: "La App opera principalmente sin conexión. Si se integran servicios de terceros en el futuro, no somos responsables por su disponibilidad, funcionalidad o contenido."
+                            title: "10.4 Servicios de Terceros",
+                            content: "La App integra servicios de terceros para proporcionar sus funciones, incluyendo Firebase (Google), Supabase, RevenueCat, Google Sign-In, Sign in with Apple y un proveedor de IA de terceros. No somos responsables de la disponibilidad, funcionalidad, seguridad o contenido de estos servicios de terceros, que se rigen por sus propios términos y políticas de privacidad."
                         }
                     ]
                 },
                 {
-                    title: "9. Modificaciones a los Términos",
+                    title: "11. Modificaciones a los Términos",
                     content: "Nos reservamos el derecho de modificar estos Términos en cualquier momento. Los cambios entrarán en vigencia inmediatamente después de la publicación. Su uso continuado de la App constituye su aceptación de los Términos modificados."
                 },
                 {
-                    title: "10. Modificaciones a la App",
+                    title: "12. Modificaciones a la App",
                     content: "Nos reservamos el derecho de modificar, actualizar o descontinuar cualquier función de la App en cualquier momento. No tenemos obligación de mantener o actualizar la App."
                 },
                 {
-                    title: "11. Terminación",
-                    content: "Usted puede dejar de usar la App en cualquier momento desinstalándola. Nos reservamos el derecho de terminar o suspender su acceso a la App en cualquier momento."
+                    title: "13. Terminación",
+                    content: "Puedes dejar de usar la App en cualquier momento desinstalándola o, si tienes una cuenta, solicitando la eliminación de la cuenta según lo descrito en la Sección 3.3. Nos reservamos el derecho de terminar o suspender tu acceso a la App o a tu cuenta en cualquier momento, con o sin causa o aviso previo."
                 },
                 {
-                    title: "12. Respaldo y Recuperación de Datos",
-                    content: "La App no proporciona respaldo automático en la nube. Usted es el único responsable de hacer una copia de seguridad de sus datos."
+                    title: "14. Respaldo y Recuperación de Datos",
+                    content: "Los datos almacenados solo localmente, que no se han sincronizado mediante el inicio de sesión, no tienen respaldo automático. Si inicias sesión, tu progreso, notas y favoritos se sincronizan con nuestra base de datos en la nube, lo que ofrece cierto nivel de respaldo mientras tu cuenta esté activa. Eres responsable de hacer una copia de seguridad de cualquier dato que desees conservar y que no esté sincronizado con tu cuenta."
                 },
                 {
-                    title: "13. Indemnización",
+                    title: "15. Indemnización",
                     content: "Usted acepta indemnizar y mantener indemne a los desarrolladores de la App de cualquier reclamación que surja de su uso de la App o violación de estos Términos."
                 },
                 {
-                    title: "14. Ley Aplicable",
-                    content: "Estos Términos se regirán e interpretarán de acuerdo con las leyes locales aplicables."
+                    title: "16. Ley Aplicable",
+                    content: "Estos Términos se regirán e interpretarán de acuerdo con las leyes de la República Federativa de Brasil. Cualquier disputa derivada de estos Términos estará sujeta a la jurisdicción de los tribunales brasileños, excepto cuando la legislación de protección al consumidor aplicable disponga lo contrario."
                 },
                 {
-                    title: "15. Divisibilidad",
+                    title: "17. Divisibilidad",
                     content: "Si alguna disposición de estos Términos se considera inaplicable o inválida, esa disposición se limitará o eliminará en la medida mínima necesaria."
                 },
                 {
-                    title: "16. Acuerdo Completo",
+                    title: "18. Acuerdo Completo",
                     content: "Estos Términos constituyen el acuerdo completo entre usted y los desarrolladores de la App con respecto al uso de la App."
                 },
                 {
-                    title: "17. Información de Contacto",
-                    content: "Si tiene alguna pregunta sobre estos Términos, comuníquese con nosotros a través de los canales apropiados (repositorio de GitHub, etc)."
+                    title: "19. Información de Contacto",
+                    content: "Si tiene alguna pregunta sobre estos Términos, contáctenos en quare.software@gmail.com o a través de nuestro repositorio de GitHub."
                 },
                 {
-                    title: "18. Reconocimiento",
+                    title: "20. Reconocimiento",
                     content: "AL USAR LA APP, USTED RECONOCE QUE HA LEÍDO ESTOS TÉRMINOS, LOS ENTIENDE Y ACEPTA ESTAR OBLIGADO POR ELLOS.",
                     highlight: true
                 }
